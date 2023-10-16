@@ -1,0 +1,53 @@
+/* StudentDetails.css */
+
+.details {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+/* Styling the table */
+.education-table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.education-table table {
+    width: 100%;
+}
+
+.education-table th, .education-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.education-table th {
+    background-color: #f2f2f2;
+}
+
+/* Media query for responsive design */
+@media (max-width: 600px) {
+    .details {
+        max-width: 90%;
+    }
+}

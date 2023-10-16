@@ -1,0 +1,47 @@
+/* Base styles for larger screens */
+.grade {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .class-details {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .class-teacher,
+  .class-monitor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .class-teacher p,
+  .class-monitor p {
+    font-size: 18px;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .grade {
+      margin-top: 10px;
+      font-size: 24px; /* Adjust font size for smaller screens */
+    }
+  
+    .class-details {
+      flex-direction: column; /* Stack elements vertically for smaller screens */
+    }
+  
+    .class-teacher,
+    .class-monitor {
+      margin-top: 10px; /* Add some spacing between elements */
+    }
+  
+    .class-teacher h3,
+    .class-monitor h3 {
+      font-size: 16px; /* Adjust font size for smaller screens */
+    }
+  }
+  

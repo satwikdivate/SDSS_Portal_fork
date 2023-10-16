@@ -1,0 +1,38 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+  }
+  
+.footer-conatiner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ngo-name {
+    font-size: 20px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .social-icons i {
+    font-size: 24px;
+  }
+  
+  .social-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 10px;
+  }
