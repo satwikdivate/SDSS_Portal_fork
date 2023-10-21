@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/" element={<Login isAuthenticated/>} />
         <Route
           path="/home"
           element={
@@ -24,7 +24,7 @@ function App() {
         />
         <Route path='/student' element={<StudentBio />} />
         <Route path='/class/All' element={<Classcard />} />
-        <Route path='/class/' element={<ListStudent />} />
+        <Route path='/class/5' element={<ListStudent />} />
       </Routes>
     </Router>
   )
