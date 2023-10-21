@@ -7,7 +7,7 @@ const profileSchema = mongoose.Schema({
   },
   familyProfile: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "",
+    ref: "FamilyProfile",
   },
   academicProfile: {
     type: mongoose.Schema.Types.ObjectId,
@@ -17,6 +17,10 @@ const profileSchema = mongoose.Schema({
     type: String,
     enum: ["Student", "Admin", "Operator"],
     required: true,
+  },
+  attendance: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Attendance",
   },
 });
 
