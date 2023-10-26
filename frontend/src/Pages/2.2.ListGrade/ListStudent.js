@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../components/Header/Header'
-import Card from '../../components/ListCard/Card'
+import Card from '../../components/StudentListCard/Card'
 import "./ListStudent.css"
 
 const students = [

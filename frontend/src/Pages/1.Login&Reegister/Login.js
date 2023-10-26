@@ -6,6 +6,8 @@ const Login = ({ setIsAuthenticated }) => {
   const [text2, setText2] = useState("");
   const [showRegistration, setShowRegistration] = useState(false);
   const [displaylogin, setofflogin] = useState(true);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const fullText = "'स्व' - रूपवर्धिनी";
   const quote = "विकसित व्हावे | अर्पित होऊनी जावे ||";
@@ -44,22 +46,25 @@ const Login = ({ setIsAuthenticated }) => {
     });
   }, []);
 
-  
   const toggleRegistrationForm = () => {
     setShowRegistration(!showRegistration);
     setofflogin(!displaylogin);
+  };
+
+  const handleLogin = () => {
+    if (username === "example" && password === "password") {
+      setIsAuthenticated(true);
+    }
   };
 
   return (
     <div className="login">
       <div className="orange">
         <div className="name">
-
           <>
             <p>{text1}</p>
             <p>{text2}</p>
           </>
-
         </div>
       </div>
       <div className="white">
@@ -68,15 +73,29 @@ const Login = ({ setIsAuthenticated }) => {
             <h1>Login</h1>
             <h1>स्वामी दयानंद सरस्वती शाखा </h1>
           </div>
-          {!displaylogin ? null : (
-            <div className="login-cred">
-              <label>Username</label>
-              <input type="text" placeholder="Username" required />
-              <label>Password</label>
-              <input type="password" placeholder="Password" required />
-              <button className="login-submit">Submit</button>
-            </div>
-          )}
+          {displaylogin && (
+        <div className="login-cred">
+          <label>Username</label>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button className="login-submit" onClick={handleLogin}>
+            Submit
+          </button>
+        </div>
+      )}
           <div className="register">
             {showRegistration ? (
               <div>

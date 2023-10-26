@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from '../Card/Card';
+import ListCard from '../StudentListCard/ListCard';
 
 const StudentList = ({ students }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,7 +17,7 @@ const StudentList = ({ students }) => {
       />
       <div className="student-list">
         {filteredStudents.map((student) => (
-          <Card key={student.id} student={student} />
+          <ListCard key={student.id} student={student} />
         ))}
       </div>
     </div>
