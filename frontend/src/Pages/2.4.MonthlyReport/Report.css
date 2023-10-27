@@ -1,0 +1,102 @@
+
+  .report-container {
+    position: relative !important;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+  }
+  
+  .report-content {
+    padding: 20px;
+  }
+  
+  .add-report-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .add-report-btn i, .delete-report-btn i, .edit-report-btn i{
+    margin-right: 10px;
+    font-size: 20px;
+
+    vertical-align: middle;
+  }
+  
+  .edit-report-btn,
+  .delete-report-btn {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-report-btn:hover,
+  .edit-report-btn:hover,
+  .delete-report-btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* ReportList component styles */
+  .report-list {
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .report-list  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ReportForm component styles */
+  .report-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  input[type="text"],
+  input[type="file"],
+  input[type="password"],
+  input[type="email"]   {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Custom styles can be added here as needed */
+  

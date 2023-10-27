@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Card.css";
 
-const Card = (student) => {
+const ListCard = (student) => {
   return (
     <div className='student-list'>
       <div className="card-stu" key={student.name}>
@@ -14,4 +14,4 @@ const Card = (student) => {
   );
 };
 
-export default Card;
+export default ListCard;

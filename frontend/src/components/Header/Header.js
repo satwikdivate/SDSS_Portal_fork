@@ -33,7 +33,7 @@ const Header = () => {
         <a href="#services" onClick={handle}>प्रमुख व्यवस्था</a>
         <a href="#portfolio" onClick={handle}>विशेष कार्यक्रम</a>
         <a href="#contact" onClick={handle}>संपर्क</a>
-        <a href='5'><button className='login-btn' onClick={handle}>Log In</button></a>
+        <a href='5'><button className='login-btn' onClick={handle}>O</button></a>
       </nav>
     </header>
   );

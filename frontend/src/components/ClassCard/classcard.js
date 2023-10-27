@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../Header/Header'
 import "./classcard.css";
 import { Link } from 'react-router-dom';
-import Footer from '../footer/Footer';
+import Footer from '../Footer/Footer';
 
 const Classcard = () => {
     const classes = [
