@@ -2,6 +2,7 @@ import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
   const img = 'https://static.vecteezy.com/system/resources/previews/005/919/486/original/book-read-library-study-solid-icon-illustration-logo-template-suitable-for-many-purposes-vector.jpg';
@@ -18,9 +19,12 @@ const HomePage = () => {
     'Suggestions': "https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-256.png",
   };
 
+  const {token,user}=useSelector((state)=>state.auth)
+
   return (
     <>
       <Header />
+      <div className='bg-blue'>{ user ? user[0].firstName :<div></div>}</div>
       <div className="home-page">
         <main>
           <div className="search-module">

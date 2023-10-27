@@ -3,12 +3,27 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const db = require("./config/db");
 const app = express();
-const port = process.env.PORT || 5000;
+const cors=require("cors")
+const port = process.env.PORT || 4000;
 const userRouter=require("./router/userRouter");
+const fileUpload=require("express-fileupload")
 app.use(bodyParser.json());
 
+app.use(express.json());
+// app.use(cookieParser())
+app.use(
+ cors({
+    origin:'http://localhost:3000',
+    credentials:true
+ })   
+)
 
-app.listen(5000,(req,res)=>{
+app.use(fileUpload({
+    useTempFiles:true,
+    tempFileDir:"/tmp"
+}))
+
+app.listen(4000,(req,res)=>{
   console.log("Conneted at 5000")
 })
 

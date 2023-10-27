@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header/Header';
-import './FillProfile.css';
-import Footer from '../../components/Footer/Footer';
+
 
 const Fillprofile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
@@ -368,7 +367,7 @@ const Fillprofile = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

@@ -19,9 +19,9 @@ function App() {
          <Route
           path="/home"
           element={
-            <PrivateRoute isAuthenticated={isAuthenticated}>
+            // <PrivateRoute isAuthenticated={isAuthenticated}>
               <Home />
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         /> 
         <Route path='/student' element={<StudentBio />} />
