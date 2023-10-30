@@ -6,6 +6,7 @@ const app = express();
 const cors=require("cors")
 const port = process.env.PORT || 4000;
 const userRouter=require("./router/userRouter");
+const personalProfileRouter=require("./router/personalProfile");
 const fileUpload=require("express-fileupload")
 app.use(bodyParser.json());
 
@@ -24,10 +25,11 @@ app.use(fileUpload({
 }))
 
 app.listen(4000,(req,res)=>{
-  console.log("Conneted at 5000")
+  console.log("Conneted at 4000")
 })
 
 app.use("/v1/user",userRouter);
+app.use("/v1/profile/personalProfile",personalProfileRouter);
 
 
 

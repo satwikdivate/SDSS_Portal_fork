@@ -1,6 +1,8 @@
 const User=require("../db/user")
 const bcrypt=require('bcrypt')
-const jwt=require("jsonwebtoken")
+const jwt=require("jsonwebtoken");
+const currentIndex = require("../db/currentINdex");
+const Profile = require("../db/profile");
 
 
 
@@ -23,6 +25,10 @@ exports.signUp=async(req,res)=>{
             })
         }
 
+        // find the index and current no of document in user schma 
+        const recordCount = await User.countDocuments();
+        // printjson(index)     
+
         // check if user already present 
             const findUser=await User.find({email:email});
 
@@ -33,9 +39,26 @@ exports.signUp=async(req,res)=>{
                 })
             }
             const hashPassword=await bcrypt.hash(password,10);
+
+            // create profile schema object 
+           
+            const profileSchma=await Profile.create({
+                personalProfile:null,
+                familyProfile:null,
+                academicProfile:null,
+                attendance:null
+            })
+
         // creating entry in DB
         const user= await User.create({
-           id:1, firstName,lastName,contact,email,password:hashPassword ,role
+           id:recordCount+1000, 
+           firstName,
+           lastName,
+           contact,
+           email,
+           password:hashPassword ,
+           role,
+          Profile: profileSchma
         });
 
 
@@ -111,5 +134,28 @@ exports.login=async(req,res)=>{
         
     }catch(e){
         console.log("ERROR AT LOGIN",e.message);
+    }
+}
+
+
+exports.getStudent=async(req,res)=>{
+    try{
+
+        const id=req.user.id;
+
+        const user=await User.findOne(
+           {id:id},
+       ).populate({
+        path:"Profile",
+       populate: {
+            path:"personalProfile"
+        }
+       })
+
+       return res.status(200).json({
+        user
+       })
+    }catch(e){
+        console.log("ERROR AT GET USER:",e.message)
     }
 }

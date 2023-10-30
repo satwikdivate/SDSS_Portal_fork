@@ -7,3 +7,6 @@ const currentCouter=mongoose.Schema({
         require:true
     }
 })
+
+const currentIndex=mongoose.model("currentIndex",currentCouter);
+module.exports=currentIndex;
