@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const attendanceSchema = mongoose.Schema({
   profile: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
+    ref: "User",
   },
   attendance: [
     {

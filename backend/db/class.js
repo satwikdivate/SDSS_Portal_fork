@@ -7,22 +7,22 @@ const classSchema = new mongoose.Schema({
   },
   classTeacher: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
+    ref: "User",
     required: true,
   },
   studentList: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Profile",
+      ref: "User",
       required: true,
     },
   ],
   classHead: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
+    ref: "User",
     required: true,
   },
 });
-
+// make Profile ans User because we are making user as primary and inside that we add the prodile schma 
 const Class = mongoose.Model("Class", classSchema);
 module.exports = Class;

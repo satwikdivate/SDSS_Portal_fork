@@ -31,12 +31,16 @@ const userSchema = mongoose.Schema(
       enum: ["Student", "Admin", "Operator"],
       required: true,
     },
+    Profile: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Profile",
+    },
   },
   
   {
     timestamps: true,
   }
 );
-
+// add profile in user schema
 const User = mongoose.model("User", userSchema);
 module.exports = User;

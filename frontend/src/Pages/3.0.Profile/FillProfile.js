@@ -82,23 +82,26 @@ const Fillprofile = () => {
         }
 
         setUserData({ ...userData, relationships: [...relationships] });
-
+        console.log("User data:",userData)
+        console.log("Personal Data:",personalData);
+        console.log("Educational Data:",educationalData);
+        console.log("Family Data:",educationalData)
         const userDataJSON = JSON.stringify(userData);
 
-        fetch('/saveUserData', {
-            method: 'POST',
-            body: userDataJSON,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Data saved:', data);
-            })
-            .catch((error) => {
-                console.error('Error saving data:', error);
-            });
+        // fetch('/saveUserData', {
+        //     method: 'POST',
+        //     body: userDataJSON,
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // })
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log('Data saved:', data);
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error saving data:', error);
+        //     });
     };
 
     const goToPreviousSection = () => {
