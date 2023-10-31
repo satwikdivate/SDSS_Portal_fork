@@ -6,7 +6,7 @@ const app = express();
 const cors=require("cors")
 const port = process.env.PORT || 4000;
 const userRouter=require("./router/userRouter");
-const personalProfileRouter=require("./router/personalProfile");
+const personalProfileRouter=require("./router/Profile");
 const fileUpload=require("express-fileupload")
 app.use(bodyParser.json());
 

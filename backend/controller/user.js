@@ -3,7 +3,11 @@ const bcrypt=require('bcrypt')
 const jwt=require("jsonwebtoken");
 const currentIndex = require("../db/currentINdex");
 const Profile = require("../db/profile");
-
+const FamilyProfile=require("../db/familyProfile")
+const PersonalProfile = require("../db/personalProfile");
+const academicProfile=require("../db/academicProfile");
+const AcademicProfile = require("../db/academicProfile");
+const Attendance = require("../db/attendance");
 
 
 
@@ -40,14 +44,37 @@ exports.signUp=async(req,res)=>{
             }
             const hashPassword=await bcrypt.hash(password,10);
 
-            // create profile schema object 
+            // create 4 schma and init with NULL 
+            const personalProfile=await PersonalProfile.create({
+               age:null,
+                dateOfBirth:null,
+               grade:null,
+                contact:null,
+                bloodGroup:null,
+              
+            });
+            const familyProfile=await FamilyProfile.create({
+                motherName:null,
+                fatherName:null,
+                contact:null,
+                occupation:null,
+                income:null,
+                siblingCount:null
+            });
+
+            // by default marthi medium is added
+            const academicProfile=await AcademicProfile.create({
+                schoolName:null,
+                schoolAddress:null,
+                classTeacher:null,
+                medium:"Marathi"
+            });
+            const attendence=await Attendance.create({
+                profile:null,
+                attendance:[null]
+            });
            
-            const profileSchma=await Profile.create({
-                personalProfile:null,
-                familyProfile:null,
-                academicProfile:null,
-                attendance:null
-            })
+           
 
         // creating entry in DB
         const user= await User.create({
@@ -58,13 +85,17 @@ exports.signUp=async(req,res)=>{
            email,
            password:hashPassword ,
            role,
-          Profile: profileSchma
+         personalProfile,
+         familyProfile,
+         academicProfile,
+         attendance: attendence
         });
 
 
        return  res.status(200).json({
             message:"User signUp sucessfully",
-            sucess:true
+            sucess:true,
+            data:user
         })
 
     }catch(e){
@@ -145,12 +176,11 @@ exports.getStudent=async(req,res)=>{
 
         const user=await User.findOne(
            {id:id},
-       ).populate({
-        path:"Profile",
-       populate: {
-            path:"personalProfile"
-        }
-       })
+       ) .populate("personalProfile")
+       .populate("familyProfile")
+       .populate("academicProfile")
+       .populate("attendance")
+     
 
        return res.status(200).json({
         user

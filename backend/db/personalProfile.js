@@ -3,23 +3,24 @@ const personalProfileSchema = mongoose.Schema({
  
   age: {
     type: Number,
-    required: true,
+    
+    
   },
   dateOfBirth: {
-    type: Date,
-    required: true,
+    type: String ,
+    
   },
   grade: {
     type: String,
-    required: true,
+    
   },
   contact: {
     type: String,
-    required: true,
+    
   },
   bloodGroup: {
     type: String,
-    required: true,
+    
   },
 });
 

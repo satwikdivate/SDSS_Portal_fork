@@ -34,19 +34,22 @@ const userSchema = mongoose.Schema(
     personalProfile: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "PersonalProfile",
+      required: true,
     },
     familyProfile: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "FamilyProfile",
+      required: true,
     },
     academicProfile: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "AcademicProfile",
+      required: true,
     },
-    
     attendance: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Attendance",
+      required: true,
     },
   },
   

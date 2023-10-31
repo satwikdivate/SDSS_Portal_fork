@@ -9,17 +9,17 @@ const resultSchema = mongoose.Schema({
     {
       subject: {
         type: String,
-        required: true,
+        
       },
       marks: {
         type: String,
-        required: true,
+        
       },
     },
   ],
   status: {
     type: String,
-    required: true,
+    
   },
 });
 

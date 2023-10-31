@@ -15,24 +15,22 @@ exports.createPersonalProfile=async(req,res)=>{
         if(!id || !age || !dateOfBirth || !grade ||!contact||!bloodGroup){
             return res.status(400).json({message:"Something missing at createPersonalProfile"});
         }
+  // find student and update its PersonalProfile
+  const user=await User.find({id:id});
+ const personalPfrofileId=user[0].personalProfile;
 
-        // create PersonalProfile object
-        const personalProfle=await personalProfile.create({age,dateOfBirth,grade,contact,bloodGroup});
+        const result=await PersonalProfile.findByIdAndUpdate({_id:personalPfrofileId}, {
+            age: req.body.age,
+            dateOfBirth: req.body.dateOfBirth,
+            grade: req.body.grade,
+            contact: req.body.contact,
+            bloodGroup: req.body.bloodGroup
+        }, // Update
+        { new: true })
 
-
-        // find student and update its PersonalProfile
-        const user=await User.find({id:id});
-         console.log("Profile Id:",user[0].Profile);
-
-         const profile=user[0].Profile;
-         const findProfile=await Profile.findByIdAndUpdate({_id:String(profile)},
-            {$set:{personalProfile:personalProfle._id}},{new:true});
-
-        //  console.log("Got the profile:",findProfile[0]._id);
-
-        //  const updatePersonalProfile= await Profile.findByIdAndUpdate({_id:profile.toString(), personalProfile:personalProfle._id});
+    
         
-         return res.status(200).json({message:"Sucess",findProfile});
+         return res.status(200).json({message:"Personal profile updated sucessfuly",result});
     }catch(e){
         console.log("ERROR AT PROFILE SCHEMA:",e.message);
     }
