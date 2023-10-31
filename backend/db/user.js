@@ -31,10 +31,22 @@ const userSchema = mongoose.Schema(
       enum: ["Student", "Admin", "Operator"],
       required: true,
     },
-    Profile: {
+    personalProfile: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Profile",
-      required: true,
+      ref: "PersonalProfile",
+    },
+    familyProfile: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "FamilyProfile",
+    },
+    academicProfile: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AcademicProfile",
+    },
+    
+    attendance: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Attendance",
     },
   },
   
