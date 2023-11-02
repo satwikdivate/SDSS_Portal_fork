@@ -32,7 +32,7 @@ const HomePage = () => {
               {Object.keys(cardImages).map(cardTitle => (
                 <Link
                   key={cardTitle}
-                  to={cardTitle === 'Vardhak Deatils' ? '/student' : cardTitle === 'Grades' ? '/class/All' : '/'}
+                  to={cardTitle === 'Vardhak Deatils' ? '/student' : cardTitle === 'Grades' ? '/class/All' : cardTitle === 'Attendance' ? '/attend' : cardTitle === 'Monthly Report' ? '/mreport': '/home'}
                 >
                   <li className="card"> 
                     <p style={{ marginTop: "15px" }}>{cardTitle}</p>

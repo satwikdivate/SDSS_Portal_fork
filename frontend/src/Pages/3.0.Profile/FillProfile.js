@@ -3,7 +3,7 @@ import Header from '../../components/Header/Header';
 import './FillProfile.css';
 import Footer from '../../components/Footer/Footer';
 
-const Fillprofile = () => {
+const FillProfile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
     const [showPopup, setShowPopup] = useState(false);
     const [relationships, setRelationships] = useState([]);
@@ -18,7 +18,7 @@ const Fillprofile = () => {
         lastName: '',
         email: '',
         age: '',
-        Phone: '',
+        phone: '',
         dob: '',
         address: '',
         standard: '',
@@ -28,23 +28,23 @@ const Fillprofile = () => {
         schoolName: '',
         schoolAddress: '',
         medium: '',
-        ClassTeacher: '',
+        classTeacher: '',
     };
 
     const familyData = {
         fatherName: '',
         motherName: '',
-        fcontact: '',
-        mcontact: '',
-        occu: '',
+        fatherContact: '',
+        motherContact: '',
+        occupation: '',
         income: '',
         siblingCount: '',
     };
 
     const [userData, setUserData] = useState({
-        personal: {},
-        educational: {},
-        family: {},
+        personal: { ...personalData },
+        educational: { ...educationalData },
+        family: { ...familyData },
         relationships: [],
     });
 
@@ -67,40 +67,27 @@ const Fillprofile = () => {
 
     const goToNextSection = () => {
         if (currentSection === 'personal') {
+            setUserData({ ...userData, personal: personalData });
             setCurrentSection('educational');
         } else if (currentSection === 'educational') {
+            setUserData({ ...userData, educational: educationalData });
             setCurrentSection('family');
         }
     };
 
-    const submitData = () => {
-        if (currentSection === 'personal') {
-            setUserData({ ...userData, personal: { ...personalData } });
-        } else if (currentSection === 'educational') {
-            setUserData({ ...userData, educational: { ...educationalData } });
-        } else if (currentSection === 'family') {
-            setUserData({ ...userData, family: { ...familyData } });
-        }
+const submitData = () => {
+    if (currentSection === 'family') {
+        const completeUserData = {
+            personal: { ...userData.personal },
+            educational: { ...userData.educational },
+            family: { ...userData.family },
+            relationships: [...relationships],
+        };
 
-        setUserData({ ...userData, relationships: [...relationships] });
+        console.log(completeUserData);
 
-        const userDataJSON = JSON.stringify(userData);
-
-        fetch('/saveUserData', {
-            method: 'POST',
-            body: userDataJSON,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Data saved:', data);
-            })
-            .catch((error) => {
-                console.error('Error saving data:', error);
-            });
-    };
+    }
+};
 
     const goToPreviousSection = () => {
         if (currentSection === 'educational') {
@@ -120,9 +107,13 @@ const Fillprofile = () => {
                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                         </div>
                         <div className="profile-details">
-                            Name : hello world <br></br>
-                            Grade : 5th grade
-
+                            Name: {userData.personal.firstName} {userData.personal.lastName} <br />
+                            Email: {userData.personal.email} <br />
+                            Phone: {userData.personal.phone} <br />
+                            Date of Birth: {userData.personal.dob} <br />
+                            Age: {userData.personal.age} <br />
+                            Address: {userData.personal.address} <br />
+                            Grade: {userData.personal.standard}
                         </div>
                     </div>
                     <div className="profile-edit">
@@ -130,7 +121,6 @@ const Fillprofile = () => {
                         <button onClick={() => changeSection('educational')}>Educational Profile</button>
                         <button onClick={() => changeSection('family')}>Family Profile</button>
                     </div>
-
                 </div>
 
                 <div className="profile">
@@ -146,67 +136,154 @@ const Fillprofile = () => {
                                     <input
                                         type="text"
                                         placeholder="First Name"
-                                        name='First Name'
+                                        name='firstName'
+                                        value={userData.personal.firstName}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                personal: {
+                                                    ...userData.personal,
+                                                    firstName: e.target.value,
+                                                },
+                                            })
+                                        }
                                     />
-
                                 </label>
                                 <label className='last-name'>
                                     Last Name
-                                    <input type="text" placeholder="Last Name" name="Last Name" />
+                                    <input
+                                        type="text"
+                                        placeholder="Last Name"
+                                        name="lastName"
+                                        value={userData.personal.lastName}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                personal: {
+                                                    ...userData.personal,
+                                                    lastName: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='email'>
                                     Email
-                                    <input type="text" placeholder="Email" name='Email' />
+                                    <input
+                                        type="text"
+                                        placeholder="Email"
+                                        name='email'
+                                        value={userData.personal.email}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                personal: {
+                                                    ...userData.personal,
+                                                    email: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='phone' >
                                     Phone
-                                    <input type="text" placeholder="Phone" name='Contact Number' />
+                                    <input
+                                        type="text"
+                                        placeholder="Phone"
+                                        name='phone'
+                                        value={userData.personal.phone}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                personal: {
+                                                    ...userData.personal,
+                                                    phone: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='dob'>
                                     Date of Birth
-                                    <input type="date" placeholder="Date of Birth" name='Date of Birth' />
+                                    <input
+                                        type="date"
+                                        placeholder="Date of Birth"
+                                        name='dob'
+                                        value={userData.personal.dob}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                personal: {
+                                                    ...userData.personal,
+                                                    dob: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='age'>
                                     Age
-                                    <input type="number" placeholder="Age" min="11" max="22" name='Age' />
+                                    <input
+                                        type="number"
+                                        placeholder="Age"
+                                        min="11"
+                                        max="22"
+                                        name='age'
+                                        value={userData.personal.age}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                personal: {
+                                                    ...userData.personal,
+                                                    age: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
-
                             </div>
                             <label className='address'>
                                 Address
-                                <textarea placeholder="Address" name='Address' />
+                                <textarea
+                                    placeholder="Address"
+                                    name='address'
+                                    value={userData.personal.address}
+                                    onChange={(e) =>
+                                        setUserData({
+                                            ...userData,
+                                            personal: {
+                                                ...userData.personal,
+                                                address: e.target.value,
+                                            },
+                                        })
+                                    }
+                                />
                             </label>
                             <label className='standard'>
                                 Choose Standard
                                 <div className="standard-fixed">
-                                    <input type="radio" id="standard-5th" name="standard" />
-                                    <label for="standard-5th">5th</label>
-                                    <input type="radio" id="standard-6th" name="standard" />
-                                    <label for="standard-6th">6th</label>
-                                    <input type="radio" id="standard-7th" name="standard" />
-                                    <label for="standard-7th">7th</label>
-                                    <input type="radio" id="standard-8th" name="standard" />
-                                    <label for="standard-8th">8th</label>
-                                    <input type="radio" id="standard-9th" name="standard" />
-                                    <label for="standard-9th">9th</label>
-                                    <input type="radio" id="standard-10th" name="standard" />
-                                    <label for="standard-10th">10th</label>
-                                    <input type="radio" id="standard-11th" name="standard" />
-                                    <label for="standard-11th">11th</label>
-                                    <input type="radio" id="standard-12th" name="standard" />
-                                    <label for="standard-12th">12th</label>
-                                    <input type="radio" id="standard-first-year" name="standard" />
-                                    <label for="standard-first-year">First Year</label>
-                                    <input type="radio" id="standard-second-year" name="standard" />
-                                    <label for="standard-second-year">Second Year</label>
-                                    <input type="radio" id="standard-third-year" name="standard" />
-                                    <label for="standard-third-year">Third Year</label>
-                                    <input type="radio" id="standard-final-year" name="standard" />
-                                    <label for="standard-final-year">Final Year / Post Graduation(FY)</label>
+                                    <input
+                                        type="number"
+                                        placeholder="Standar"
+                                        min="5"
+                                        max="16"
+                                        name='age'
+                                        value={userData.personal.standard}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                personal: {
+                                                    ...userData.personal,
+                                                    standard: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </div>
                             </label>
                         </div>
                     )}
+
                     {currentSection === 'educational' && (
                         <div className="section-ep">
                             <div className="heading">
@@ -216,26 +293,117 @@ const Fillprofile = () => {
                             <div className="form-pp">
                                 <label className='school-name'>
                                     School Name
-                                    <input type="text" placeholder="School Name" name='School Name' />
+                                    <input
+                                        type="text"
+                                        placeholder="School Name"
+                                        name='schoolName'
+                                        value={userData.educational.schoolName}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                educational: {
+                                                    ...userData.educational,
+                                                    schoolName: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='school-address'>
                                     Your School Address
-                                    <input type="text" placeholder="School Address" name='School Address' />
+                                    <input
+                                        type="text"
+                                        placeholder="School Address"
+                                        name='schoolAddress'
+                                        value={userData.educational.schoolAddress}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                educational: {
+                                                    ...userData.educational,
+                                                    schoolAddress: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='Medium'>
                                     Choose Medium
                                     <div className="medium-fixed">
-                                        <input type="radio" id="medium-marathi" name="medium" />
-                                        <label for="medium-marathi">Marathi</label>
-                                        <input type="radio" id="medium-semi" name="medium" />
-                                        <label for="medium-semi">Semi - English</label>
-                                        <input type="radio" id="medium-english" name="medium" />
-                                        <label for="medium-english">English</label>
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                name="medium"
+                                                value="English"
+                                                checked={userData.educational.medium === 'English'}
+                                                onChange={(e) =>
+                                                    setUserData({
+                                                        ...userData,
+                                                        educational: {
+                                                            ...userData.educational,
+                                                            medium: e.target.value,
+                                                        },
+                                                    })
+                                                }
+                                            />
+                                            English
+                                        </label>
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                name="medium"
+                                                value="Mathematics"
+                                                checked={userData.educational.medium === 'Semi-English'}
+                                                onChange={(e) =>
+                                                    setUserData({
+                                                        ...userData,
+                                                        educational: {
+                                                            ...userData.educational,
+                                                            medium: e.target.value,
+                                                        },
+                                                    })
+                                                }
+                                            />
+                                            Semi-English
+                                        </label>
+                                        <label>
+                                            <input
+                                                type="radio"
+                                                name="medium"
+                                                value="Science"
+                                                checked={userData.educational.medium === 'Marathi'}
+                                                onChange={(e) =>
+                                                    setUserData({
+                                                        ...userData,
+                                                        educational: {
+                                                            ...userData.educational,
+                                                            medium: e.target.value,
+                                                        },
+                                                    })
+                                                }
+                                            />
+                                            Marathi
+                                        </label>
                                     </div>
+
                                 </label>
                                 <label className='class-teacher'>
                                     Your Class Teacher Name
-                                    <input type="text" placeholder="Class Teacher" name='Class Teacher' />
+                                    <input
+                                        type="text"
+                                        placeholder="Class Teacher"
+                                        name='classTeacher'
+                                        value={userData.educational.classTeacher}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                educational: {
+                                                    ...userData.educational,
+                                                    classTeacher: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                             </div>
                         </div>
@@ -250,31 +418,129 @@ const Fillprofile = () => {
                             <div className="form-fp">
                                 <label className='father-name'>
                                     Father's Full Name
-                                    <input type="text" placeholder="Father's Name" name="Father's Name" />
+                                    <input
+                                        type="text"
+                                        placeholder="Father's Name"
+                                        name="fatherName"
+                                        value={userData.family.fatherName}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                family: {
+                                                    ...userData.family,
+                                                    fatherName: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='mother-name'>
                                     Mother's Full Name
-                                    <input type="text" placeholder="Mother's Name" name="Mother's Name" />
+                                    <input
+                                        type="text"
+                                        placeholder="Mother's Name"
+                                        name="motherName"
+                                        value={userData.family.motherName}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                family: {
+                                                    ...userData.family,
+                                                    motherName: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='fcontact'>
                                     Father's Contact No.
-                                    <input type='number' placeholder="Father's Contact No." name="Father's Contact No." />
+                                    <input
+                                        type='number'
+                                        placeholder="Father's Contact No."
+                                        name="fatherContact"
+                                        value={userData.family.fatherContact}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                family: {
+                                                    ...userData.family,
+                                                    fatherContact: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
-                                <label className='fcontact'>
+                                <label className='mcontact'>
                                     Mother's Contact No.
-                                    <input type='number' placeholder="Mother's Contact No." name="Mother's Contact No." />
+                                    <input
+                                        type='number'
+                                        placeholder="Mother's Contact No."
+                                        name="motherContact"
+                                        value={userData.family.motherContact}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                family: {
+                                                    ...userData.family,
+                                                    motherContact: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='occu'>
                                     Occupation
-                                    <input type='text' placeholder="Father's Occupation" name="Father's Occupation" />
+                                    <input
+                                        type='text'
+                                        placeholder="Father's Occupation"
+                                        name="occupation"
+                                        value={userData.family.occupation}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                family: {
+                                                    ...userData.family,
+                                                    occupation: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='income'>
                                     Annual Income
-                                    <input type='text' placeholder="Annual Income" name="Income" />
+                                    <input
+                                        type='text'
+                                        placeholder="Annual Income"
+                                        name="income"
+                                        value={userData.family.income}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                family: {
+                                                    ...userData.family,
+                                                    income: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                                 <label className='sibling-count'>
                                     Number of Siblings
-                                    <input type='number' placeholder="Number of Siblings" name="Sibling Count" />
+                                    <input
+                                        type='number'
+                                        placeholder="Number of Siblings"
+                                        name="siblingCount"
+                                        value={userData.family.siblingCount}
+                                        onChange={(e) =>
+                                            setUserData({
+                                                ...userData,
+                                                family: {
+                                                    ...userData.family,
+                                                    siblingCount: e.target.value,
+                                                },
+                                            })
+                                        }
+                                    />
                                 </label>
                             </div>
                             <button className='add-data-btn' onClick={openPopup}>Add Data</button>
@@ -373,4 +639,4 @@ const Fillprofile = () => {
     );
 }
 
-export default Fillprofile;
+export default FillProfile;
