@@ -1,7 +1,7 @@
 import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
@@ -20,7 +20,7 @@ const HomePage = () => {
   };
 
   const {token,user}=useSelector((state)=>state.auth)
-
+const naviaget=useNavigate();
   return (
     <>
       <Header />
@@ -31,6 +31,10 @@ const HomePage = () => {
             <input type="search" placeholder="Search" />
           </div>
 
+      <button  onClick={()=>{
+        naviaget("/u0/updateprofile")
+
+      }}>G0 to update Profile</button>
           <div className="modules">
             <ul className="card-container">
               {Object.keys(cardImages).map(cardTitle => (

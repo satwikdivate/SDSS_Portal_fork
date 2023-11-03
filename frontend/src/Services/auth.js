@@ -4,7 +4,7 @@ import { apiConnector } from "./utilities/apiCOnnector";
 import {loading,setLoading,setToken,token,setUser} from "../slices/auth"
 import toast from "react-hot-toast";
 
-export  function signUp(username,password,navigate){
+export  function login(username,password,navigate){
     
     return async (dispatch)=>{
         

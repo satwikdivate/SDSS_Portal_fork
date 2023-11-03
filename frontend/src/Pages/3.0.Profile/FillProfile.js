@@ -116,7 +116,7 @@ const submitData = () => {
 
     return (
         <div className='fill-profile'>
-            <Header />
+            {/* <Header /> */}
             <div className='all'>
                 <div className="profile-sidebar">
                     <div className="profile-info">

@@ -26,11 +26,11 @@ function App() {
         <Route path="/student" element={<StudentBio />} />
         <Route path="/class/All" element={<Classcard />} />
         <Route path="/class/5" element={<ListStudent />} />
-        <Route path="/u0/updateprofile" element={<FillProfile />} />
+        <Route path="/updateprofile" element={<FillProfile />} />
         <Route path="/mreport" element={<MonthlyReport role="admin" />} />
         <Route path="/attend" element={<AttendPage role="user" />} />
         <Route path="/attend/view" element={<Attendance role="admin" />} />
-        <Route path="/attend/mark" element={<PrivateRoute isAuthenticated={isAuthenticated} role="admin" />}>
+        <Route path="/attend/mark" element={<MarkAttendance />}>
           <Route
             element={<MarkAttendance />}
           />
