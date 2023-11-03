@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../../../components/Header/Header';
-import Footer from '../../../components/Footer/Footer';
+// import Footer from '../../../components/Footer/Footer';
 import { PieChart, Pie, Cell } from 'recharts';
-import "./Attend.css";
+// import "./Attend.css";
 
 const Attendance = (role) => {
   const dateAndAttendanceData = [
@@ -197,7 +197,7 @@ const Attendance = (role) => {
         </div>
       }
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
