@@ -3,6 +3,7 @@ import "./Login.css";
 import { signUp } from "../../Services/auth";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsAuthenticated }) => {
   const [text1, setText1] = useState("");
@@ -14,6 +15,8 @@ const Login = ({ setIsAuthenticated }) => {
   // const dispatch=useId.
   const dispatch = useDispatch();
 const navigate=useNavigate();
+  // const nagivate = useNavigate();
+
   const fullText = "'स्व' - रूपवर्धिनी";
   const quote = "विकसित व्हावे | अर्पित होऊनी जावे ||";
 
@@ -65,6 +68,7 @@ const navigate=useNavigate();
     dispatch(signUp(username,password,navigate))
     if (username === "example" && password === "password") {
       setIsAuthenticated(true);
+      // nagivate("/home")
     }
   };
 
@@ -85,28 +89,29 @@ const navigate=useNavigate();
             <h1>स्वामी दयानंद सरस्वती शाखा </h1>
           </div>
           {displaylogin && (
-        <div className="login-cred">
-          <label>Username</label>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button className="login-submit" onClick={handleLogin}>
-            Submit
-          </button>
-        </div>
-      )}
+            <div className="login-cred">
+              <label>Username</label>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <button className="login-submit" onClick={handleLogin}>
+                Submit
+              </button>
+            </div>
+          )}
           <div className="register">
             {showRegistration ? (
               <div>
@@ -120,6 +125,10 @@ const navigate=useNavigate();
                 <input type="text" placeholder="Username" required />
                 <label>Password</label>
                 <input type="password" placeholder="Password" required />
+                <label>
+                  Request for Admin Role
+                  <input type="checkbox" name="role" value=""></input>
+                </label>
                 <button className="register-submit">Register</button>
                 <button className="register-button" onClick={toggleRegistrationForm}>
                   Already Have Account
