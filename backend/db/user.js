@@ -51,6 +51,11 @@ const userSchema = mongoose.Schema(
       ref: "Attendance",
       required: true,
     },
+    class:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Class",
+     
+    }
   },
   
   {

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const classSchema = new mongoose.Schema({
-  grade: {
-    typeof: "string",
+  classsName: {
+   type: String,
     required: true,
   },
   classTeacher: {
@@ -17,12 +17,16 @@ const classSchema = new mongoose.Schema({
       required: true,
     },
   ],
-  classHead: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+ 
+  updateForClass:{
+    type:String,
     required: true,
   },
+  updateInFileFormate:{
+    type:String,
+    required: true,
+      }
 });
 // make Profile ans User because we are making user as primary and inside that we add the prodile schma 
-const Class = mongoose.Model("Class", classSchema);
+const Class = mongoose.model("Class", classSchema);
 module.exports = Class;

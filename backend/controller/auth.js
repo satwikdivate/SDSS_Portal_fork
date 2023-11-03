@@ -47,7 +47,7 @@ exports.isStudent=(req,res,next)=>{
     }
 }
 
-exports.isAdmin=(req,res)=>{
+exports.isAdmin=(req,res,next)=>{
 
     try{
 
@@ -65,11 +65,11 @@ exports.isAdmin=(req,res)=>{
     }
 }
 
-exports.isOperator=(req,res)=>{
+exports.isAuthenticate=(req,res,next)=>{
 
     try{
 
-        if(req.user.role!="Operator"){
+        if(req.user.role!="Operator" && req.user.role!="Admin" ){
             return res.status(401).json({              // and we done req.user = decode; So accountType is also saved in user 
                 success:false,
                 message:'This is a protected route for Operator  only',

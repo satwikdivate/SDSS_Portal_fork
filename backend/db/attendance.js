@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
 
 const attendanceSchema = mongoose.Schema({
-  profile: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  
   attendance: [
     {
-      type: Date,
-      
-    },
+
+      data:{
+        type:String,
+        required:true
+      },
+      profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+
+    }
   ],
 });
 

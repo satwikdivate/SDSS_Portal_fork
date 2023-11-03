@@ -8,6 +8,7 @@ const PersonalProfile = require("../db/personalProfile");
 const academicProfile=require("../db/academicProfile");
 const AcademicProfile = require("../db/academicProfile");
 const Attendance = require("../db/attendance");
+const Class = require("../db/class");
 
 
 
@@ -180,6 +181,7 @@ exports.getStudent=async(req,res)=>{
        .populate("familyProfile")
        .populate("academicProfile")
        .populate("attendance")
+       .populate("class")
      
 
        return res.status(200).json({
