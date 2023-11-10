@@ -1,6 +1,7 @@
 import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
+import Footer from '../../components/footer/Footer';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -45,6 +46,7 @@ const HomePage = () => {
           </div>
         </main>
       </div>
+      <Footer />
     </>
   );
 };

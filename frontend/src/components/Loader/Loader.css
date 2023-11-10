@@ -1,0 +1,33 @@
+/* CentralizedLoader.css */
+
+.centralized-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.centralized-loader.loading {
+  opacity: 1;
+}
+
+.loader-container {
+  text-align: center;
+  transform-origin: center;
+  transform: scale(3.2); /* Set the initial scale to 0 for zoom-out effect */
+  transition: transform 0.2s ease-out; /* Transition for the transform property */
+}
+
+.centralized-loader.zoom-out .loader-container {
+  transform: scale(1); /* Set the scale to 1 for original size after zoom-out effect */
+}
+
+
