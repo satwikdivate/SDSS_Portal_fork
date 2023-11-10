@@ -19,16 +19,15 @@
 
 .orange {
   width: 50%;
-  background-color: #00072d; 
-
-  /* 00072d */
+  background-color: #00072d;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.orange p{
+
+.orange p {
   color: #f8f8f8;
   font-size: 2rem;
   font-weight: 600;
@@ -51,7 +50,6 @@
   justify-content: center;
   margin-top: 3rem;
 }
-
 
 .login-cred input {
   padding: 0.5rem 1.5rem;
@@ -81,16 +79,14 @@
   font-size: 1.7rem;
   color: #333;
   text-align: center;
-
 }
 
-.name p{ 
+.name p {
   text-align: center;
 }
 
-
 @media (max-width: 768px) {
-  *{
+  * {
     overflow-y: hidden;
   }
 
@@ -130,20 +126,19 @@
     text-align: center;
   }
 
-  .name{
+  .name {
     position: absolute;
     top: 10px;
     left: 200px;
   }
-  .name p{
+  .name p {
     font-size: 0.78rem;
     color: #000328;
     text-align: left;
   }
 }
 
-
-/* Add these CSS styles for the registration form */
+/* Styles for the registration form */
 .register {
   background-color: #fff;
   padding: 2rem;

@@ -1,0 +1,82 @@
+.Event {
+    text-align: center;
+    margin: 50px;
+  }
+  
+  .app-heading {
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .label {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 5px;
+
+  }
+  
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .btn {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .event-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .events-heading {
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .event-item {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .event-item strong {
+    color: #007bff;
+  }
+  
+  
+  .list {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+  }
+.list-heading {
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .list-item {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .list-item strong {
+    color: #007bff;
+  }
+  
+  .list-description {
+    margin-top: 10px;
+    color: #555;
+  }
