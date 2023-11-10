@@ -3,7 +3,7 @@ import { apiConnector } from "./utilities/apiCOnnector";
 
 import {loading,setLoading,setToken,token,setUser} from "../slices/auth"
 import toast from "react-hot-toast";
-
+import {user}  from  "../Services/utilities/API" 
 export  function signUp(username,password,navigate){
     
     return async (dispatch)=>{
@@ -11,7 +11,7 @@ export  function signUp(username,password,navigate){
         try{
             dispatch(setLoading(true));
             
-            const result= await apiConnector("POST","http://localhost:4000/v1/user/login",{
+            const result= await apiConnector("POST",user.LOGIN_IN,{
                 id:username,
                 password:password,
             });

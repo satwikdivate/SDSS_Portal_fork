@@ -83,7 +83,7 @@ const submitData = () => {
             relationships: [...relationships],
         };
 
-        console.log(completeUserData);
+        console.log("coMPLETE uSER DATA:",completeUserData);
 
     }
 };
