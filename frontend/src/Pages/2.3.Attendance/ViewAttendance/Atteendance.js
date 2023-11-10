@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../../components/Header/Header';
-import Footer from '../../../components/Footer/Footer';
+import Footer from '../../../components/footer/Footer';
 import { PieChart, Pie, Cell } from 'recharts';
 import "./Attend.css";
 
@@ -113,7 +113,7 @@ const Attendance = (role) => {
   const colors = ['#36A2EB', '#FF6384'];
 
   return (
-    <>
+    <div className='view-attendance'>
       <Header />
       <div className='all-attend'>
         <div className='attendance'>
@@ -122,22 +122,22 @@ const Attendance = (role) => {
             <div className='attendance-monthly'>
               <div className='attendance-card'>
                 <h2>My Attendance</h2>
-                <PieChart width={500} height={500}>
-                  <Pie
-                    data={combinedData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={250}
-                    fill="#8884d8"
-                  >
-                    {combinedData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={colors[index]} />
-                    ))}
-                  </Pie>
-
-                </PieChart>
+                <PieChart width={window.innerWidth < 768 ? 250 : 500} height={window.innerWidth < 768 ? 250 : 500}>
+                    <Pie
+                      data={combinedData}
+                      dataKey="value"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={window.innerWidth < 768 ? 100 : 250}
+                      fill="#8884d8"
+                      style={{padding:"5px",}}
+                    >
+                      {combinedData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={colors[index]} />
+                      ))}
+                    </Pie>
+                  </PieChart>
                 <p>Total Attendance Percentage: {presentPercentage.toFixed(3)}%</p>
               </div>
               <div className='attendance-summary'>
@@ -190,15 +190,10 @@ const Attendance = (role) => {
         </div>
 
       </div>
-      {role === 'admin' &&
-        <div className='attendance-admin'>
 
-
-        </div>
-      }
 
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = ({setIsAuthenticated}) => {
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
   const [showRegistration, setShowRegistration] = useState(false);
   const [displaylogin, setofflogin] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const nagivate = useNavigate();
+  const [fullName, setFullName] = useState("");
+  const [standard, setStandard] = useState("");
+  const [email, setEmail] = useState("");
+  const [newUsername, setNewUsername] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [requestAdminRole, setRequestAdminRole] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const validUsername = "example";
+  const validPassword = "password";
 
   const fullText = "'स्व' - रूपवर्धिनी";
   const quote = "विकसित व्हावे | अर्पित होऊनी जावे ||";
@@ -54,10 +64,25 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleLogin = () => {
-    if (username === "example" && password === "password") {
+    if (username === validUsername && password === validPassword) {
       setIsAuthenticated(true);
-      // nagivate("/home")
+      navigate('/home');
+    } else {
+      setError("Invalid username or password");
     }
+  };
+
+  const handleRegistration = () => {
+    const formData = {
+      fullName,
+      standard,
+      email,
+      username: newUsername,
+      password: newPassword,
+      requestAdminRole,
+    };
+
+    console.log(formData);
   };
 
   return (
@@ -73,11 +98,12 @@ const Login = ({ setIsAuthenticated }) => {
       <div className="white">
         <div className={`overlay  ${showRegistration ? 'login-slide-out' : 'login-slide-in'}`}>
           <div className="heading">
-            <h1>Login</h1>
             <h1>स्वामी दयानंद सरस्वती शाखा </h1>
           </div>
           {displaylogin && (
             <div className="login-cred">
+              <h1>Login</h1>
+              {error && <p className="error-message">{error}</p>}
               <label>Username</label>
               <input
                 type="text"
@@ -94,7 +120,6 @@ const Login = ({ setIsAuthenticated }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-
               <button className="login-submit" onClick={handleLogin}>
                 Submit
               </button>
@@ -104,20 +129,56 @@ const Login = ({ setIsAuthenticated }) => {
             {showRegistration ? (
               <div>
                 <h2>Create an Account</h2>
-                <p>Join us and become a part of our community.</p>
                 <label>Full Name</label>
-                <input type="text" placeholder="Full Name" required />
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                />
+                <label>Standard</label>
+                <input
+                  type="number"
+                  placeholder="Standard"
+                  value={standard}
+                  onChange={(e) => setStandard(e.target.value)}
+                  required
+                />
                 <label>Email</label>
-                <input type="email" placeholder="Email" required />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 <label>Username</label>
-                <input type="text" placeholder="Username" required />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                  required
+                />
                 <label>Password</label>
-                <input type="password" placeholder="Password" required />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                />
                 <label>
                   Request for Admin Role
-                  <input type="checkbox" name="role" value=""></input>
+                  <input
+                    type="checkbox"
+                    checked={requestAdminRole}
+                    onChange={(e) => setRequestAdminRole(e.target.checked)}
+                  />
                 </label>
-                <button className="register-submit">Register</button>
+                <button className="register-submit" onClick={handleRegistration}>
+                  Register
+                </button>
                 <button className="register-button" onClick={toggleRegistrationForm}>
                   Already Have Account
                 </button>

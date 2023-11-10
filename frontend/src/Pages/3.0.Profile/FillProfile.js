@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header/Header';
 import './FillProfile.css';
-import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/footer/Footer';
 
 const FillProfile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
