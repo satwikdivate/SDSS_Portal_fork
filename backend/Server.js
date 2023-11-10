@@ -3,31 +3,46 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const db = require("./config/db");
 const app = express();
-const port = process.env.PORT || 5000;
-
+const cors=require("cors")
+const port = process.env.PORT || 4000;
+const userRouter=require("./router/userRouter");
+const fileUpload=require("express-fileupload")
 app.use(bodyParser.json());
 
-app.get("/api/students", async (req, res) => {
-  try {
-    const students = await Student.find();
-    res.json(students);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
-  }
-});
+app.use(express.json());
+// app.use(cookieParser())
+app.use(
+ cors({
+    origin:'http://localhost:3000',
+    credentials:true
+ })   
+)
 
-app.post("/api/students", async (req, res) => {
-  try {
-    const newStudent = new Student(req.body);
-    const savedStudent = await newStudent.save();
-    res.json(savedStudent);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
-  }
-});
+app.use(fileUpload({
+    useTempFiles:true,
+    tempFileDir:"/tmp"
+}))
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(4000,(req,res)=>{
+  console.log("Conneted at 5000")
+})
+
+app.use("/v1/user",userRouter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

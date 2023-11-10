@@ -3,6 +3,7 @@ import './Body.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/footer/Footer';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
   const cardImages = {
@@ -18,9 +19,12 @@ const HomePage = () => {
     'Suggestions': "https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-256.png",
   };
 
+  const {token,user}=useSelector((state)=>state.auth)
+
   return (
     <>
       <Header />
+      <div className='bg-blue'>{ user ? user[0].firstName :<div></div>}</div>
       <div className="home-page">
         <main>
           <div className="search-module">

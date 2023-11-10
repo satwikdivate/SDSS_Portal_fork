@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header/Header';
-import './FillProfile.css';
-import Footer from '../../components/footer/Footer';
+
 
 const FillProfile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
@@ -84,7 +83,7 @@ const submitData = () => {
             relationships: [...relationships],
         };
 
-        console.log(completeUserData);
+        console.log("coMPLETE uSER DATA:",completeUserData);
 
     }
 };
@@ -634,7 +633,7 @@ const submitData = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

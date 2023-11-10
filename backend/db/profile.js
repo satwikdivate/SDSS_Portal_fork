@@ -13,11 +13,7 @@ const profileSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "AcademicProfile",
   },
-  role: {
-    type: String,
-    enum: ["Student", "Admin", "Operator"],
-    required: true,
-  },
+  
   attendance: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Attendance",
