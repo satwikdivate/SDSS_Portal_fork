@@ -83,28 +83,10 @@ const submitData = () => {
             relationships: [...relationships],
         };
 
-        setUserData({ ...userData, relationships: [...relationships] });
-        console.log("User data:",userData)
-        console.log("Personal Data:",personalData);
-        console.log("Educational Data:",educationalData);
-        console.log("Family Data:",educationalData)
-        const userDataJSON = JSON.stringify(userData);
+        console.log("coMPLETE uSER DATA:",completeUserData);
 
-        // fetch('/saveUserData', {
-        //     method: 'POST',
-        //     body: userDataJSON,
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // })
-        //     .then((response) => response.json())
-        //     .then((data) => {
-        //         console.log('Data saved:', data);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error saving data:', error);
-        //     });
-    };
+    }
+};
 
     const goToPreviousSection = () => {
         if (currentSection === 'educational') {
@@ -116,7 +98,7 @@ const submitData = () => {
 
     return (
         <div className='fill-profile'>
-            {/* <Header /> */}
+            <Header />
             <div className='all'>
                 <div className="profile-sidebar">
                     <div className="profile-info">
@@ -655,5 +637,5 @@ const submitData = () => {
         </div>
     );
 }
-}
+
 export default FillProfile;

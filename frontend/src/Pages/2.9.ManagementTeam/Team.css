@@ -1,0 +1,51 @@
+/* Team.css */
+
+/* General styles for the entire page */
+.team {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Styles for the organizational tree container */
+.tree-container {
+  width: 100%; /* Make the tree container take the full width */
+  height: 500px; /* Set a fixed height for the tree container */
+  border: 1px solid #ddd; /* Add a border for better visual separation */
+  overflow: auto; /* Add overflow for better scrolling */
+}
+
+/* Styles for the h1 heading */
+.team h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Styles for the Tree component */
+.react-d3-tree {
+  font-family: 'Arial', sans-serif;
+  font-size: 10px;
+}
+
+/* Styles for the nodes in the tree */
+.node > circle {
+  fill: #fff; /* Set node background color */
+  stroke: #3498db; /* Set node border color */
+  stroke-width: 12px;
+
+}
+
+/* Styles for node text */
+.node text {
+  font-size: 24px; /* Set font size for node text */
+  fill: #333;
+  padding: 3%; /* Set text color */
+}
+
+/* Styles for links between nodes */
+.link {
+  fill: none;
+  stroke: #ccc; /* Set link color */
+  stroke-width: 2px;
+}
+
+
