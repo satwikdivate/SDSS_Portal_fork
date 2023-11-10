@@ -17,7 +17,7 @@ exports.updateAcedamicDetails=async(req,res)=>{
             }=req.body
 
         const id=req.user.id; 
-
+console.log("BACKEND DATA AT AC PROFILE",id,req.body)
         if(!id||!schoolName || !schoolAddress || !classTeacher || !medium)
         return res.status(400).json({message:"Something missing at update Acedamics"});
 

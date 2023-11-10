@@ -13,17 +13,20 @@ import AttendPage from './Pages/2.3.Attendance/AttendPage';
 // import MarkAttendance from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance';
 import Event from './Pages/2.7.BigEvent/Event.js';
 import Team from './Pages/2.9.ManagementTeam/Team.js';
-
+import { useSelector } from 'react-redux';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-
+  const {token}=useSelector((state)=>state.auth)
+  console.log(token)
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        {isAuthenticated ? (
-          <>
-            <Route path="/home" element={<Home />} />
+
+      if(token==null)
+        <Route path="/" element={<Login  />} />
+      else
+          <Route path="/home" element={<Home />} />
+
             <Route path="/student" element={<StudentBio />} />
             <Route path="/class/All" element={<Classcard />} />
             <Route path="/class/5" element={<ListStudent />} />
@@ -34,10 +37,8 @@ function App() {
             <Route path="/attend/mark" element={<PrivateRoute isAuthenticated={isAuthenticated} role="admin" />} />  still woriking
             <Route path="/events" element={<Event role="user" />} />
             <Route path="/auth/team" element={<Team />} />
-          </>
-        ) : (
-          <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />} />
-        )}
+         
+       
       </Routes>
     </Router>
   );

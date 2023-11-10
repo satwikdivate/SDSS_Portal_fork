@@ -1,10 +1,13 @@
 // import { useState } from "react";
 import { apiConnector } from "./utilities/apiCOnnector";
 
-import {loading,setLoading,setToken,token,setUser} from "../slices/auth"
+import auth, {loading,setLoading,setToken,token,setUser} from "../slices/auth"
 import toast from "react-hot-toast";
 import {user}  from  "../Services/utilities/API" 
-export  function signUp(username,password,navigate){
+// import {} from ""
+
+
+export  function login(username,password,navigate){
     
     return async (dispatch)=>{
         
@@ -45,4 +48,22 @@ export  function signUp(username,password,navigate){
         
         
 
+}
+
+export function getUser(){
+    return async (dispatch)=>{
+
+        try{
+            const token = localStorage.getItem("token");
+
+            const result= await apiConnector("POST",user.GET_STUDENT,{token});
+
+            console.log(result.data.user)
+
+        }catch(e){
+            console.log("ERROR AT GETSTUDENT",e.message)
+        }
+
+
+    }
 }
