@@ -27,11 +27,27 @@
   align-items: center;
 }
 
+.name .swa-logo{
+  position: fixed;
+  top: 150px;
+  left: 260px;
+}
+
 .orange p {
   color: #f8f8f8;
   font-size: 2rem;
   font-weight: 600;
+  position: fixed;
 }
+.org-name{
+  top: 400px;
+  left: 250px;
+}
+.org-quote{
+  top: 450px;
+  left: 140px;
+}
+
 
 .overlay {
   position: relative;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
+import logo from "./../../Assets/Swa-roopwardhinee_logo.png";
 import { signUp } from "../../Services/auth";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsAuthenticated }) => {
   const [text1, setText1] = useState("");
@@ -12,10 +12,8 @@ const Login = ({ setIsAuthenticated }) => {
   const [displaylogin, setofflogin] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const dispatch=useId.
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const nagivate = useNavigate();
 
   const [registerData, setRegisterData] = useState({
     fullName: "",
@@ -29,7 +27,7 @@ const Login = ({ setIsAuthenticated }) => {
     console.log(registerData);
   };
   
-  const fullText = "'स्व' - रूपवर्धिनी";
+  const fullText = "' स्व ' - रूपवर्धिनी";
   const quote = "विकसित व्हावे | अर्पित होऊनी जावे ||";
 
   const startTyping = (text, setText, content, callback) => {
@@ -80,7 +78,7 @@ const Login = ({ setIsAuthenticated }) => {
     dispatch(signUp(username, password, navigate))
     if (username === "example" && password === "password") {
       setIsAuthenticated(true);
-      // nagivate("/home")
+      navigate("/home")
     }
   };
 
@@ -89,8 +87,9 @@ const Login = ({ setIsAuthenticated }) => {
       <div className="orange">
         <div className="name">
           <>
-            <p>{text1}</p>
-            <p>{text2}</p>
+            <img src={logo} className="swa-logo" alt="'Swa' - Roopwardhinee"/>
+            <p className="org-name">{text1}</p>
+            <p className="org-quote">{text2}</p>
           </>
         </div>
       </div>
