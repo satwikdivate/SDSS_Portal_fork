@@ -50,15 +50,30 @@ export  function login(username,password,navigate){
 
 }
 
-export function signUp(firstName,lastName,contact,email,password,role){
+export function signUp(firstName,lastName,email,password,role,navigate){
 
     return async (dispatch)=>{
     
         try{
 
+            // if(role=="Admin")
+            const result=await apiConnector("POST",user.SIGNUP,{
+                firstName,lastName,contact:"12345",email,password,role
+            })
+
+
+            console.log("RESULT AT SIGNUP",result);
+            if(result.status==200){
+                toast.success("Signup Succefully");
+                navigate("/login")
+            }else
+                toast.success("Something went wrong at signup")
 
         }catch(e){
-            console.log("ERROR AT SIGNUP",e);
+            console.log("ERROR AT SIGNUP",e.response.data.messsage);
+            toast.error(e.response.data.messsage)
+           
+            // toast.error(e.response.data);
         }
 
     }

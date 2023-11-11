@@ -4,7 +4,8 @@ export const BASE_URL=' http://localhost:4000/v1';
 
 export const user={
     LOGIN_IN:BASE_URL+'/user/login',
-    GET_STUDENT:BASE_URL+"/user/getStudent"
+    GET_STUDENT:BASE_URL+"/user/getStudent",
+    SIGNUP:BASE_URL+"/user/signup"
 }
 
 export const profile={

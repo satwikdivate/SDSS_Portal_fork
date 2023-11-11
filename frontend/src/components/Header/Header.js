@@ -41,7 +41,7 @@ const Header = () => {
         <a href="#services" onClick={handle}>प्रमुख व्यवस्था</a>
         <a href="#portfolio" onClick={handle}>विशेष कार्यक्रम</a>
         <a href="#contact" onClick={handle}>संपर्क</a>
-        <button className='login-btn' onClick={handle}>{user.firstName}</button>
+        {/* <button className='login-btn' onClick={handle}>{user.firstName}</button> */}
 
         <button className='login-btn' onClick={logout}>Logout</button>
       </nav>
