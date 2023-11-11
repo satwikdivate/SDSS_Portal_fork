@@ -14,6 +14,7 @@ import AttendPage from './Pages/2.3.Attendance/AttendPage';
 import Event from './Pages/2.7.BigEvent/Event.js';
 import Team from './Pages/2.9.ManagementTeam/Team.js';
 import CentralizedLoader from './components/Loader/Loader.js';
+import OpenRoute from './components/OpenRoute/OpenRoute.js';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,9 +23,13 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<CentralizedLoader />} />
-        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        {isAuthenticated ? (
-          <>
+        <Route path="/login" element={
+        <OpenRoute>
+        <Login/>
+          </OpenRoute>
+        } />
+    
+      
             <Route path="/home" element={<Home />} />
             <Route path="/student" element={<StudentBio />} />
             <Route path="/class/All" element={<Classcard />} />
@@ -36,10 +41,10 @@ function App() {
             <Route path="/attend/mark" element={<PrivateRoute isAuthenticated={isAuthenticated} role="admin" />} />  still woriking
             <Route path="/events" element={<Event role="admin" />} />
             <Route path="/auth/team" element={<Team />} />
-          </>
-        ) : (
-          <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />} />
-        )}
+       
+       
+          <Route path="/" element={<Login/>} />
+      
       </Routes>
     </Router>
   );
