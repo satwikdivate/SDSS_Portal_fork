@@ -1,7 +1,8 @@
 import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
-import { Link, useNavigate } from 'react-router-dom';
+import Footer from '../../components/footer/Footer';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
@@ -19,21 +20,17 @@ const HomePage = () => {
   };
 
   const {token,user}=useSelector((state)=>state.auth)
-const naviaget=useNavigate();
+
   return (
     <>
       <Header />
-      {/* <div className='bg-blue'>{ user ? user.firstName :<div></div>}</div> */}
+      <div className='bg-blue'>{ user ? user[0].firstName :<div></div>}</div>
       <div className="home-page">
         <main>
           <div className="search-module">
             <input type="search" placeholder="Search" />
           </div>
 
-      <button  onClick={()=>{
-        naviaget("/u0/updateprofile")
-
-      }}>G0 to update Profile</button>
           <div className="modules">
             <ul className="card-container">
               {Object.keys(cardImages).map(cardTitle => (
@@ -53,6 +50,7 @@ const naviaget=useNavigate();
           </div>
         </main>
       </div>
+      <Footer />
     </>
   );
 };

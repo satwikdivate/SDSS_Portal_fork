@@ -13,37 +13,19 @@ import AttendPage from './Pages/2.3.Attendance/AttendPage';
 // import MarkAttendance from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance';
 import Event from './Pages/2.7.BigEvent/Event.js';
 import Team from './Pages/2.9.ManagementTeam/Team.js';
-import { useSelector } from 'react-redux';
-import OpenRoute from './components/OpenRoute/OpenRoute.js';
-import HomeRoute from './components/HomeRoute/HomeRoute.js';
+import CentralizedLoader from './components/Loader/Loader.js';
+
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const {token}=useSelector((state)=>state.auth)
-  console.log(token)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <Router>
       <Routes>
-
-    
-
-        <Route path="/" element={
-           <OpenRoute>
-           <Login  />
-             </OpenRoute>
-           } />
-
-           <Route path='/login' element={<Login/>}/>
-     
-          <Route path="/home" element={
-        // <HomeRoute>
-
-          <Home />
-        // </HomeRoute>
-           
-          } 
-
-          />
-
+        <Route path='/' element={<CentralizedLoader />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        {isAuthenticated ? (
+          <>
+            <Route path="/home" element={<Home />} />
             <Route path="/student" element={<StudentBio />} />
             <Route path="/class/All" element={<Classcard />} />
             <Route path="/class/5" element={<ListStudent />} />
@@ -51,12 +33,13 @@ function App() {
             <Route path="/mreport" element={<MonthlyReport role="admin" />} />
             <Route path="/attend" element={<AttendPage role="user" />} />
             <Route path="/attend/view" element={<Attendance role="admin" />} />
-            
             <Route path="/attend/mark" element={<PrivateRoute isAuthenticated={isAuthenticated} role="admin" />} />  still woriking
-            <Route path="/events" element={<Event role="user" />} />
+            <Route path="/events" element={<Event role="admin" />} />
             <Route path="/auth/team" element={<Team />} />
-         
-       
+          </>
+        ) : (
+          <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated} />} />
+        )}
       </Routes>
     </Router>
   );
