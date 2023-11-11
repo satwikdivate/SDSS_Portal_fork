@@ -20,7 +20,7 @@ const Login = ({ setIsAuthenticated }) => {
     LastName: "",
     email: "",
     standard :"",
-    registrationUsername : "",
+    conactNumber : "",
     registrationPassword: "",
     isAdmin: false,
   });
@@ -155,13 +155,13 @@ const Login = ({ setIsAuthenticated }) => {
                       }
                       required
                     />
-                    <label>Username</label>
+                    <label>Contact No.</label>
                     <input
-                      type="text"
-                      placeholder="username"
-                      value={registerData.registrationUsername}
+                      type="number"
+                      placeholder="Contact No"
+                      value={registerData.conactNumber}
                       onChange={(e) =>
-                        setRegisterData({ ...registerData, registrationUsername: e.target.value })
+                        setRegisterData({ ...registerData, conactNumber: e.target.value })
                       }
                       required
                     />
@@ -202,6 +202,8 @@ const Login = ({ setIsAuthenticated }) => {
                       type="number"
                       placeholder="Standard"
                       value={registerData.standard}
+                      min={5}
+                      max={20}
                       onChange={(e) =>
                         setRegisterData({ ...registerData, standard: e.target.value })
                       }
