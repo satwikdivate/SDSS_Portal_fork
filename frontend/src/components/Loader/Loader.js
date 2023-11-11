@@ -7,38 +7,37 @@ import { useNavigate } from 'react-router-dom';
 const CentralizedLoader = () => {
   const [loading, setLoading] = useState(true);
   const [zoomLevel, setZoomLevel] = useState(0);
+  const [initialPause, setInitialPause] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
+      setInitialPause(true); // Set initialPause to true after the initial pause
       setLoading(false);
 
       const interval = setInterval(() => {
-        // Use the functional form of setZoomLevel to ensure the latest state is used
         setZoomLevel((prevZoomLevel) => {
           const newZoomLevel = prevZoomLevel + 0.1;
 
-          // Assuming the original size is 1, you can adjust this value based on your needs
-          if (newZoomLevel >= 1) {
+          if (newZoomLevel >= 0.6) {
             clearInterval(interval);
-            // After reaching the original size, navigate to /home
             navigate('/login');
           }
 
           return newZoomLevel;
         });
-      }, 1000);
+      }, 900);
 
       return () => clearInterval(interval);
-    }, 2000);
-
+    }, 900);
     return () => clearTimeout(timeout);
   }, [navigate]);
 
   return (
     <div className={`centralized-loader ${loading ? 'loading' : ''}`}>
-      <div className="loader-container" style={{ transform: `scale(${zoomLevel})` }}>
+      <div className={`loader-container ${initialPause ? 'blurred' : ''}`} style={{ transform: `scale(${zoomLevel})` }}>
         <img src={LoaderIMG} alt="Loader" className="loader-image" />
+        <h1>स्वामी दयानंद सरस्वती शाखा</h1>
       </div>
     </div>
   );

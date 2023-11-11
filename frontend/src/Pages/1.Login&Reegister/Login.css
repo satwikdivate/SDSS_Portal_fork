@@ -27,11 +27,27 @@
   align-items: center;
 }
 
+.name .swa-logo{
+  position: fixed;
+  top: 150px;
+  left: 260px;
+}
+
 .orange p {
   color: #f8f8f8;
   font-size: 2rem;
   font-weight: 600;
+  position: fixed;
 }
+.org-name{
+  top: 400px;
+  left: 250px;
+}
+.org-quote{
+  top: 450px;
+  left: 140px;
+}
+
 
 .overlay {
   position: relative;
@@ -84,6 +100,83 @@
 .name p {
   text-align: center;
 }
+/* Add this CSS to your stylesheet */
+.registration-form {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+/* Add this CSS to your stylesheet */
+.checkbox-label {
+  position: relative;
+  padding-left: 30px; /* Adjust the padding as needed */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee; /* Background color of the checkbox */
+  border: 1px solid #ccc; /* Border color of the checkbox */
+  border-radius: 3px; /* Adjust border-radius for rounded corners */
+}
+
+.checkbox-label input:checked + .checkmark {
+  background-color: #2196F3; /* Change background color when checked */
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-label input:checked + .checkmark:after {
+  display: block;
+}
+
+.checkbox-label .checkmark:after {
+  left: 5.6px; /* Adjust position as needed */
+  top: 0.8px; /* Adjust position as needed */
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  content: "";
+}
+
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px; /* Adjust the gap as needed */
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+input,
+button {
+  margin-bottom: 16px;
+}
+
 
 @media (max-width: 768px) {
   * {
@@ -143,7 +236,7 @@
   background-color: #fff;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   margin-top: 2rem;
   display: flex;
@@ -189,6 +282,7 @@
   cursor: pointer;
   transition: background-color 0.5s;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .register-submit:hover {
