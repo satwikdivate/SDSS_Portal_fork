@@ -9,6 +9,7 @@ const academicProfile=require("../db/academicProfile");
 const AcademicProfile = require("../db/academicProfile");
 const Attendance = require("../db/attendance");
 const Class = require("../db/class");
+const requetsDB = require("../db/requestDB");
 
 
 
@@ -85,13 +86,23 @@ exports.signUp=async(req,res)=>{
            contact,
            email,
            password:hashPassword ,
-           role,
+           role:"Student",
          personalProfile,
          familyProfile,
          academicProfile,
          attendance: attendence
         });
 
+        // console.log(user.email);
+        // for Role
+        if(role=="Operator" || role=="Admin"){
+            const requestToAuth=await requetsDB.create({
+                user:user._id,
+                admin:null,
+                status:"Pending",
+                role
+            })
+        }
 
        return  res.status(200).json({
             message:"User signUp sucessfully",

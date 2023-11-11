@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
-import { signUp } from "../../Services/auth";
+import { login, signUp } from "../../Services/auth";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
@@ -26,6 +26,8 @@ const Login = ({ setIsAuthenticated }) => {
   });
 
   const handleRegister = () => {
+
+    // dispatch(signUp(registerData.fullName,registerData.fullName,registerData.email,registerData.email,registerData.))
     console.log(registerData);
   };
   
@@ -77,7 +79,7 @@ const Login = ({ setIsAuthenticated }) => {
     console.log(username);
     console.log(password)
     // alert(username);
-    dispatch(signUp(username, password, navigate))
+    dispatch(login(username, password, navigate))
     if (username === "example" && password === "password") {
       setIsAuthenticated(true);
       // nagivate("/home")

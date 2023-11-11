@@ -50,6 +50,20 @@ export  function login(username,password,navigate){
 
 }
 
+export function signUp(firstName,lastName,contact,email,password,role){
+
+    return async (dispatch)=>{
+    
+        try{
+
+
+        }catch(e){
+            console.log("ERROR AT SIGNUP",e);
+        }
+
+    }
+}
+
 export function getUser(){
     return async (dispatch)=>{
 

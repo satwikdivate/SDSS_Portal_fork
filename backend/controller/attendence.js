@@ -83,31 +83,3 @@ exports.enrollStudent=async(req,res)=>{
 }
 
 
-exports.getStudentByClass=async(req,res)=>{
-
-try{
-
-    const{classId}=req.body;
-
-    if(!classId){
-        return res.status.json({message:"Something missing at getclass studnet"});
-    }
-
-    const result=await Class.findById({_id:classId});
-
-    // console.log(result)
-    // if(result)
-
-    const student=await User.findById({_id:result.studentList[0]});
-    console.log(student)
-        return  res.status(200).json({
-            student,
-    message:"Student fetched succfully",
-data:result.studentList
-})
-
-}catch(e){
-    console.log("ERROR AT STUDENTBYCLASS:",e.message)
-}
-
-}
