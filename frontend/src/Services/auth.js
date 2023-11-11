@@ -67,3 +67,29 @@ export function getUser(){
 
     }
 }
+
+export function logoutUser(navigate){
+    return async (dispatch)=>{
+
+        try{
+
+            // set token  ans user as null in slice
+            setToken(null)
+            setUser(null);
+
+            // set token and user null at localstorage
+            // localStorage.setItem("token",null)
+            // localStorage.setItem("user",null)
+            localStorage.removeItem("token");
+            localStorage.removeItem("user")
+
+            console.log("Hello");
+            // redirect to login
+            navigate("/login")
+            
+        }catch(e){
+            console.log("ERROR AT LOGOUT ",e.message)
+        }
+
+    }
+}

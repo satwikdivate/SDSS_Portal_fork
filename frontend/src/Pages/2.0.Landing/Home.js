@@ -23,7 +23,7 @@ const naviaget=useNavigate();
   return (
     <>
       <Header />
-      <div className='bg-blue'>{ user ? user.firstName :<div></div>}</div>
+      {/* <div className='bg-blue'>{ user ? user.firstName :<div></div>}</div> */}
       <div className="home-page">
         <main>
           <div className="search-module">

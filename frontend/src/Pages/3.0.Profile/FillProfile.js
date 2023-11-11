@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../../components/Header/Header';
 import { useDispatch } from 'react-redux';
 import { updateAcProfile, updateFamilyProfile, updatePersonalProfile } from '../../Services/profile';
-
+import './FillProfile.css'
 const FillProfile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
     const [showPopup, setShowPopup] = useState(false);
