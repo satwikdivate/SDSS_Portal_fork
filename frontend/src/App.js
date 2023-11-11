@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './Pages/1.Login&Reegister/Login';
 import Home from './Pages/2.0.Landing/Home';
 import FillProfile from './Pages/3.0.Profile/FillProfile';
 import MonthlyReport from './Pages/2.4.MonthlyReport/MonthlyReport';
@@ -15,6 +14,8 @@ import Event from './Pages/2.7.BigEvent/Event.js';
 import Team from './Pages/2.9.ManagementTeam/Team.js';
 import CentralizedLoader from './components/Loader/Loader.js';
 import OpenRoute from './components/OpenRoute/OpenRoute.js';
+import Register from './Pages/1.Login&Reegister/Registration/Register.js';
+import Login from './Pages/1.Login&Reegister/Login/Login.js';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,11 +26,11 @@ function App() {
         <Route path='/' element={<CentralizedLoader />} />
         <Route path="/login" element={
         <OpenRoute>
-        <Login/>
+        <Login />
           </OpenRoute>
         } />
     
-      
+            <Route path="/register" element={<Register />} />
             <Route path="/home" element={<Home />} />
             <Route path="/student" element={<StudentBio />} />
             <Route path="/class/All" element={<Classcard />} />
