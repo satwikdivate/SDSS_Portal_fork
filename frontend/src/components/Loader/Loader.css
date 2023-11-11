@@ -30,5 +30,7 @@
 
 .centralized-loader.zoom-out .loader-container {
   transform: scale(1);
-  /* Set the scale to 1 for original size after zoom-out effect */
+  transition: transform 2s ease-in-out;
+
 }
+
