@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header/Header';
-import { useDispatch } from 'react-redux';
-import { updateAcProfile, updateFamilyProfile, updatePersonalProfile } from '../../Services/profile';
-import './FillProfile.css'
+import "./FillProfile.css"
+
 const FillProfile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
     const [showPopup, setShowPopup] = useState(false);
     const [relationships, setRelationships] = useState([]);
-    const dispatch=useDispatch();
-    const {loading ,setloading}=useState(false);
     const [newRelationship, setNewRelationship] = useState({
         name: '',
         relation: '',
@@ -77,8 +74,7 @@ const FillProfile = () => {
         }
     };
 
-const submitData = (e) => {
-    e.preventDefault();
+const submitData = () => {
     if (currentSection === 'family') {
         const completeUserData = {
             personal: { ...userData.personal },
@@ -86,23 +82,8 @@ const submitData = (e) => {
             family: { ...userData.family },
             relationships: [...relationships],
         };
-        
 
         console.log("coMPLETE uSER DATA:",completeUserData);
-      
-        // for the acedmic profile
-        dispatch(updateAcProfile(completeUserData.educational.schoolName,completeUserData.educational.schoolAddress,completeUserData.educational.classTeacher,completeUserData.educational.medium))
-
-        // for personalprofile
-
-        // dispatch(updatePersonalProfile(completeUserData.personal.address,completeUserData.personal.dob,completeUserData.personal.email,completeUserData.personal.firstName,completeUserData.personal.lastName,completeUserData.personal.phone,completeUserData.personal.standard))
-
-        // for familyprofile
-
-        dispatch(updateFamilyProfile(completeUserData.family.fatherContact,completeUserData.family.fatherName,completeUserData.family.income,completeUserData.family.income,completeUserData.family.motherContact,completeUserData.family.motherName,completeUserData.family.occupation,completeUserData.family.siblingCount)
-            )
-
-        
 
     }
 };

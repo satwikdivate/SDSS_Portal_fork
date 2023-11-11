@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useId } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
-import { login, signUp } from "../../Services/auth";
+import { signUp } from "../../Services/auth";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
@@ -12,12 +12,23 @@ const Login = ({ setIsAuthenticated }) => {
   const [displaylogin, setofflogin] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [signUp,setSignUp]=useState("");
   // const dispatch=useId.
   const dispatch = useDispatch();
-const navigate=useNavigate();
+  const navigate = useNavigate();
   // const nagivate = useNavigate();
 
+  const [registerData, setRegisterData] = useState({
+    fullName: "",
+    email: "",
+    registrationUsername: "",
+    registrationPassword: "",
+    isAdmin: false,
+  });
+
+  const handleRegister = () => {
+    console.log(registerData);
+  };
+  
   const fullText = "'स्व' - रूपवर्धिनी";
   const quote = "विकसित व्हावे | अर्पित होऊनी जावे ||";
 
@@ -55,7 +66,7 @@ const navigate=useNavigate();
     });
   }, []);
 
-  const toggleRegistrationForm = (e) => {
+  const toggleRegistrationForm = () => {
     setShowRegistration(!showRegistration);
     setofflogin(!displaylogin);
   };
@@ -66,7 +77,7 @@ const navigate=useNavigate();
     console.log(username);
     console.log(password)
     // alert(username);
-    dispatch(login(username,password,navigate))
+    dispatch(signUp(username, password, navigate))
     if (username === "example" && password === "password") {
       setIsAuthenticated(true);
       // nagivate("/home")
@@ -119,19 +130,72 @@ const navigate=useNavigate();
                 <h2>Create an Account</h2>
                 <p>Join us and become a part of our community.</p>
                 <label>Full Name</label>
-                <input type="text" placeholder="Full Name" required />
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  value={registerData.fullName}
+                  onChange={(e) =>
+                    setRegisterData({ ...registerData, fullName: e.target.value })
+                  }
+                  required
+                />
                 <label>Email</label>
-                <input type="email" placeholder="Email" required />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={registerData.email}
+                  onChange={(e) =>
+                    setRegisterData({ ...registerData, email: e.target.value })
+                  }
+                  required
+                />
                 <label>Username</label>
-                <input type="text" placeholder="Username" required />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={registerData.registrationUsername}
+                  onChange={(e) =>
+                    setRegisterData({
+                      ...registerData,
+                      registrationUsername: e.target.value,
+                    })
+                  }
+                  required
+                />
                 <label>Password</label>
-                <input type="password" placeholder="Password" required />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={registerData.registrationPassword}
+                  onChange={(e) =>
+                    setRegisterData({
+                      ...registerData,
+                      registrationPassword: e.target.value,
+                    })
+                  }
+                  required
+                />
                 <label>
                   Request for Admin Role
-                  <input type="checkbox" name="role" value=""></input>
+                  <input
+                    type="checkbox"
+                    name="role"
+                    checked={registerData.isAdmin}
+                    onChange={(e) =>
+                      setRegisterData({
+                        ...registerData,
+                        isAdmin: e.target.checked,
+                      })
+                    }
+                  />
                 </label>
-                <button className="register-submit">Register</button>
-                <button className="register-button" onClick={toggleRegistrationForm}>
+                <button className="register-submit" onClick={handleRegister}>
+                  Register
+                </button>
+                <button
+                  className="register-button"
+                  onClick={toggleRegistrationForm}
+                >
                   Already Have Account
                 </button>
               </div>
