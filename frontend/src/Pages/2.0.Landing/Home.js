@@ -24,7 +24,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      <div className='bg-blue'>{ user ? user[0].firstName :<div></div>}</div>
+   
       <div className="home-page">
         <main>
           <div className="search-module">

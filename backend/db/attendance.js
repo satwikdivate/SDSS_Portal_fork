@@ -1,15 +1,27 @@
 const mongoose = require("mongoose");
 
 const attendanceSchema = mongoose.Schema({
-  profile: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
-  },
+  
   attendance: [
     {
-      type: Date,
-      required: true,
-    },
+
+      data:{
+        type:String,
+        required:true
+      },
+      profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required:true
+      },
+
+      status:{
+        type: String,
+        enum: ["Present", "Absenet"],
+        required: true,
+      }
+
+    }
   ],
 });
 

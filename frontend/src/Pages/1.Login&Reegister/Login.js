@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 import logo from "./../../Assets/Swa-roopwardhinee_logo.png";
-import { signUp } from "../../Services/auth";
+import { signUp ,login} from "../../Services/auth";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
@@ -26,6 +26,12 @@ const Login = ({ setIsAuthenticated }) => {
   });
 
   const handleRegister = () => {
+
+    if(registerData.isAdmin)
+        dispatch(signUp(registerData.FirstName,registerData.LastName,registerData.email,registerData.registrationPassword,"Admin",navigate))
+    else
+      dispatch(signUp(registerData.FirstName,registerData.LastName,registerData.email,registerData.registrationPassword,registerData.isAdmin,navigate))
+    
     console.log(registerData);
   };
 
@@ -77,7 +83,7 @@ const Login = ({ setIsAuthenticated }) => {
     console.log(username);
     console.log(password)
     // alert(username);
-    dispatch(signUp(username, password, navigate))
+    dispatch(login(username, password, navigate))
     if (username === "example" && password === "password") {
       setIsAuthenticated(true);
       navigate("/home")

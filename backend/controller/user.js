@@ -1,7 +1,15 @@
 const User=require("../db/user")
 const bcrypt=require('bcrypt')
-const jwt=require("jsonwebtoken")
-
+const jwt=require("jsonwebtoken");
+const currentIndex = require("../db/currentINdex");
+const Profile = require("../db/profile");
+const FamilyProfile=require("../db/familyProfile")
+const PersonalProfile = require("../db/personalProfile");
+const academicProfile=require("../db/academicProfile");
+const AcademicProfile = require("../db/academicProfile");
+const Attendance = require("../db/attendance");
+const Class = require("../db/class");
+const requetsDB = require("../db/requestDB");
 
 
 
@@ -23,6 +31,10 @@ exports.signUp=async(req,res)=>{
             })
         }
 
+        // find the index and current no of document in user schma 
+        const recordCount = await User.countDocuments();
+        // printjson(index)     
+
         // check if user already present 
             const findUser=await User.find({email:email});
 
@@ -33,15 +45,69 @@ exports.signUp=async(req,res)=>{
                 })
             }
             const hashPassword=await bcrypt.hash(password,10);
+
+            // create 4 schma and init with NULL 
+            const personalProfile=await PersonalProfile.create({
+               age:null,
+                dateOfBirth:null,
+               grade:null,
+                contact:null,
+                bloodGroup:null,
+              
+            });
+            const familyProfile=await FamilyProfile.create({
+                motherName:null,
+                fatherName:null,
+                contact:null,
+                occupation:null,
+                income:null,
+                siblingCount:null
+            });
+
+            // by default marthi medium is added
+            const academicProfile=await AcademicProfile.create({
+                schoolName:null,
+                schoolAddress:null,
+                classTeacher:null,
+                medium:"Marathi"
+            });
+            const attendence=await Attendance.create({
+                profile:null,
+                attendance:[null]
+            });
+           
+           
+
         // creating entry in DB
         const user= await User.create({
-           id:1, firstName,lastName,contact,email,password:hashPassword ,role
+           id:recordCount+1000, 
+           firstName,
+           lastName,
+           contact,
+           email,
+           password:hashPassword ,
+           role:"Student",
+         personalProfile,
+         familyProfile,
+         academicProfile,
+         attendance: attendence
         });
 
+        // console.log(user.email);
+        // for Role
+        if(role=="Operator" || role=="Admin"){
+            const requestToAuth=await requetsDB.create({
+                user:user._id,
+                admin:null,
+                status:"Pending",
+                role
+            })
+        }
 
        return  res.status(200).json({
             message:"User signUp sucessfully",
-            sucess:true
+            sucess:true,
+            data:user
         })
 
     }catch(e){
@@ -111,5 +177,28 @@ exports.login=async(req,res)=>{
         
     }catch(e){
         console.log("ERROR AT LOGIN",e.message);
+    }
+}
+
+
+exports.getStudent=async(req,res)=>{
+    try{
+
+        const id=req.user.id;
+
+        const user=await User.findOne(
+           {id:id},
+       ) .populate("personalProfile")
+       .populate("familyProfile")
+       .populate("academicProfile")
+       .populate("attendance")
+       .populate("class")
+     
+
+       return res.status(200).json({
+        user
+       })
+    }catch(e){
+        console.log("ERROR AT GET USER:",e.message)
     }
 }

@@ -6,7 +6,9 @@ const app = express();
 const cors=require("cors")
 const port = process.env.PORT || 4000;
 const userRouter=require("./router/userRouter");
-const fileUpload=require("express-fileupload")
+const personalProfileRouter=require("./router/Profile");
+const fileUpload=require("express-fileupload");
+const { cloudinaryConnect } = require("./config/cloundinary");
 app.use(bodyParser.json());
 
 app.use(express.json());
@@ -24,10 +26,12 @@ app.use(fileUpload({
 }))
 
 app.listen(4000,(req,res)=>{
-  console.log("Conneted at 5000")
+  console.log("Conneted at 4000")
 })
 
+cloudinaryConnect();
 app.use("/v1/user",userRouter);
+app.use("/v1/profile/personalProfile",personalProfileRouter);
 
 
 

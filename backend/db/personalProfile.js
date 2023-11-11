@@ -1,28 +1,26 @@
 const mongoose = require("mongoose");
 const personalProfileSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
+ 
   age: {
     type: Number,
-    required: true,
+    
+    
   },
   dateOfBirth: {
-    type: Date,
-    required: true,
+    type: String ,
+    
   },
   grade: {
     type: String,
-    required: true,
+    
   },
   contact: {
     type: String,
-    required: true,
+    
   },
   bloodGroup: {
     type: String,
-    required: true,
+    
   },
 });
 

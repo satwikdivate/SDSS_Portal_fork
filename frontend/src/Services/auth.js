@@ -1,10 +1,13 @@
 // import { useState } from "react";
 import { apiConnector } from "./utilities/apiCOnnector";
 
-import {loading,setLoading,setToken,token,setUser} from "../slices/auth"
+import auth, {loading,setLoading,setToken,token,setUser} from "../slices/auth"
 import toast from "react-hot-toast";
 import {user}  from  "../Services/utilities/API" 
-export  function signUp(username,password,navigate){
+// import {} from ""
+
+
+export  function login(username,password,navigate){
     
     return async (dispatch)=>{
         
@@ -45,4 +48,77 @@ export  function signUp(username,password,navigate){
         
         
 
+}
+
+export function signUp(firstName,lastName,email,password,role,navigate){
+
+    return async (dispatch)=>{
+    
+        try{
+
+            // if(role=="Admin")
+            const result=await apiConnector("POST",user.SIGNUP,{
+                firstName,lastName,contact:"12345",email,password,role
+            })
+
+
+            console.log("RESULT AT SIGNUP",result);
+            if(result.status==200){
+                toast.success("Signup Succefully");
+                navigate("/login")
+            }else
+                toast.success("Something went wrong at signup")
+
+        }catch(e){
+            console.log("ERROR AT SIGNUP",e.response.data.messsage);
+            toast.error(e.response.data.messsage)
+           
+            // toast.error(e.response.data);
+        }
+
+    }
+}
+
+export function getUser(){
+    return async (dispatch)=>{
+
+        try{
+            const token = localStorage.getItem("token");
+
+            const result= await apiConnector("POST",user.GET_STUDENT,{token});
+
+            console.log(result.data.user)
+
+        }catch(e){
+            console.log("ERROR AT GETSTUDENT",e.message)
+        }
+
+
+    }
+}
+
+export function logoutUser(navigate){
+    return async (dispatch)=>{
+
+        try{
+
+            // set token  ans user as null in slice
+            setToken(null)
+            setUser(null);
+
+            // set token and user null at localstorage
+            // localStorage.setItem("token",null)
+            // localStorage.setItem("user",null)
+            localStorage.removeItem("token");
+            localStorage.removeItem("user")
+
+            console.log("Hello");
+            // redirect to login
+            navigate("/login")
+            
+        }catch(e){
+            console.log("ERROR AT LOGOUT ",e.message)
+        }
+
+    }
 }

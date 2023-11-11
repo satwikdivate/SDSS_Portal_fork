@@ -3,23 +3,23 @@ const mongoose = require("mongoose");
 const resultSchema = mongoose.Schema({
   profile: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Profile",
+    ref: "User",
   },
   result: [
     {
       subject: {
         type: String,
-        required: true,
+        
       },
       marks: {
         type: String,
-        required: true,
+        
       },
     },
   ],
   status: {
     type: String,
-    required: true,
+    
   },
 });
 

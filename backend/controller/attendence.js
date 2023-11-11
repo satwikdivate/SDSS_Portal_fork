@@ -1,7 +1,7 @@
 const Attendance = require("../db/attendance");
 const Class = require("../db/class");
 const User = require("../db/user");
-
+const wbm = require('wbm');
 
 
 
@@ -9,17 +9,20 @@ exports.markAttendece=async(req,res)=>{
 
     try{
 
-        const {attendenceId,userId,data}=req.body;
-
-        if(!attendenceId||!userId || !data)
+        const {attendenceId,userId,data,status}=req.body;
+        console.log(req.body)
+        if(!attendenceId||!userId || !data || !status)
             return res.status.json({
                 message:"Something missing at markAttendence"
             })
 
         const newEntry={
             data,
-            profile:userId
+            profile:userId,
+            status:status
         }
+
+        
 
         const result =await Attendance.findOne({_id:attendenceId}).then(addEntry=>{
 
@@ -30,6 +33,7 @@ exports.markAttendece=async(req,res)=>{
            
         })
 
+        
         return res.status(200).json({
             message:"Attendece mark suceefully",
             sucess:true
@@ -77,3 +81,5 @@ exports.enrollStudent=async(req,res)=>{
         console.log("ERROR AT ENROLLSTUDENT:",e);
     }
 }
+
+

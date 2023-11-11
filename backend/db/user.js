@@ -31,12 +31,37 @@ const userSchema = mongoose.Schema(
       enum: ["Student", "Admin", "Operator"],
       required: true,
     },
+    personalProfile: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "PersonalProfile",
+      required: true,
+    },
+    familyProfile: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "FamilyProfile",
+      required: true,
+    },
+    academicProfile: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AcademicProfile",
+      required: true,
+    },
+    attendance: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Attendance",
+      required: true,
+    },
+    class:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Class",
+     
+    }
   },
   
   {
     timestamps: true,
   }
 );
-
+// add profile in user schema
 const User = mongoose.model("User", userSchema);
 module.exports = User;
