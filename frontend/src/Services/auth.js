@@ -63,7 +63,7 @@ export function signUp(firstName,lastName,email,password,role,navigate){
 
 
             console.log("RESULT AT SIGNUP",result);
-            if(result.status==200){
+            if(result.status===200){
                 toast.success("Signup Succefully");
                 navigate("/login")
             }else

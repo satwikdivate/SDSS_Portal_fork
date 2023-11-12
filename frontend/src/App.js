@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Pages/2.0.Landing/Home';
 import FillProfile from './Pages/3.0.Profile/FillProfile';
@@ -18,7 +18,7 @@ import Register from './Pages/1.Login&Reegister/Registration/Register.js';
 import Login from './Pages/1.Login&Reegister/Login/Login.js';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 
   return (
     <Router>
@@ -39,7 +39,7 @@ function App() {
             <Route path="/mreport" element={<MonthlyReport role="admin" />} />
             <Route path="/attend" element={<AttendPage role="user" />} />
             <Route path="/attend/view" element={<Attendance role="admin" />} />
-            <Route path="/attend/mark" element={<PrivateRoute isAuthenticated={isAuthenticated} role="admin" />} />  still woriking
+            <Route path="/attend/mark" element={<PrivateRoute role="admin" />} />  still woriking
             <Route path="/events" element={<Event role="admin" />} />
             <Route path="/auth/team" element={<Team />} />
        

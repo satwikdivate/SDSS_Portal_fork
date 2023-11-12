@@ -7,8 +7,6 @@ import "./../Login.css"
 
 const Login = () => {
 
-  const [showRegistration, setShowRegistration] = useState(false);
-  const [displaylogin, setofflogin] = useState(true);
 
   const toggleRegistrationForm = () => {
     navigate("/register");
@@ -88,36 +86,33 @@ const Login = () => {
             <h1>Login</h1>
             <h1>स्वामी दयानंद सरस्वती शाखा </h1>
           </div>
-          {displaylogin && (
-            <div className="login-cred">
 
-              <label>Username</label>
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+          <div className="login-cred">
 
-              <button className="login-submit" onClick={handleLogin}>
-                Submit
-              </button>
-              <button className="register-button" onClick={toggleRegistrationForm}>
-                                Don't Have Account ?
-                            </button>
-            </div>
-            )}
+            <label>Username</label>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
 
-            
+            <button className="login-submit" onClick={handleLogin}>
+              Submit
+            </button>
+            <button className="register-button" onClick={toggleRegistrationForm}>
+              Don't Have Account ?
+            </button>
+          </div>
         </div>
       </div>
     </div>

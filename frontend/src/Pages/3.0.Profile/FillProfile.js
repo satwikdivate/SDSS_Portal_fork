@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Header from '../../components/Header/Header';
 import "./FillProfile.css"
 
 const FillProfile = () => {
+    const dispatch = useDispatch();
+
     const [currentSection, setCurrentSection] = useState('personal');
     const [showPopup, setShowPopup] = useState(false);
     const [relationships, setRelationships] = useState([]);
+
     const [newRelationship, setNewRelationship] = useState({
         name: '',
         relation: '',
@@ -74,19 +78,19 @@ const FillProfile = () => {
         }
     };
 
-const submitData = () => {
-    if (currentSection === 'family') {
-        const completeUserData = {
-            personal: { ...userData.personal },
-            educational: { ...userData.educational },
-            family: { ...userData.family },
-            relationships: [...relationships],
-        };
+    const submitData = () => {
+        if (currentSection === 'family') {
+            const completeUserData = {
+                personal: { ...userData.personal },
+                educational: { ...userData.educational },
+                family: { ...userData.family },
+                relationships: [...relationships],
+            };
 
-        console.log("coMPLETE uSER DATA:",completeUserData);
+            console.log("COMPLETE uSER DATA:", completeUserData);
 
-    }
-};
+        }
+    };
 
     const goToPreviousSection = () => {
         if (currentSection === 'educational') {
