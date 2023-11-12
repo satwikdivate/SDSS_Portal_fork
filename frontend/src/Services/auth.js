@@ -84,10 +84,11 @@ export function getUser(){
 
         try{
             const token = localStorage.getItem("token");
-
+             console.log("TOKEN AT getuser",token)
             const result= await apiConnector("POST",user.GET_STUDENT,{token});
 
             console.log(result.data.user)
+            return result.data.user
 
         }catch(e){
             console.log("ERROR AT GETSTUDENT",e.message)

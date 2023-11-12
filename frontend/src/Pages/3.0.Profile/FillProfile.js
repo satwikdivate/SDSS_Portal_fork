@@ -1,11 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import "./FillProfile.css"
-
+import { apiConnector } from '../../Services/utilities/apiCOnnector';
+import { user } from '../../Services/utilities/API';
+import { getUser } from '../../Services/auth';
+import { useDispatch } from 'react-redux';
+import { updateAcProfile, updateFamilyProfile, updatePersonalProfile } from '../../Services/profile';
 const FillProfile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
     const [showPopup, setShowPopup] = useState(false);
     const [relationships, setRelationships] = useState([]);
+    const[data,setdata]=useState();
+    const dispatch = useDispatch();
+
+    const getData=async()=>{
+
+        try{
+            const token = localStorage.getItem("token");
+            // both call can give data  anyone can be used
+            // const result=await apiConnector("POST",user.GET_STUDENT,{token});
+
+            const result1=await dispatch(getUser());
+
+            console.log(result1.firstName)
+
+            // data set to useState
+            setdata(result1);
+            // setUserData(result1)
+            
+          
+        }catch(e){
+            console.log("ERROR AT FRONTED:",e)
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+    
+    console.log("Data:",data?.email
+    );
+
     const [newRelationship, setNewRelationship] = useState({
         name: '',
         relation: '',
@@ -83,6 +118,14 @@ const submitData = () => {
             relationships: [...relationships],
         };
 
+        
+        // for the acedmic profile
+        dispatch(updateAcProfile(completeUserData.educational.schoolName,completeUserData.educational.schoolAddress,completeUserData.educational.classTeacher,completeUserData.educational.medium))
+        // for personalprofile
+        // dispatch(updatePersonalProfile(completeUserData.personal.address,completeUserData.personal.dob,completeUserData.personal.email,completeUserData.personal.firstName,completeUserData.personal.lastName,completeUserData.personal.phone,completeUserData.personal.standard))
+        // for familyprofile
+        dispatch(updateFamilyProfile(completeUserData.family.fatherContact,completeUserData.family.fatherName,completeUserData.family.income,completeUserData.family.income,completeUserData.family.motherContact,completeUserData.family.motherName,completeUserData.family.occupation,completeUserData.family.siblingCount))
+        
         console.log("coMPLETE uSER DATA:",completeUserData);
 
     }
@@ -99,6 +142,7 @@ const submitData = () => {
     return (
         <div className='fill-profile'>
             <Header />
+        
             <div className='all'>
                 <div className="profile-sidebar">
                     <div className="profile-info">
@@ -134,9 +178,9 @@ const submitData = () => {
                                     First Name
                                     <input
                                         type="text"
-                                        placeholder="First Name"
+                                      
                                         name='firstName'
-                                        value={userData.personal.firstName}
+                                        value={userData.personal.firstName || data?.firstName}
                                         onChange={(e) =>
                                             setUserData({
                                                 ...userData,
@@ -146,7 +190,10 @@ const submitData = () => {
                                                 },
                                             })
                                         }
+                                        defaultValue={data?.firstName}
+                                        // placeholder={data?.familyProfile?.fatherName}
                                     />
+                                <p>{data?.familyProfile?.email}</p>
                                 </label>
                                 <label className='last-name'>
                                     Last Name
@@ -154,7 +201,8 @@ const submitData = () => {
                                         type="text"
                                         placeholder="Last Name"
                                         name="lastName"
-                                        value={userData.personal.lastName}
+                                        value={userData.personal.lastName || data.lastName}
+                                        defaultValue={data?.lastName}
                                         onChange={(e) =>
                                             setUserData({
                                                 ...userData,
@@ -164,6 +212,7 @@ const submitData = () => {
                                                 },
                                             })
                                         }
+
                                     />
                                 </label>
                                 <label className='email'>
@@ -172,7 +221,7 @@ const submitData = () => {
                                         type="text"
                                         placeholder="Email"
                                         name='email'
-                                        value={userData.personal.email}
+                                        value={userData.personal.email || data?.email}
                                         onChange={(e) =>
                                             setUserData({
                                                 ...userData,
@@ -190,7 +239,7 @@ const submitData = () => {
                                         type="text"
                                         placeholder="Phone"
                                         name='phone'
-                                        value={userData.personal.phone}
+                                        value={userData.personal.phone  }
                                         onChange={(e) =>
                                             setUserData({
                                                 ...userData,
@@ -200,6 +249,7 @@ const submitData = () => {
                                                 },
                                             })
                                         }
+                                        defaultValue={data?.contact}
                                     />
                                 </label>
                                 <label className='dob'>
@@ -208,7 +258,7 @@ const submitData = () => {
                                         type="date"
                                         placeholder="Date of Birth"
                                         name='dob'
-                                        value={userData.personal.dob}
+                                        value={userData.personal.dob }
                                         onChange={(e) =>
                                             setUserData({
                                                 ...userData,

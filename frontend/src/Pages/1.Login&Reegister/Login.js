@@ -33,6 +33,7 @@ const Login = ({ setIsAuthenticated }) => {
       dispatch(signUp(registerData.FirstName,registerData.LastName,registerData.email,registerData.registrationPassword,registerData.isAdmin,navigate))
     
     console.log(registerData);
+    navigate("/login");
   };
 
   const fullText = "' स्व ' - रूपवर्धिनी";
