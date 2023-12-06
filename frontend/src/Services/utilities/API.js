@@ -23,5 +23,6 @@ export const operator={
     STUDENT_BY_CLASS:BASE_URL+"/user/getStudentByClass",    FILE_UPLOAD:BASE_URL+"/user/cloudUpload",
     DELETE_CLASS:BASE_URL+"/user/deleteClass",
     APPROVE_REQUEST:BASE_URL+"/user/approveRequest",
-    GET_ALL_REQUEST:BASE_URL+"/user/getAllRequest"
+    GET_ALL_REQUEST:BASE_URL+"/user/getAllRequest",
+    GET_ALL_OPERATORS:BASE_URL+"/user/getAllOperators"
 }

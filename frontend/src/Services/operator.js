@@ -157,3 +157,29 @@ export async function getAllRequest(){
         console.log("ERROR AT GET ALL REQUEST ",e)
     }
 }
+
+// export const getAllOperators=async()=>{
+export async function getAllOperators(){
+
+    try{
+
+        const token=localStorage.getItem('token');
+        const result=await apiConnector("POST",operator.GET_ALL_OPERATORS,{
+            token
+        });
+
+        console.log("DATA AT GET ALL OPERATOR ",result.data);
+        return result;
+        if(result.status==200){
+
+            return result.data;
+            // toast.success("Status pproved succefully")
+        }else   
+            toast.error("Something went worng while geting oprator");
+
+
+    }catch(e){
+        console.log("ERROR AT GET ALL OPERATORS",e);
+    }
+
+}

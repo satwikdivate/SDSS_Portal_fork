@@ -2,20 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import { logoutUser } from '../../Services/auth';
-import { useDispatch } from 'react-redux';
-import { useSelector } from "react-redux"
+
+import { useDispatch, useSelector } from "react-redux"
 
 import { getUser } from '../../Services/auth';
+import { getAllOperators } from '../../Services/operator';
 
 const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const[loading,setloading]=useState(false);
+const mydispatch=useDispatch();
   const {user}=useSelector((state)=>state.auth)
   const handle = () => {
     navigate("/u0/updateprofile");
     setIsMenuOpen(false); // Close the menu when a link is clicked
   };
 
+  const handle1 = async() => {
+   try{
+    setloading(false);
+     const result=await getAllOperators()
+     console.log(result.data.data);
+     setloading(true);
+   }catch(e){
+    console.log(e);
+   }
+  };
   const headerHandle = () => {
     navigate("/home");
     setIsMenuOpen(false); // Close the menu when a link is clicked
@@ -77,7 +90,7 @@ const Header = () => {
         <a href="#portfolio" onClick={handle}>विशेष कार्यक्रम</a>
         <a href="#contact" onClick={handle}>संपर्क</a>
         <button className='login-btn' onClick={handle}>{data?.firstName}</button>
-
+        <button className='login-btn' onClick={handle1}>GET OPERATORS</button>
         <button className='login-btn' onClick={logout}>Logout</button>
       </nav>
     </header>
