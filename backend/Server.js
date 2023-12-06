@@ -9,8 +9,8 @@ const userRouter=require("./router/userRouter");
 const personalProfileRouter=require("./router/Profile");
 const fileUpload=require("express-fileupload");
 const { cloudinaryConnect } = require("./config/cloundinary");
+require("dotenv").config();
 app.use(bodyParser.json());
-
 app.use(express.json());
 // app.use(cookieParser())
 app.use(
@@ -25,7 +25,7 @@ app.use(fileUpload({
     tempFileDir:"/tmp"
 }))
 
-app.listen(4000,(req,res)=>{
+app.listen(process.env.PORT,(req,res)=>{
   console.log("Conneted at 4000")
 })
 

@@ -13,7 +13,7 @@ exports.uploadImageToCloudinary = async (file, folder, height, quality) => {
     }
 
     // Set the resource type based on the file type
-    if (file.mimetype && file.mimetype.includes("pdf")) {
+    if (file.mimetype.includes("pdf")) {
       options.resource_type = "raw";
     } else {
       options.resource_type = "auto";

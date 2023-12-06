@@ -1,5 +1,5 @@
 const express=require('express');
-const { signUp, login, getStudent } = require('../controller/user');
+const { signUp, login, getStudent, getAllStudents, getAllOperators } = require('../controller/user');
 const { auth, isOperator, isAdmin, isAuthenticate } = require('../controller/auth');
 const { markAttendece, enrollStudent} = require('../controller/attendence');
 const { createClass, getStudentByClass, getAllClass, deleteClass } = require('../controller/class');
@@ -14,6 +14,8 @@ router.post("/login",login);
 router.post("/auth",auth)
 
 router.post("/getStudent",auth,getStudent)
+router.post("/getAllStudents",auth,getAllStudents)
+router.post("/getAllOperators",auth,getAllOperators)
 
 // ROutes for operator and admin
 router.post("/markAttendece",auth,isAuthenticate ,markAttendece)

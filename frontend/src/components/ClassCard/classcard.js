@@ -3,8 +3,11 @@ import Header from '../Header/Header'
 import "./classcard.css";
 import { Link } from 'react-router-dom';
 // import Footer from '../Footer/Footer';
-
+import { useSelector } from 'react-redux';
+import CreateClass from '../CreateClass/CreateClass';
 const Classcard = () => {
+
+  const {user}=useSelector((state)=>state.auth)
     const classes = [
         {
             grade: '5th',
@@ -80,10 +83,12 @@ const Classcard = () => {
                     <h2>Grade: {gradeNumber}</h2>
                     <p>Class Teacher: {classInfo.classTeacher}</p>
                     <p>Class Monitor: {classInfo.classMonitor}</p>
+                    <button className='enroll-class'>Enroll Now</button>
                   </div>
                 </Link>
               );
             })}
+            <CreateClass />
           </div>
           {/* <Footer /> */}
         </>

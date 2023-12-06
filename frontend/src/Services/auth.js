@@ -1,10 +1,8 @@
-// import { useState } from "react";
 import { apiConnector } from "./utilities/apiCOnnector";
-
 import auth, {loading,setLoading,setToken,token,setUser} from "../slices/auth"
 import toast from "react-hot-toast";
 import {user}  from  "../Services/utilities/API" 
-// import {} from ""
+
 
 
 export  function login(username,password,navigate){
@@ -84,10 +82,12 @@ export function getUser(){
 
         try{
             const token = localStorage.getItem("token");
-
+             console.log("TOKEN AT getuser",token)
             const result= await apiConnector("POST",user.GET_STUDENT,{token});
 
             console.log(result.data.user)
+            console.log("hello");
+            return result.data.user
 
         }catch(e){
             console.log("ERROR AT GETSTUDENT",e.message)
@@ -114,7 +114,7 @@ export function logoutUser(navigate){
 
             console.log("Hello");
             // redirect to login
-            navigate("/login")
+            navigate("/")
             
         }catch(e){
             console.log("ERROR AT LOGOUT ",e.message)

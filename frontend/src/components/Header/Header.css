@@ -31,6 +31,7 @@
     font-weight: 600;
     cursor: default;
     margin-right: auto;
+    margin-right: 20p;
 }
 
 .navbar {
@@ -99,6 +100,14 @@
     font-size: 2.4rem;
     color: var(--text-color);
     cursor: pointer;
+}
+.login-btn {
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 20px;
+    border-radius: 52px;
 }
 
 

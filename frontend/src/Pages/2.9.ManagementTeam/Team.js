@@ -56,7 +56,7 @@ const orgData = {
                     attributes: {
                         व्यवस्था: 'तासिका व्यवस्था ',
                         ठिकाण: "VIT College"
-                    },children: [
+                    }, children: [
                         {
                             name: 'ओंकार जाधव',
                             attributes: {
@@ -91,7 +91,7 @@ const orgData = {
                     attributes: {
                         व्यवस्था: 'कार्यक्रम व्यवस्था',
                         ठिकाण: "VIT College"
-                    },children: [
+                    }, children: [
                         {
                             name: 'ओंकार जाधव',
                             attributes: {
@@ -127,7 +127,7 @@ const orgData = {
                     attributes: {
                         व्यवस्था: 'संपर्क व्यवस्था',
                         ठिकाण: "प्रियदर्शनी शिक्षण संस्था"
-                    },children: [
+                    }, children: [
                         {
                             name: 'ओंकार जाधव',
                             attributes: {
@@ -162,6 +162,12 @@ const orgData = {
         },
     ],
 };
+
+
+const config = {
+    nodeSize: { x: 200, y: 500 }, // Adjust the values for x and y according to your needs
+  };
+  
 
 
 const Team = () => {
@@ -206,6 +212,7 @@ const Team = () => {
                         translate={treeState.translate}
                         scale={treeState.scale}
                         onZoom={onZoom}
+                        nodeSize={config.nodeSize}
                     />
                 </div>
             </div>

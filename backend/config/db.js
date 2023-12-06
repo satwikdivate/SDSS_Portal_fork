@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const mongoURI = "mongodb://127.0.0.1:27017/studentbio";
+const mongoURI = "mongodb+srv://datasdss:sdss2003@web.kwojvcr.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
@@ -15,3 +15,4 @@ db.once("open", () => {
 });
 
 module.exports = db;
+ 

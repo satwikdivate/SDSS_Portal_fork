@@ -107,7 +107,8 @@ exports.signUp=async(req,res)=>{
        return  res.status(200).json({
             message:"User signUp sucessfully",
             sucess:true,
-            data:user
+            data:user,
+            rollNo:recordCount+1000
         })
 
     }catch(e){
@@ -200,5 +201,45 @@ exports.getStudent=async(req,res)=>{
        })
     }catch(e){
         console.log("ERROR AT GET USER:",e.message)
+    }
+}
+
+
+
+
+exports.getAllStudents=async(req,res)=>{
+
+    try{
+
+        const result= await User.find({role:"Student"});
+
+        return res.status(400).json({
+            message:"All Students feteced succefully",
+            data:result
+        })
+
+
+
+    }catch(e){
+        console.log("ERROR AT GET ALL STUDENTS")
+    }
+}
+
+
+exports.getAllOperators=async(req,res)=>{
+
+    try{
+
+        const result= await User.find({role:"Operator"});
+
+        return res.status(400).json({
+            message:"All operators feteced succefully",
+            data:result
+        })
+
+
+
+    }catch(e){
+        console.log("ERROR AT GET ALL STUDENTS")
     }
 }
