@@ -14,8 +14,8 @@ router.post("/login",login);
 router.post("/auth",auth)
 
 router.post("/getStudent",auth,getStudent)
-router.post("/getAllStudents",auth,getAllStudents)
-router.post("/getAllOperators",auth,getAllOperators)
+router.post("/getAllStudents",auth,isAuthenticate,getAllStudents)
+router.post("/getAllOperators",auth,isAuthenticate,getAllOperators)
 
 // ROutes for operator and admin
 router.post("/markAttendece",auth,isAuthenticate ,markAttendece)
@@ -28,6 +28,7 @@ router.post("/getAllClass",auth,isAuthenticate,getAllClass)
 router.post("/deleteClass",auth,isAuthenticate,deleteClass)
 router.post("/approveRequest",auth,isAdmin,aproveRequest)
 router.post("/getAllRequest",auth,isAdmin,getAllRequest)
+router.post("/createEvent",auth,isAuthenticate,createEvent)
 
 router.post("/cloudUpload",auth,isAuthenticate,createEvent);
 

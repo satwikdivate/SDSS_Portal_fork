@@ -5,13 +5,14 @@ const report = require("../db/reports");
 exports.createEvent=async(req,res)=>{
 
     try{
-
-        const reportFile=req.files.report
-        const {monthName}=req.body;
+        console.log(req.body);;
+        console.log(req.files);
+        const {monthName,descitopn}=req.body;
+        const reportFile=req.files.reports
         console.log("File",reportFile)
         console.log("Month",monthName)
 
-        if(!reportFile ||! monthName)
+        if(! monthName)
             return res.status(400).json({
         message:"something missing at upload cloud"})
 
@@ -27,7 +28,8 @@ exports.createEvent=async(req,res)=>{
         // make entry in DB;
         const updateDB=await report.create({
             monthName,
-            file:updateCloud.url
+            file:updateCloud.url,
+            eventdecription:descitopn
         }) 
 
         console.log("Update DB",updateDB)
