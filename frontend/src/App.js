@@ -23,7 +23,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<CentralizedLoader />} />
+        {/* <Route path='/' element={<CentralizedLoader />} /> */}
         <Route path="/login" element={
         <OpenRoute>
         <Login />
