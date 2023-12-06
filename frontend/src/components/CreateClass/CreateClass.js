@@ -27,7 +27,7 @@ const CreateClass = () => {
       {isModalOpen === "open" && (
         <div className="modal-overlay">
           <div className="modal">
-            <button className="close-btn" onClick={handleclose}>X</button>
+            <div className="close-btn" onClick={handleclose}><h1>X</h1></div>
             <h3>Create New Class</h3>
             <form onSubmit={handleSubmit}>
               <label htmlFor="className">Class Name:</label>

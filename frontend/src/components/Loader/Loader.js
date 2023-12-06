@@ -18,22 +18,20 @@ const CentralizedLoader = () => {
       const interval = setInterval(() => {
         setZoomLevel((prevZoomLevel) => {
           const newZoomLevel = prevZoomLevel + 0.1;
-
-          if (newZoomLevel >= 0.6) {
+          if (newZoomLevel >= 0.7) {
             clearInterval(interval);
             navigate('/login');
           }
-
           return newZoomLevel;
         });
-      }, 900);
+      }, 1000);
 
       return () => clearInterval(interval);
-    }, 900);
+    }, 100);
     return () => clearTimeout(timeout);
   }, [navigate]);
 
-  return (
+  return (  
     <div className={`centralized-loader ${loading ? 'loading' : ''}`}>
       <div className={`loader-container ${initialPause ? 'blurred' : ''}`} style={{ transform: `scale(${zoomLevel})` }}>
         <img src={LoaderIMG} alt="Loader" className="loader-image" />

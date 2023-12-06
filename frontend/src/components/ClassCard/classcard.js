@@ -2,11 +2,11 @@ import React from 'react'
 import Header from '../Header/Header'
 import "./classcard.css";
 import { Link } from 'react-router-dom';
-// import Footer from '../Footer/Footer';
 import { useSelector } from 'react-redux';
 import CreateClass from '../CreateClass/CreateClass';
-const Classcard = () => {
 
+
+const Classcard = () => {
   const {user}=useSelector((state)=>state.auth)
     const classes = [
         {
@@ -90,7 +90,6 @@ const Classcard = () => {
             })}
             <CreateClass />
           </div>
-          {/* <Footer /> */}
         </>
       );
     };
