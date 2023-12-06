@@ -90,7 +90,6 @@ const mydispatch=useDispatch();
         <a href="#portfolio" onClick={handle}>विशेष कार्यक्रम</a>
         <a href="#contact" onClick={handle}>संपर्क</a>
         <button className='login-btn' onClick={handle}>{data?.firstName}</button>
-        <button className='login-btn' onClick={handle1}>GET OPERATORS</button>
         <button className='login-btn' onClick={logout}>Logout</button>
       </nav>
     </header>

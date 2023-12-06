@@ -10,7 +10,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 0.2px solid #999;
     width: 600px;
-
 }
 
 .addclass {
@@ -39,14 +38,13 @@
     position: relative;
 }
 
-.modal h3{
+.modal h3 {
     text-align: center;
     font-size: 2em;
     padding-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 3px solid #999;
 }
-
 
 .close-btn {
     position: absolute;
@@ -57,10 +55,44 @@
     background-color: red;
     width: 30px;
     height: 30px;
-
     padding: 0;
 }
 
 .modal button {
+    cursor: pointer;
+}
+
+/* Additional Styles for Dropdown */
+.modal label,
+.modal select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.modal select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal button[type="submit"] {
+    background: #3498db;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.modal button.login-btn {
+    background: #3498db; /* Update the color if needed */
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
     cursor: pointer;
 }

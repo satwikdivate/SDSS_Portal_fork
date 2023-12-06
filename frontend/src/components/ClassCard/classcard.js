@@ -82,7 +82,6 @@ const Classcard = () => {
                   <div className='card-grade'>
                     <h2>Grade: {gradeNumber}</h2>
                     <p>Class Teacher: {classInfo.classTeacher}</p>
-                    <p>Class Monitor: {classInfo.classMonitor}</p>
                     <button className='enroll-class'>Enroll Now</button>
                   </div>
                 </Link>
