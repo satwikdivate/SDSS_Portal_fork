@@ -59,7 +59,7 @@ const CreateClass = () => {
 
   return (
     <div className='add-card-grade' onClick={openModal}>
-      <h1 className='addclass'>+</h1>
+      <h1 className='addclass'>+<br/><span>Create Class</span></h1>
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal">

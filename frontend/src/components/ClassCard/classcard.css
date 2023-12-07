@@ -7,7 +7,8 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Use two columns for larger screens */
+  grid-template-columns: repeat(2, 1fr);
+  /* Use two columns for larger screens */
   gap: 20px;
   justify-items: center;
 }
@@ -24,13 +25,25 @@
   border: 0.2px solid #999;
 }
 
-h2 {
+.card-grade h2 {
   font-size: 24px;
   margin: 0;
   color: #333;
 }
 
-p {
+.showallStudent {
+  position: relative;
+  top: -25px;
+  float: right;
+  background-color: transparent;
+  color: black;
+}
+
+.showallStudent i {
+  font-size: 60px;
+}
+
+.card-grade p {
   font-size: 16px;
   color: #666;
   margin: 5px 0;
@@ -42,14 +55,19 @@ p {
   transition: all 0.2s;
 }
 
+.enroll-class {}
+
 /* Media query for small devices (already defined) */
 @media (max-width: 768px) {
   .card-grid {
-    grid-template-columns: 1fr; /* Use a single column for small screens */
+    grid-template-columns: 1fr;
+    /* Use a single column for small screens */
   }
 
   .card-grade {
-    width: 100%; /* Take full width for small screens */
-    padding: 20px; /* Adjust padding for smaller screens */
+    width: 100%;
+    /* Take full width for small screens */
+    padding: 20px;
+    /* Adjust padding for smaller screens */
   }
 }

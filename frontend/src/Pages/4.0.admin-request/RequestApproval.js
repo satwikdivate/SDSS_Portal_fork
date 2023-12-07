@@ -10,7 +10,7 @@ const RequestApproval = () => {
   const [userDetailsMap, setUserDetailsMap] = useState({});
 
   useEffect(() => {
-    const fetchRequests = async () => {
+    const fetchRequests = async () => { 
       try {
         // Fetch approved requests
         const approved = await getApproverequest();

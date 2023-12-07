@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { operator, user } from "./utilities/API"
 import { apiConnector } from "./utilities/apiCOnnector"
 
-export   async function getAllClass(){
+export async function getAllClass(){
     try{
         const token=localStorage.getItem('token');
         const result =await apiConnector("POST",operator.GET_ALL_CLASS,{token});
@@ -59,7 +59,7 @@ export async function enrollStudent(userId,classId){
     try{
         const token=localStorage.getItem('token');
 
-        const result=await apiConnector("POST",operator.ENROLL_STUDENT,{
+        var result=await apiConnector("POST",operator.ENROLL_STUDENT,{
             userId,classId,token
         })
 
@@ -70,6 +70,7 @@ export async function enrollStudent(userId,classId){
             toast.error("Something went wrong at  enrolled student");
     }catch(e){
         console.log("ERROR AT ENROLLSTUDENT ",e)
+        toast.error(e.response.data.message);
     }
 }
 
