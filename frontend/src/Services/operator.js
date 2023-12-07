@@ -45,7 +45,7 @@ export async function createClass(classsName, classTeacher){
 
         if(result.status===200){
             toast.success("Class created succefully")
-        }else if(result.status==400)   
+        }else if(result.status===400)   
             toast.error("This class is already present");
    
     }catch(e){
@@ -102,7 +102,7 @@ export async function fileUpload(monthName,selectedFile){
             'Content-Type': 'multipart/form-data',
           },{});
         console.log("RESULT AT OPERATOR",result)
-        if(result.status==200){
+        if(result.status===200){
             toast.success("Report uploaded succefully");
         }   
 
@@ -154,7 +154,7 @@ export async function approveRequest(userId,adminId,reqId,status,role){
 export async function getById(id){
     try{
 
-        const token=localStorage.getItem('tokken');
+        const token=localStorage.getItem('token');
         const result =await apiConnector("POST",user.GET_BY_ID,{
             id,token
         });
