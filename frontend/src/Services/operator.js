@@ -83,7 +83,7 @@ export async function studentByClass(classId){
 
 
         if(result.status===200){
-            toast.success("Student fetched succefully")
+            console.log("Student fetched succefully")
         }else   
             toast.error("Something went wrong at student fetching ");
     }catch(e){

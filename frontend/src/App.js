@@ -17,6 +17,7 @@ import OpenRoute from './components/OpenRoute/OpenRoute.js';
 import Register from './Pages/1.Login&Reegister/Registration/Register.js';
 import Login from './Pages/1.Login&Reegister/Login/Login.js';
 import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js";
+import ClassInfoPage from './components/ClassInfo/ClassInfoPage.js';
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/student" element={<StudentBio />} />
             <Route path="/class/All" element={<Classcard />} />
-            <Route path="/class/5" element={<ListStudent />} />
+            <Route path='/class/:classsName' element={<ClassInfoPage />} />
             <Route path="/u0/updateprofile" element={<FillProfile />} />
             <Route path="/mreport" element={<MonthlyReport role="admin" />} />
             <Route path="/attend" element={<AttendPage role="user" />} />
