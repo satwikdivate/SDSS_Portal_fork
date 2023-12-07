@@ -26,5 +26,7 @@ export const operator={
     DELETE_CLASS:BASE_URL+"/user/deleteClass",
     APPROVE_REQUEST:BASE_URL+"/user/approveRequest",
     GET_ALL_REQUEST:BASE_URL+"/user/getAllRequest",
-    GET_ALL_OPERATORS:BASE_URL+"/user/getAllOperators"
+    GET_ALL_OPERATORS:BASE_URL+"/user/getAllOperators",
+    GET_APPROVE_REQUEST:BASE_URL+"/user/getApproveRequest",
+    GET_PENDING_REQUEST:BASE_URL+"/user/getPendingRequest"
 }
