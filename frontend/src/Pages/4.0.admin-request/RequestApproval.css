@@ -1,0 +1,50 @@
+.request-approval-container {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.request-approval-container h2{
+    text-align: center;
+    font-size: 1.8em;
+}
+
+
+.request-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.request-item p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container #accept {
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-container #reject {
+    background-color: #db3434;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #1c6da8;
+}

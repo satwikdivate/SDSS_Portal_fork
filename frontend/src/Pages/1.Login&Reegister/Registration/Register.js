@@ -110,6 +110,7 @@ const Register = () => {
                                             setRegisterData({ ...registerData, FirstName: e.target.value })
                                         }
                                         required
+                                        tabIndex={1}
                                     />
 
                                     <label>Email</label>
@@ -121,6 +122,7 @@ const Register = () => {
                                             setRegisterData({ ...registerData, email: e.target.value })
                                         }
                                         required
+                                        tabIndex={3}
                                     />
                                     <label>Contact No.</label>
                                     <input
@@ -131,6 +133,7 @@ const Register = () => {
                                             setRegisterData({ ...registerData, conactNumber: e.target.value })
                                         }
                                         required
+                                        tabIndex={5}
                                     />
 
                                     <label className="checkbox-label">
@@ -163,6 +166,7 @@ const Register = () => {
                                             })
                                         }
                                         required
+                                        tabIndex={2}
                                     />
                                     <label>Standard</label>
                                     <input
@@ -175,6 +179,7 @@ const Register = () => {
                                             setRegisterData({ ...registerData, standard: e.target.value })
                                         }
                                         required
+                                        tabIndex={4}
                                     />
 
                                     <label>Password</label>
@@ -189,6 +194,7 @@ const Register = () => {
                                             })
                                         }
                                         required
+                                        tabIndex={5}
                                     />
                                 </div>
                             </div>
