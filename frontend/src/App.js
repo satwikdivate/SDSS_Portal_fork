@@ -16,6 +16,7 @@ import CentralizedLoader from './components/Loader/Loader.js';
 import OpenRoute from './components/OpenRoute/OpenRoute.js';
 import Register from './Pages/1.Login&Reegister/Registration/Register.js';
 import Login from './Pages/1.Login&Reegister/Login/Login.js';
+import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js";
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route path='/' element={<CentralizedLoader />} /> */}
+        <Route path='/' element={<CentralizedLoader />} />
         <Route path="/login" element={
         <OpenRoute>
         <Login />
@@ -42,6 +43,7 @@ function App() {
             <Route path="/attend/mark" element={<PrivateRoute role="admin" />} />  still woriking
             <Route path="/events" element={<Event role="admin" />} />
             <Route path="/auth/team" element={<Team />} />
+            <Route path='/request' element={<RequestApproval />} />
        
        
           <Route path="/login" element={<Login/>} />

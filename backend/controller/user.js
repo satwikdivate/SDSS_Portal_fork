@@ -232,7 +232,7 @@ exports.getAllOperators=async(req,res)=>{
 
         const result= await User.find({role:"Operator"});
 
-        return res.status(400).json({
+        return res.status(200).json({
             message:"All operators feteced succefully",
             data:result
         })

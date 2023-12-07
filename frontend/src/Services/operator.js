@@ -25,7 +25,7 @@ export async function markAttendence(attendenceId,userId,data,status){
             attendenceId,userId,data,status,token
         })
 
-        if(result.status==200){
+        if(result.status===200){
             toast.success("Attendence mark succefully")
         }else   
             toast.error("Something went wrong at  attenedece");
@@ -43,7 +43,7 @@ export async function createClass(classsName, classTeacher){
         })
 
 
-        if(result.status==200){
+        if(result.status===200){
             toast.success("Class created succefully")
         }else   
             toast.error("Something went wrong at  create class");
@@ -63,7 +63,7 @@ export async function enrollStudent(userId,classId){
         })
 
 
-        if(result.status==200){
+        if(result.status===200){
             toast.success("Student enrolled into class succefully")
         }else   
             toast.error("Something went wrong at  enrolled student");
@@ -80,7 +80,7 @@ export async function studentByClass(classId){
         const result= await apiConnector("POST",operator.STUDENT_BY_CLASS,{classId,token})
 
 
-        if(result.status==200){
+        if(result.status===200){
             toast.success("Student fetched succefully")
         }else   
             toast.error("Something went wrong at student fetching ");
@@ -108,7 +108,7 @@ export async function deleteClass(classId){
             classId,token
         })
 
-        if(result.status==200){
+        if(result.status===200){
             toast.success("Class deleted succefully")
         }else   
             toast.error("Something went wrong at delete class");
@@ -125,10 +125,10 @@ export async function approveRequest(userId,adminId,reqId,status,role){
 
         const token=localStorage.getItem('token');
         const result= await apiConnector("POST",operator.APPROVE_REQUEST,{
-            userId,adminId,reqId,status,role,token
+            userId,adminId,reqId,status,role,token  
         })
 
-        if(result.status==200){
+        if(result.status===200){
             toast.success("Status approved succefully")
         }else   
             toast.error("Something went wrong while approving status");
@@ -145,7 +145,7 @@ export async function getAllRequest(){
         const result= await apiConnector("POST",operator.GET_ALL_REQUEST,{
             token
         });
-        if(result.status==200){
+        if(result.status===200){
 
             return result.data;
             // toast.success("Status pproved succefully")
@@ -170,12 +170,6 @@ export async function getAllOperators(){
 
         console.log("DATA AT GET ALL OPERATOR ",result.data);
         return result;
-        if(result.status==200){
-
-            return result.data;
-            // toast.success("Status pproved succefully")
-        }else   
-            toast.error("Something went worng while geting oprator");
 
 
     }catch(e){

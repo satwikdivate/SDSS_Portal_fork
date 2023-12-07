@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "framer-motion": "^10.16.14",
     "react-d3-tree": "^3.6.1",
     "rechart": "^0.0.1",
     "recharts": "^2.9.2"
