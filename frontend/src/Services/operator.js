@@ -159,7 +159,7 @@ export async function getById(id){
             id,token
         });
 
-        return result.data;
+        return result.data;[ ]
     }catch(e){
         console.log("ERROR AT GET BY ID",e);
     }
@@ -187,6 +187,41 @@ export async function getAllRequest(){
         console.log("ERROR AT GET ALL REQUEST ",e)
     }
 }
+
+export async function getApproverequest(){
+    try{
+
+        const token=localStorage.getItem('token');
+
+        const result=await apiConnector("POST",operator.GET_APPROVE_REQUEST,{
+            token
+        });
+
+        return result.data;
+
+    }catch(e){
+        console.log("ERROR AT GET APPROVE REQUEST",e);
+    }
+
+}
+
+export async function getPendingRequest(){
+    try{
+
+        const token=localStorage.getItem('token');
+
+        const result=await apiConnector("POST",operator.GET_PENDING_REQUEST,{
+            token
+        });
+
+        return result.data;
+
+    }catch(e){
+        console.log("EROR AT GET PENDING REQUEST",e);
+    }
+}
+
+
 
 // export const getAllOperators=async()=>{
 export async function getAllOperators(){
