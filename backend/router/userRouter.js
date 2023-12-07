@@ -3,7 +3,7 @@ const { signUp, login, getStudent, getAllStudents, getAllOperators, getUserById 
 const { auth, isOperator, isAdmin, isAuthenticate } = require('../controller/auth');
 const { markAttendece, enrollStudent} = require('../controller/attendence');
 const { createClass, getStudentByClass, getAllClass, deleteClass } = require('../controller/class');
-const { createEvent } = require('../controller/events');
+const { createEvent, getAllEvents } = require('../controller/events');
 const { aproveRequest, getAllRequest, getPendingRequest, getApproveRequest } = require('../controller/requestAccept');
 
 const router=express.Router();
@@ -33,6 +33,7 @@ router.post("/getPendingRequest",auth,isAdmin,getPendingRequest);
 router.post("/getApproveRequest",auth,isAdmin,getApproveRequest);
 
 router.post("/createEvent",auth,isAuthenticate,createEvent)
+router.post("/getAllReportsRequest",auth,isAdmin,getAllEvents)
 
 router.post("/cloudUpload",auth,isAuthenticate,createEvent);
 
