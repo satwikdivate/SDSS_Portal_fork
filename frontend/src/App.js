@@ -44,7 +44,7 @@ function App() {
             <Route path="/auth/team" element={<Team />} />
        
        
-          <Route path="/login" element={<Login/>} />
+          <Route path="/" element={<Login/>} />
       
       </Routes>
     </Router>

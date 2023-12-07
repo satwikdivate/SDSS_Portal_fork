@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { operator } from "./utilities/API"
+import { operator, user } from "./utilities/API"
 import { apiConnector } from "./utilities/apiCOnnector"
 
 export   async function getAllClass(){
@@ -45,11 +45,12 @@ export async function createClass(classsName, classTeacher){
 
         if(result.status==200){
             toast.success("Class created succefully")
-        }else   
-            toast.error("Something went wrong at  create class");
+        }else if(result.status==400)   
+            toast.error("This class is already present");
    
     }catch(e){
         console.log("ERROR AT CLREATE CLASS",e);
+        toast.error("This class is already present");
     }
 }
 
@@ -90,12 +91,25 @@ export async function studentByClass(classId){
 }
 
 
-export async function fileUpload(monthName){
+export async function fileUpload(monthName,selectedFile){
     try{
+
+        console.log("FORM DATA AT FILE UPLOAD",monthName,selectedFile);
+        const token=localStorage.getItem('token');
+        const result= await apiConnector("POST",operator.FILE_UPLOAD,{
+            monthName,reports:selectedFile,token
+        } , {
+            'Content-Type': 'multipart/form-data',
+          },{});
+        console.log("RESULT AT OPERATOR",result)
+        if(result.status==200){
+            toast.success("Report uploaded succefully");
+        }   
 
 
     }catch(e){
     console.log("ERROR AT THE FILE UPLOAD ",e)
+    toast.error("Something went wrong while uploading reports");
 }
 
 }
@@ -136,6 +150,22 @@ export async function approveRequest(userId,adminId,reqId,status,role){
         console.log("EROOR AT APPROVE STUDENT",e)
     }
 }
+
+export async function getById(id){
+    try{
+
+        const token=localStorage.getItem('tokken');
+        const result =await apiConnector("POST",user.GET_BY_ID,{
+            id,token
+        });
+
+        return result.data;
+    }catch(e){
+        console.log("ERROR AT GET BY ID",e);
+    }
+}
+
+
 
 export async function getAllRequest(){
 

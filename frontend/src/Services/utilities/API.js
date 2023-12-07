@@ -5,7 +5,8 @@ export const BASE_URL=' http://localhost:4000/v1';
 export const user={
     LOGIN_IN:BASE_URL+'/user/login',
     GET_STUDENT:BASE_URL+"/user/getStudent",
-    SIGNUP:BASE_URL+"/user/signup"
+    SIGNUP:BASE_URL+"/user/signup",
+    GET_BY_ID:BASE_URL+"/user/getUserById"
 }
 
 export const profile={
@@ -20,7 +21,8 @@ export const operator={
     MARK_ATTENDANCE:BASE_URL+"/user/markAttendece",
     CREATE_CLASS:BASE_URL+"/user/createClass",
     ENROLL_STUDENT:BASE_URL+"/user/enrollStudent",
-    STUDENT_BY_CLASS:BASE_URL+"/user/getStudentByClass",    FILE_UPLOAD:BASE_URL+"/user/cloudUpload",
+    STUDENT_BY_CLASS:BASE_URL+"/user/getStudentByClass",   
+     FILE_UPLOAD:BASE_URL+"/user/cloudUpload",
     DELETE_CLASS:BASE_URL+"/user/deleteClass",
     APPROVE_REQUEST:BASE_URL+"/user/approveRequest",
     GET_ALL_REQUEST:BASE_URL+"/user/getAllRequest",
