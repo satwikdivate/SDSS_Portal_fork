@@ -1,96 +1,101 @@
-import React from 'react'
-import Header from '../Header/Header'
-import "./classcard.css";
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; // Correct import for React Router v6
+import Header from '../Header/Header';
 import CreateClass from '../CreateClass/CreateClass';
-
+import { getAllClass, getById, enrollStudent } from '../../Services/operator';
+import './classcard.css';
 
 const Classcard = () => {
-  const {user}=useSelector((state)=>state.auth)
-    const classes = [
-        {
-            grade: '5th',
-            classTeacher: 'John Smith',
-            classMonitor: 'Sarah Johnson',
-        },
-        {
-            grade: '6th',
-            classTeacher: 'Emily Davis',
-            classMonitor: 'Michael Brown',
-        },
-        {
-            grade: '7th',
-            classTeacher: 'David Wilson',
-            classMonitor: 'Olivia Anderson',
-        },
-        {
-            grade: '8th',
-            classTeacher: 'Sophia Miller',
-            classMonitor: 'Daniel White',
-        },
-        {
-            grade: '9th',
-            classTeacher: 'James Lee',
-            classMonitor: 'Ava Martinez',
-        },
-        {
-            grade: '10th',
-            classTeacher: 'Ella Harris',
-            classMonitor: 'William Moore',
-        },
-        {
-            grade: '11th',
-            classTeacher: 'Ella Harris',
-            classMonitor: 'William Moore',
-        },
-        {
-            grade: '12th',
-            classTeacher: 'Ella Harris',
-            classMonitor: 'William Moore',
-        },
-        {
-            grade: 'First Year',
-            classTeacher: 'Ella Harris',
-            classMonitor: 'William Moore',
-        },
-        {
-            grade: 'Second Year',
-            classTeacher: 'Ella Harris',
-            classMonitor: 'William Moore',
-        },
-        {
-            grade: 'Third Year',
-            classTeacher: 'Ella Harris',
-            classMonitor: 'William Moore',
-        },
-        {
-            grade: 'Final Year',
-            classTeacher: 'Ella Harris',
-            classMonitor: 'William Moore',
-        },
-    ];
-    return (
-        <>
-          <Header />
-          <h3 className='heading-class'>Classes</h3>
-          <div className='card-grid'>
-            {classes.map((classInfo, index) => {
-              const gradeNumber = classInfo.grade.replace(/th$/, '');
-              return (
-                <Link to={`/class/${gradeNumber}`} key={index}>
-                  <div className='card-grade'>
-                    <h2>Grade: {gradeNumber}</h2>
-                    <p>Class Teacher: {classInfo.classTeacher}</p>
-                    <button className='enroll-class'>Enroll Now</button>
-                  </div>
-                </Link>
-              );
-            })}
-            <CreateClass />
-          </div>
-        </>
-      );
+  const { user } = useSelector((state) => state.auth);
+  const [classes, setClasses] = useState([]);
+  const [teachers, setTeachers] = useState([]);
+  const [isAdmin, setAdmin] = useState(false);
+  const [enrolledClasses, setEnrolledClasses] = useState([]);
+  const navigate = useNavigate(); // Correct hook for React Router v6
+
+  const enrollClass = async (classID) => {
+    try {
+      await enrollStudent(user._id, classID);
+      setEnrolledClasses((prevEnrolledClasses) => [...prevEnrolledClasses, classID]);
+    } catch (e) {
+      console.error("Failed to enroll");
+    }
+  };
+
+  useEffect(() => {
+    const check = () => {
+      if (user.role === 'Admin') {
+        setAdmin(true);
+      }
     };
-    
-    export default Classcard;
+
+    const getClasses = async () => {
+      try {
+        const allClasses = await getAllClass();
+        setClasses(allClasses.result);
+      } catch (e) {
+        console.log("Failed to fetch Classes");
+      }
+    };
+
+    getClasses();
+    check();
+  }, []);
+
+  useEffect(() => {
+    const fetchTeachers = async () => {
+      try {
+        const teacherPromises = classes.map((classInfo) => getById(classInfo.classTeacher));
+        const teachersData = await Promise.all(teacherPromises);
+        setTeachers(teachersData.map((teacher) => teacher.data));
+      } catch (error) {
+        console.log('Error fetching teacher details:', error);
+      }
+    };
+
+    fetchTeachers();
+  }, [classes]);
+
+  const redirectToClassInfo = (className) => {
+    // Redirect to the class info page with the class name
+    navigate(`/class/${className}`);
+  };
+
+  return (
+    <>
+      <Header />
+      <h3 className='heading-class'>Classes</h3>
+      <div className='card-grid'>
+        {classes.map((classInfo, index) => {
+          const teacher = teachers[index];
+          const isEnrolled = enrolledClasses.includes(classInfo._id);
+          return (
+            <div key={classInfo._id} className='card-grade'>
+              <h2>Standard: {classInfo.classsName}th</h2>
+              <p>Class Teacher: {teacher?.firstName} {teacher?.lastName}</p>
+              <button
+                className='enroll-class'
+                onClick={() => enrollClass(classInfo._id)}
+                disabled={isEnrolled}
+              >
+                {isEnrolled ? 'Enrolled' : 'Enroll Now'}
+              </button>
+              {isAdmin && (
+                <button
+                  className='showallStudent'
+                  onClick={() => redirectToClassInfo(classInfo._id)}
+                >
+                  <i className='bx bx-right-arrow-circle'></i>
+                </button>
+              )}
+            </div>
+          );
+        })}
+        <CreateClass />
+      </div>
+    </>
+  );
+};
+
+export default Classcard;

@@ -1,8 +1,9 @@
 .add-card-grade {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 10px;
-    margin: 25px;
+    /* margin: 25px; */
     cursor: pointer;
     position: relative;
     background-color: #fff;
@@ -10,11 +11,15 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 0.2px solid #999;
     width: 600px;
+    height: 230px;
 }
 
 .addclass {
     font-size: 60px;
 }
+.addclass span {
+    font-size: 40px;
+  }
 
 .modal-overlay {
     position: fixed;

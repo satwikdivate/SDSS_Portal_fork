@@ -13,7 +13,7 @@ const router=express.Router();
 router.post("/signUp",signUp);
 router.post("/login",login);
 router.post("/auth",auth)
-router.post("/getUserById",auth,isAuthenticate,getUserById)
+router.post("/getUserById",auth,getUserById)
 
 router.post("/getStudent",auth,getStudent)
 router.post("/getAllStudents",auth,isAuthenticate,getAllStudents)
@@ -26,7 +26,7 @@ router.post("/createClass",auth,isAuthenticate,createClass)
 // isStudent not added because Operator also a studnet
 router.post("/enrollStudent",auth,enrollStudent)
 router.post("/getStudentByClass",auth,isAuthenticate,getStudentByClass);
-router.post("/getAllClass",auth,isAuthenticate,getAllClass)
+router.post("/getAllClass",auth,getAllClass)
 router.post("/deleteClass",auth,isAuthenticate,deleteClass)
 router.post("/approveRequest",auth,isAdmin,aproveRequest)
 router.post("/getAllRequest",auth,isAdmin,getAllRequest)
