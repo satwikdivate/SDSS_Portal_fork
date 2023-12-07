@@ -159,7 +159,7 @@ export async function getById(id){
             id,token
         });
 
-        return result.data;[ ]
+        return result.data;
     }catch(e){
         console.log("ERROR AT GET BY ID",e);
     }
