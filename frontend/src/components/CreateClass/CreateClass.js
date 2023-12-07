@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CreateClass.css';
-import { getAllOperators } from '../../Services/operator';
+import { createClass, getAllOperators } from '../../Services/operator';
 
 const CreateClass = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,13 +47,17 @@ const CreateClass = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     // Access the teacherId and className from formValues
     const { teacherId, className } = formValues;
     // Perform further actions with teacherId and className as needed
     console.log('Teacher ID:', teacherId);
     console.log('Class Name:', className);
+
+    const result=await createClass(className,teacherId);
+
+    // console.log(result);
     closeModals();
   };
 

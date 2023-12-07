@@ -46,7 +46,7 @@ function App() {
             <Route path='/request' element={<RequestApproval />} />
        
        
-          <Route path="/login" element={<Login/>} />
+          <Route path="/" element={<Login/>} />
       
       </Routes>
     </Router>

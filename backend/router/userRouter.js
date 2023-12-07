@@ -1,5 +1,5 @@
 const express=require('express');
-const { signUp, login, getStudent, getAllStudents, getAllOperators } = require('../controller/user');
+const { signUp, login, getStudent, getAllStudents, getAllOperators, getUserById } = require('../controller/user');
 const { auth, isOperator, isAdmin, isAuthenticate } = require('../controller/auth');
 const { markAttendece, enrollStudent} = require('../controller/attendence');
 const { createClass, getStudentByClass, getAllClass, deleteClass } = require('../controller/class');
@@ -12,10 +12,11 @@ const router=express.Router();
 router.post("/signUp",signUp);
 router.post("/login",login);
 router.post("/auth",auth)
+router.post("/getUserById",auth,isAuthenticate,getUserById)
 
 router.post("/getStudent",auth,getStudent)
-router.post("/getAllStudents",auth,getAllStudents)
-router.post("/getAllOperators",auth,getAllOperators)
+router.post("/getAllStudents",auth,isAuthenticate,getAllStudents)
+router.post("/getAllOperators",auth,isAuthenticate,getAllOperators)
 
 // ROutes for operator and admin
 router.post("/markAttendece",auth,isAuthenticate ,markAttendece)
@@ -28,6 +29,7 @@ router.post("/getAllClass",auth,isAuthenticate,getAllClass)
 router.post("/deleteClass",auth,isAuthenticate,deleteClass)
 router.post("/approveRequest",auth,isAdmin,aproveRequest)
 router.post("/getAllRequest",auth,isAdmin,getAllRequest)
+router.post("/createEvent",auth,isAuthenticate,createEvent)
 
 router.post("/cloudUpload",auth,isAuthenticate,createEvent);
 

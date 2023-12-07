@@ -205,6 +205,24 @@ exports.getStudent=async(req,res)=>{
 }
 
 
+exports.getUserById=async(req,res)=>{
+    try{
+
+        const {id}=req.body;
+
+        if(!id)
+            return res.status(400).json({
+        message:"Id missing at get student by id"});
+
+        const result= await User.findById({_id:id});
+
+        return res.status(200).json({
+            data:result
+        })
+    }catch(e){
+        console.log("ERROR AT GET STUDENT BY ID");
+    }
+}
 
 
 exports.getAllStudents=async(req,res)=>{

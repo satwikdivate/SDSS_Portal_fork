@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { fileUpload } from '../../Services/operator';
 
 const ReportForm = ({ onAddReport, onCancel }) => {
   const [monthName, setMonthName] = useState('');
@@ -8,21 +9,34 @@ const ReportForm = ({ onAddReport, onCancel }) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (!monthName.trim() || !selectedFile) {
       alert('Please fill in all fields.');
+
       return;
     }
-
+    
     const newReport = {
       monthName,
       file: selectedFile,
     };
-
+    
     if (onAddReport) {
       onAddReport(newReport);
     }
+    
+    console.log(monthName);
+    console.log(selectedFile)
 
+    // creating form data
+    const formData=new FormData();
+
+    formData.append("monthName",monthName);
+    // formData.append("report",selectedFile);
+    formData.append("reports", selectedFile);
+
+    const result =await fileUpload(monthName,selectedFile);
+    console.log(result);
     // Clear the form fields
     setMonthName('');
     setSelectedFile(null);
