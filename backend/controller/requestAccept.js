@@ -58,3 +58,36 @@ exports.getAllRequest=async(req,res)=>{
         console.log("ERROR AT THE GET ALL REQUEST ",e)
     }
 }
+
+exports.getPendingRequest=async(req,res)=>{
+
+    try{
+
+        const result=await requetsDB.find({
+            status:"Pending"});
+        
+            return res.status(200).json({
+                data:result
+            })
+
+        
+    }catch(e){
+        console.log("ERROR AT PENDING REQUEST",e);
+    }
+}
+
+exports.getApproveRequest=async(req,res)=>{
+    try{
+
+        const result=await requetsDB.find({
+            status:"Approved"});
+        
+            return res.status(200).json({
+                data:result
+            })
+
+        
+    }catch(e){
+        console.log("ERROR AT Approve REQUEST",e);
+    }
+}

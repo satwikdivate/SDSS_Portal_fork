@@ -4,7 +4,7 @@ const { auth, isOperator, isAdmin, isAuthenticate } = require('../controller/aut
 const { markAttendece, enrollStudent} = require('../controller/attendence');
 const { createClass, getStudentByClass, getAllClass, deleteClass } = require('../controller/class');
 const { createEvent } = require('../controller/events');
-const { aproveRequest, getAllRequest } = require('../controller/requestAccept');
+const { aproveRequest, getAllRequest, getPendingRequest, getApproveRequest } = require('../controller/requestAccept');
 
 const router=express.Router();
 
@@ -29,6 +29,9 @@ router.post("/getAllClass",auth,isAuthenticate,getAllClass)
 router.post("/deleteClass",auth,isAuthenticate,deleteClass)
 router.post("/approveRequest",auth,isAdmin,aproveRequest)
 router.post("/getAllRequest",auth,isAdmin,getAllRequest)
+router.post("/getPendingRequest",auth,isAdmin,getPendingRequest);
+router.post("/getApproveRequest",auth,isAdmin,getApproveRequest);
+
 router.post("/createEvent",auth,isAuthenticate,createEvent)
 
 router.post("/cloudUpload",auth,isAuthenticate,createEvent);
