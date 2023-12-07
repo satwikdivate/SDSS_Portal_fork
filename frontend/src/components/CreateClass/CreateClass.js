@@ -4,7 +4,6 @@ import { createClass, getAllOperators } from '../../Services/operator';
 
 const CreateClass = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setloading] = useState(false);
   const [teachers, setTeachers] = useState([]);
   const [formValues, setFormValues] = useState({
     teacherId: '',
@@ -14,15 +13,12 @@ const CreateClass = () => {
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
-        setloading(true);
         const result = await getAllOperators();
         console.log(result.data.data);
         setTeachers(result.data.data);
       } catch (e) {
         console.log(e);
-      } finally {
-        setloading(false);
-      }
+      } 
     };
 
     fetchTeachers();
@@ -55,9 +51,9 @@ const CreateClass = () => {
     console.log('Teacher ID:', teacherId);
     console.log('Class Name:', className);
 
-    const result=await createClass(className,teacherId);
+    const result = await createClass(className,teacherId);
 
-    // console.log(result);
+    console.log(result);
     closeModals();
   };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getApproverequest, getPendingRequest, getById } from '../../Services/operator';
+import { getApproverequest, getPendingRequest, getById, approveRequest } from '../../Services/operator';
 import "./RequestApproval.css";
 import Header from '../../components/Header/Header';
 
@@ -32,9 +32,21 @@ const RequestApproval = () => {
     fetchRequests();
   }, []);
 
-  const handleAccept = (requestId) => {
+  const handleAccept = async (userId, requestId) => {
     console.log(`Request ${requestId} accepted`);
-    // Handle accept logic here
+      try {
+        
+
+        const admin = localStorage.getItem('LoggedInId');
+        console.log(admin?._id);
+        console.log(userId, admin._id, requestId, "Approved", "Operator");
+
+        const response = await approveRequest(userId, admin, requestId, "Approved", "Operator")
+        console.log(response);
+      }
+      catch(e){
+        console.log("Failed to approve request");
+      }
   };
 
   const handleReject = (requestId) => {
@@ -54,7 +66,7 @@ const RequestApproval = () => {
         <p>Status: {request.status}</p>
         <p>Role: {userDetails[index]?.data?.role}</p>
         <div className="button-container">
-          <button id='accept' onClick={() => handleAccept(request._id)}>Accept</button>
+          <button id='accept' onClick={() => handleAccept(userDetails[index]?.data?._id, request._id)}>Accept</button>
           <button id='reject' onClick={() => handleReject(request._id)}>Reject</button>
         </div>
       </div>
