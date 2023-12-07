@@ -159,7 +159,7 @@ export async function getById(id){
             id,token
         });
 
-        return result.data;[ ]
+        return result.data;
     }catch(e){
         console.log("ERROR AT GET BY ID",e);
     }
@@ -188,6 +188,21 @@ export async function getAllRequest(){
     }
 }
 
+
+export async function getAllMonthReports(){
+    try{
+
+        const token=localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.GET_ALLREPORTS,{
+            token
+        });
+
+        return result.data;
+    }catch(e){  
+        console.log("ERROR AT getAllMonth Reports",e);
+    }
+}
 export async function getApproverequest(){
     try{
 

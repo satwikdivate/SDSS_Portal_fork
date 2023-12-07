@@ -28,5 +28,6 @@ export const operator={
     GET_ALL_REQUEST:BASE_URL+"/user/getAllRequest",
     GET_ALL_OPERATORS:BASE_URL+"/user/getAllOperators",
     GET_APPROVE_REQUEST:BASE_URL+"/user/getApproveRequest",
-    GET_PENDING_REQUEST:BASE_URL+"/user/getPendingRequest"
+    GET_PENDING_REQUEST:BASE_URL+"/user/getPendingRequest",
+    GET_ALLREPORTS:BASE_URL+"/user/getAllReportsRequest"
 }

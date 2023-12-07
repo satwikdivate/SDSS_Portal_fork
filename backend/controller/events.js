@@ -43,3 +43,18 @@ exports.createEvent=async(req,res)=>{
         console.log("ERROR AT CREATE EVENT:",e)
     }
 }
+
+exports.getAllEvents=async(req,res)=>{
+
+    try{
+
+        const result= await report.find({});
+
+        return res.status(200).json({
+            data:result
+        })
+        
+    }catch(e){  
+        console.log("ERRORA AT GET EVENTS",e);
+    }
+}
