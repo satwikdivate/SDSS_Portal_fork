@@ -1,23 +1,19 @@
 const mongoose = require("mongoose");
 const eventSchema = mongoose.Schema({
-  tasika: [
-    {
+  eventName:{
       type: String,
       required: true,
     },
-  ],
-  maidan: [
-    {
+
+  eventDate:{
       type: String,
       required: true,
     },
-  ],
-  karyakram: [
-    {
+  eventDescription: {
       type: String,
       required: true,
     },
-  ],
+ 
 });
 
 const Event = mongoose.model("Event", eventSchema);

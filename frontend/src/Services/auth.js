@@ -32,6 +32,8 @@ export  function login(username,password,navigate){
             
             localStorage.setItem("token",result.data.token)
             localStorage.setItem("user",JSON.stringify(result.data.user[0]))
+            // console.log(result.data);
+            localStorage.setItem("loggedInId",result.data.user[0]._id);
             
             navigate("/home")
         
@@ -111,6 +113,7 @@ export function logoutUser(navigate){
             // localStorage.setItem("user",null)
             localStorage.removeItem("token");
             localStorage.removeItem("user")
+            localStorage.removeItem("loggedInId")
 
             console.log("Hello");
             // redirect to login
