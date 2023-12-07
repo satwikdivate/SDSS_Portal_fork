@@ -29,5 +29,8 @@ export const operator={
     GET_ALL_OPERATORS:BASE_URL+"/user/getAllOperators",
     GET_APPROVE_REQUEST:BASE_URL+"/user/getApproveRequest",
     GET_PENDING_REQUEST:BASE_URL+"/user/getPendingRequest",
-    GET_ALLREPORTS:BASE_URL+"/user/getAllReportsRequest"
+    GET_ALLREPORTS:BASE_URL+"/user/getAllReportsRequest",
+    CREATE_EVENT:BASE_URL+"/user/enrollStudent",
+    UPDATE_EVENT:BASE_URL+"/user/updteEvent",
+    DELETE_EVENT:BASE_URL+"/user/deleteEvent"
 }

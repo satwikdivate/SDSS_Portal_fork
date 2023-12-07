@@ -44,6 +44,23 @@ exports.createEvent=async(req,res)=>{
     }
 }
 
+
+exports.deleteCloudEvent=async(req,res)=>{
+    try{
+
+        const {id}=req.body;
+
+        const result=await report.findByIdAndDelete({
+            _id:id
+        });
+
+        return res.status(200).json({
+           result
+        })
+    }catch(e){
+        console.log("ERROR AT DELETE EVENT",e)
+    }
+}
 exports.getAllEvents=async(req,res)=>{
 
     try{

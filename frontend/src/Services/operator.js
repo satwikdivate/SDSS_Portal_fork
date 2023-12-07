@@ -257,3 +257,71 @@ export async function getAllOperators(){
     }
 
 }
+
+
+export async function createEvent(eventName,eventDescritio,eventDate){
+
+    try{
+
+        const token= localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.CREATE_EVENT,{
+            eventName,eventDate,eventDescritio,token
+        });
+
+        if(result)
+            toast.success("Event Created succefuly");
+        else
+            toast.error("Something went wrong while creting event");
+
+
+
+    }catch(e){
+        console.log("ERROR AT CREATE EVENT",e);
+    }
+}
+
+
+
+export async function updateEvent(id,eventName,eventDate,eventDescrition){
+
+    try{
+
+        const token= localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.UPDATE_EVENT,{
+           id, eventName,eventDate,eventDescrition,token
+        });
+
+        if(result)
+            toast.success("Event Updated succefuly");
+        else
+            toast.error("Something went wrong while creting event");
+
+
+
+    }catch(e){
+        console.log("ERROR AT CREATE EVENT");
+    }
+}
+
+export async function deleteEvent(id){
+    try{
+
+        const token= localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.DELETE_EVENT,{
+           id
+        });
+
+        if(result)
+            toast.success("Event deleted  succefuly");
+        else
+            toast.error("Something went wrong while creting event");
+
+
+
+    }catch(e){
+        console.log("ERROR AT CREATE EVENT");
+    }
+}
