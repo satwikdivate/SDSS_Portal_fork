@@ -33,8 +33,12 @@ function App() {
         } />
     
             <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/student" element={<StudentBio />} />
+
+            
+            <Route path="/home" element={ <OpenRoute>
+             <Home /> </OpenRoute>} />
+            <Route path="/student" element={
+            <StudentBio />} />
             <Route path="/class/All" element={<Classcard />} />
             {/* <Route path='/class/:classsName' element={<ClassInfoPage />} /> */}
             <Route path="/u0/updateprofile" element={<FillProfile />} />

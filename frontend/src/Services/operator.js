@@ -34,6 +34,25 @@ export async function markAttendence(attendenceId,userId,data,status){
     }
 }
 
+export async function getClassById(id){
+    try{
+
+        
+        const token=localStorage.getItem('token');
+        const result= await apiConnector("POST",operator.GET_CLASS_BY_ID,{
+           id,token
+        })
+
+        if(result.status===200){
+            // toast.success("Attendence mark succefully")
+        }else   
+            toast.error("Something went wrong at  fetching class");
+    }catch(e){
+        console.log("ERROR AT GET CLASS BY ID",e)
+    }
+}
+
+
 export async function createClass(classsName, classTeacher){
 
     try{

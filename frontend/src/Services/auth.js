@@ -115,6 +115,7 @@ export function logoutUser(navigate){
             localStorage.removeItem("token");
             localStorage.removeItem("user")
             localStorage.removeItem("loggedInId")
+            localStorage.removeItem("role");
 
             console.log("Hello");
             // redirect to login
