@@ -54,7 +54,8 @@ export async function createClass(classsName, classTeacher) {
     }
 }
 
-export async function enrollStudent(userId, classId) {
+export async function 
+enrollStudent(userId, classId) {
 
     try {
         const token = localStorage.getItem('token');

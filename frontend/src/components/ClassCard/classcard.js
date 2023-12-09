@@ -37,13 +37,14 @@ const Classcard = () => {
     if (user) {
       fetchUserData();
     }
-  }, [user]);
+  }, []);
 
   const enrollClass = async (classID) => {
     try {
-      console.log('Enrolling in class:', classID);
-      await enrollStudent(user._id, classID);
-      console.log('Enrollment successful!');
+      console.log('Enrolling in class:', classID, user._id);
+
+      const resp = await enrollStudent(user._id, classID);
+      console.log('Enrollment successful!', resp);
       setEnrolledClasses((prevEnrolledClasses) => [...prevEnrolledClasses, classID]);
     } catch (e) {
       console.error('Failed to enroll:', e.message);
