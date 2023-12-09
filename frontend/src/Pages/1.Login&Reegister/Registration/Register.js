@@ -132,6 +132,8 @@ const Register = () => {
                                         onChange={(e) =>
                                             setRegisterData({ ...registerData, conactNumber: e.target.value })
                                         }
+                                        min={6800000000}
+                                        max={9999999999}
                                         required
                                         tabIndex={5}
                                     />

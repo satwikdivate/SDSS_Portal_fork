@@ -6,67 +6,72 @@ import CreateClass from '../CreateClass/CreateClass';
 import { getAllClass, getById, enrollStudent } from '../../Services/operator';
 import './classcard.css';
 
+
+
 const Classcard = () => {
-  const { user } = useSelector((state) => state.auth);
+  // const { user } = useSelector((state) => state.auth);
+  const userId=localStorage.getItem("loggedInId");
+  const user=localStorage.getItem("user");
+  // console.log(user[0].role)
+  const role=localStorage.getItem("role");
+  // const {userI}=JSON.stringifylocalStorage("user");
   const [classes, setClasses] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [isAdmin, setAdmin] = useState(false);
   const [enrolledClasses, setEnrolledClasses] = useState([]);
-  const navigate = useNavigate(); // Correct hook for React Router v6
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  const enrollClass = async (classID) => {
+  const fetchUserData = async () => {
     try {
-      await enrollStudent(user._id, classID);
-      setEnrolledClasses((prevEnrolledClasses) => [...prevEnrolledClasses, classID]);
-    } catch (e) {
-      console.error("Failed to enroll");
+      const allClasses = await getAllClass();
+      setClasses(allClasses.result);
+
+      const teacherPromises = allClasses.result.map((classInfo) => getById(classInfo.classTeacher));
+      const teachersData = await Promise.all(teacherPromises);
+      setTeachers(teachersData.map((teacher) => teacher.data));
+
+      setAdmin(role === 'Admin');
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    const check = () => {
-      if (user.role === 'Admin') {
-        setAdmin(true);
-      }
-    };
 
-    const getClasses = async () => {
-      try {
-        const allClasses = await getAllClass();
-        setClasses(allClasses.result);
-      } catch (e) {
-        console.log("Failed to fetch Classes");
-      }
-    };
+      fetchUserData();
 
-    getClasses();
-    check();
-  }, []);
+  }, [user]);
 
-  useEffect(() => {
-    const fetchTeachers = async () => {
-      try {
-        const teacherPromises = classes.map((classInfo) => getById(classInfo.classTeacher));
-        const teachersData = await Promise.all(teacherPromises);
-        setTeachers(teachersData.map((teacher) => teacher.data));
-      } catch (error) {
-        console.log('Error fetching teacher details:', error);
-      }
-    };
-
-    fetchTeachers();
-  }, [classes]);
+  const enrollClass = async (classID) => {
+    try {
+      console.log('Enrolling in class:', classID);
+      await enrollStudent(userId, classID);
+      console.log('Enrollment successful!');
+      setEnrolledClasses((prevEnrolledClasses) => [...prevEnrolledClasses, classID]);
+    } catch (e) {
+      console.error('Failed to enroll:', e.message);
+      alert('Enrollment failed. Please try again.');
+    }
+  };
 
   const redirectToClassInfo = (className) => {
-    // Redirect to the class info page with the class name
     navigate(`/class/${className}`);
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
+    
       <Header />
       <h3 className='heading-class'>Classes</h3>
       <div className='card-grid'>
+        
         {classes.map((classInfo, index) => {
           const teacher = teachers[index];
           const isEnrolled = enrolledClasses.includes(classInfo._id);

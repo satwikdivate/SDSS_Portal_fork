@@ -1,9 +1,10 @@
 /* classInfoPage.css */
 
 .class-info-container {
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
   }
   
   .student-list {
