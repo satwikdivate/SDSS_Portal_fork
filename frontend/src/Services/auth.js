@@ -34,6 +34,7 @@ export  function login(username,password,navigate){
             localStorage.setItem("user",JSON.stringify(result.data.user[0]))
             // console.log(result.data);
             localStorage.setItem("loggedInId",result.data.user[0]._id);
+            localStorage.setItem("role",result.data.user[0].role);
             
             navigate("/home")
         

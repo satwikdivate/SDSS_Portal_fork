@@ -59,6 +59,7 @@ export async function enrollStudent(userId,classId){
     try{
         const token=localStorage.getItem('token');
 
+        console.log("Data at enroll student:",userId,classId)
         var result=await apiConnector("POST",operator.ENROLL_STUDENT,{
             userId,classId,token
         })
@@ -81,9 +82,10 @@ export async function studentByClass(classId){
         const token=localStorage.getItem('token');
         const result= await apiConnector("POST",operator.STUDENT_BY_CLASS,{classId,token})
 
-
+        console.log("Student By class",result);
         if(result.status===200){
             console.log("Student fetched succefully")
+            return result.data;
         }else   
             toast.error("Something went wrong at student fetching ");
     }catch(e){
