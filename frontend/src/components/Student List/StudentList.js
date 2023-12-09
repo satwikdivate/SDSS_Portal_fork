@@ -1,11 +1,12 @@
+// src/components/Student List/StudentList.js
 import React, { useState } from 'react';
 import ListCard from '../StudentListCard/ListCard';
 
-const StudentList = ({ students }) => {
+const StudentList = ({ students, isAdmin }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredStudents = students.filter((student) =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+    student.firstName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -17,7 +18,7 @@ const StudentList = ({ students }) => {
       />
       <div className="student-list">
         {filteredStudents.map((student) => (
-          <ListCard key={student.id} student={student} />
+          <ListCard key={student._id} student={student} isAdmin={isAdmin} />
         ))}
       </div>
     </div>

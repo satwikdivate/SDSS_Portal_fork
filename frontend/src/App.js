@@ -17,7 +17,7 @@ import OpenRoute from './components/OpenRoute/OpenRoute.js';
 import Register from './Pages/1.Login&Reegister/Registration/Register.js';
 import Login from './Pages/1.Login&Reegister/Login/Login.js';
 import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js";
-import ClassInfoPage from './components/ClassInfo/ClassInfoPage.js';
+import ClassInfoPage from './components/classInfo/ClassInfoPage.js';
 
 function App() {
 
