@@ -58,7 +58,7 @@ const mydispatch=useDispatch();
 
       const result1 = await dispatch(getUser());
 
-      console.log(result1.firstName)
+      console.log(result1?.firstName)
 
       // data set to useState
       setdata(result1);
