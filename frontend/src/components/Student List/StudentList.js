@@ -18,7 +18,7 @@ const StudentList = ({ students, isAdmin }) => {
       />
       <div className="student-list">
         {filteredStudents.map((student) => (
-          <ListCard key={student._id} student={student} isAdmin={isAdmin} />
+          <ListCard key={student._id} student={student} />
         ))}
       </div>
     </div>

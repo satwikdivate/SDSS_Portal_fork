@@ -12,3 +12,57 @@
   }
   
   
+  /* Card.css */
+
+.contact input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-top: 20px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid #27ae60; /* Green border for attendance */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.contact input[type="checkbox"]:checked {
+  
+  background-color: #27ae60; /* Green background for checked attendance */
+  border-color: #27ae60; /* Green border for checked attendance */
+}
+
+.contact input[type="checkbox"]:checked::before {
+  content: 'P'; /* Checkmark character */
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  right: -5px;
+  transform: translate(-50%, -50%);
+}
+
+/* Style for the checkbox label text */
+.contact input[type="checkbox"] + label {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Optional: Style the checkbox container */
+.card-stu {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Optional: Style the roll number */
+.card-stu p {
+  font-weight: bold;
+  margin-bottom: 4px;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Correct import for React Router v6
-import Header from '../Header/Header';
-import CreateClass from '../CreateClass/CreateClass';
+import Header from '../../components/Header/Header';
+import CreateClass from '../../components/CreateClass/CreateClass';
 import { getAllClass, getById, enrollStudent } from '../../Services/operator';
 import './classcard.css';
 

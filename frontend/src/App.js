@@ -5,7 +5,7 @@ import FillProfile from './Pages/3.0.Profile/FillProfile';
 import MonthlyReport from './Pages/2.4.MonthlyReport/MonthlyReport';
 import PrivateRoute from './components/Private/PrivateRoute'; // Create a PrivateRoute component for authenticated routes
 import StudentBio from './Pages/2.1.StudentDetails/StudentDetails';
-import Classcard from './components/ClassCard/classcard';
+import Classcard from './Pages/2.2.ListGrade/classcard.js';
 import Attendance from './Pages/2.3.Attendance/ViewAttendance/Atteendance.js';
 import AttendPage from './Pages/2.3.Attendance/AttendPage';
 // import MarkAttendance from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance';
@@ -17,6 +17,9 @@ import Register from './Pages/1.Login&Reegister/Registration/Register.js';
 import Login from './Pages/1.Login&Reegister/Login/Login.js';
 import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js";
 import ClassInfoPage from './components/classInfo/ClassInfoPage.js';
+import AttendanceMarking from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance.js';
+import GradeAttendance from './Pages/2.3.Attendance/MarkAttendance/GradeforAttendance/GradeAttendance.js';
+import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/Design/AttendiesList.js';
 
 function App() {
 
@@ -40,13 +43,15 @@ function App() {
         <Route path="/mreport" element={<MonthlyReport />} />
         <Route path="/attend" element={<AttendPage />} />
         <Route path="/attend/view" element={<Attendance role="admin" />} />
-        <Route path="/attend/mark" element={<PrivateRoute role="admin" />} />  still woriking
+        <Route path="/attend/mark" element={<GradeAttendance />} />
+        <Route path="/attend/mark/:classsName" element={<AttendiesList />} />
         <Route path="/events" element={<Event role="admin" />} />
         <Route path="/auth/team" element={<Team />} />
         <Route path='/request' element={<RequestApproval />} />
 
 
         <Route path="/" element={<Login />} />
+
 
       </Routes>
     </Router>

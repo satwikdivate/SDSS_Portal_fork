@@ -37,6 +37,26 @@ exports.createClass=async(req,res)=>{
     }
 }
 
+exports.getClassById=async(req,res)=>{
+    try{
+
+        const {id}=req.body;
+
+        if(!id)
+            return res.status(400).json({
+        message:"Id missing at ClassBy ID "})
+
+        const result=await Class.findById({_id:id});
+
+        return res.status(200).json({
+            message:"Data Fetched succfully",
+            data:result
+        })
+
+    }catch(e){
+        console.log("ERROR AT GET CLASS BY ID",e)
+    }
+}
 
 
 exports.getStudentByClass=async(req,res)=>{
