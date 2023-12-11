@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header';
-import ReportList from './ReportList';
+import ReportList from '../../components/ReportList/ReportList';
 import ReportForm from './ReportForm';
 import "./Report.css"
+import { getAllMonthReports } from '../../Services/operator';
 
-const MonthlyReport = (props) => {
-  const [role, setRole] = useState('admin'); 
+const MonthlyReport = () => {
+  const role = localStorage.getItem('role');
   const [showAddForm, setShowAddForm] = useState(false);
-  const [reports, setReports] = useState([
-    { id: 1, monthName: 'January', file: 'report-january.pdf' },
-    { id: 2, monthName: 'February', file: 'report-february.pdf' },
-    { id: 3, monthName: 'March', file: 'report-march.pdf' },
-  ]);
+  const [reports, setReports] = useState([]);
 
+  const fetchReports = async () =>{
+      const response = await getAllMonthReports(); 
+      console.log(response)
+      setReports(response.data);
+  }
+  
   useEffect(() => {
-    setRole(props.role);
-    if (props.role === 'user') {
-      // Fetch and set the list of reports for regular users
-      // Example: fetchReportsForUser().then(reports => setReports(reports));
-    }
-  }, [props.role]);
+    fetchReports();
+  
+}, []);
 
   const toggleAddForm = () => {
     setShowAddForm(!showAddForm);
@@ -44,35 +44,33 @@ const MonthlyReport = (props) => {
 
   return (
     <>
-    <Header />
-    <div className="report-container">
+      <Header />
+      <div className="report-container">
 
-      <div className="main-content">
-        {role === 'admin' && (
-          <div className="report-content">
-            <h1>Monthly Report</h1>
-            <div className="report-nav">
-              <button className="add-report-btn" onClick={toggleAddForm}>
-              <i class='bx bxs-folder-plus' ></i>
-                Add Report
-              </button>
-              <button className="edit-report-btn"><i class='bx bxs-edit-alt' ></i>Edit Report</button>
-              <button className="delete-report-btn"><i class='bx bxs-folder-minus' ></i>Delete Report</button>
+        <div className="main-content">
+          {role === 'Admin' && (
+            <div className="report-content">
+              <h1>Monthly Report</h1>
+              <div className="report-nav">
+                <button className="add-report-btn" onClick={toggleAddForm}>
+                  <i class='bx bxs-folder-plus' ></i>
+                  Add Report
+                </button>
+              </div>
+              {showAddForm && (
+                <ReportForm onAddReport={handleAddReport} onCancel={toggleAddForm} />
+              )}
+              <ReportList reports={reports} role={role} onDeleteReport={handleDeleteReport} />
             </div>
-            {showAddForm && (
-              <ReportForm onAddReport={handleAddReport} onCancel={toggleAddForm} />
-            )}
-            <ReportList reports={reports} onDeleteReport={handleDeleteReport} />
-          </div>
-        )}
-        {role === 'user' && (
-          <div className="report-content">
-            <h1>मासिक आढावा</h1>
-            <ReportList reports={reports} role = {role} />
-          </div>
-        )}
+          )}
+          {role === 'Student' && (
+            <div className="report-content">
+              <h1>मासिक आढावा</h1>
+              <ReportList reports={reports} role={role} />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 };

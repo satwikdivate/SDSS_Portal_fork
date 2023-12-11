@@ -27,7 +27,7 @@
   align-items: center;
 }
 
-.name .swa-logo{
+.name .swa-logo {
   position: fixed;
   top: 150px;
   left: 260px;
@@ -39,11 +39,13 @@
   font-weight: 600;
   position: fixed;
 }
-.org-name{
+
+.org-name {
   top: 400px;
   left: 250px;
 }
-.org-quote{
+
+.org-quote {
   top: 450px;
   left: 140px;
 }
@@ -100,6 +102,7 @@
 .name p {
   text-align: center;
 }
+
 /* Add this CSS to your stylesheet */
 .registration-form {
   max-width: 600px;
@@ -110,7 +113,8 @@
 /* Add this CSS to your stylesheet */
 .checkbox-label {
   position: relative;
-  padding-left: 30px; /* Adjust the padding as needed */
+  padding-left: 30px;
+  /* Adjust the padding as needed */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -128,13 +132,17 @@
   left: 0;
   height: 20px;
   width: 20px;
-  background-color: #eee; /* Background color of the checkbox */
-  border: 1px solid #ccc; /* Border color of the checkbox */
-  border-radius: 3px; /* Adjust border-radius for rounded corners */
+  background-color: #eee;
+  /* Background color of the checkbox */
+  border: 1px solid #ccc;
+  /* Border color of the checkbox */
+  border-radius: 3px;
+  /* Adjust border-radius for rounded corners */
 }
 
-.checkbox-label input:checked + .checkmark {
-  background-color: #2196F3; /* Change background color when checked */
+.checkbox-label input:checked+.checkmark {
+  background-color: #2196F3;
+  /* Change background color when checked */
 }
 
 .checkmark:after {
@@ -143,13 +151,15 @@
   display: none;
 }
 
-.checkbox-label input:checked + .checkmark:after {
+.checkbox-label input:checked+.checkmark:after {
   display: block;
 }
 
 .checkbox-label .checkmark:after {
-  left: 5.6px; /* Adjust position as needed */
-  top: 0.8px; /* Adjust position as needed */
+  left: 5.6px;
+  /* Adjust position as needed */
+  top: 0.8px;
+  /* Adjust position as needed */
   width: 5px;
   height: 10px;
   border: solid white;
@@ -162,7 +172,8 @@
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px; /* Adjust the gap as needed */
+  gap: 16px;
+  /* Adjust the gap as needed */
 }
 
 .form-column {
@@ -178,58 +189,6 @@ button {
 }
 
 
-@media (max-width: 768px) {
-  * {
-    overflow-y: hidden;
-  }
-
-  .white {
-    width: 50%;
-  }
-
-  .orange {
-    width: 50%;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 50;
-    left: 20px;
-    width: 90%;
-  }
-
-  .login-cred {
-    margin-top: 1rem;
-  }
-
-  .login-cred input {
-    border-radius: 10px;
-  }
-
-  .login-submit {
-    padding: 1rem 1.5rem;
-  }
-
-  .login-img {
-    width: 100%;
-  }
-
-  .heading h1 {
-    font-size: 1.4rem;
-    text-align: center;
-  }
-
-  .name {
-    position: absolute;
-    top: 10px;
-    left: 200px;
-  }
-  .name p {
-    font-size: 0.78rem;
-    color: #000328;
-    text-align: left;
-  }
-}
 
 /* Styles for the registration form */
 .register {
@@ -286,4 +245,56 @@ button {
 
 .register-submit:hover {
   background-color: #000328c9;
+}
+
+
+@media (max-width: 768px) {
+
+  .white {
+    width: 50%;
+  }
+
+  .orange {
+    width: 50%;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 90%;
+  }
+
+  .login-cred {
+    margin-top: 1rem;
+  }
+
+  .login-cred input {
+    border-radius: 10px;
+  }
+
+  .login-submit {
+    padding: 1rem 1.5rem;
+  }
+
+  .login-img {
+    width: 100%;
+  }
+
+  .heading h1 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .name {
+    position: absolute;
+    top: 50px;
+    left: 371px;
+  }
+
+  .name p {
+    font-size: 0.78rem;
+    color: #000328;
+    text-align: left;
+  }
 }

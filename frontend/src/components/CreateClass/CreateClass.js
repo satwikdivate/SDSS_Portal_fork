@@ -14,11 +14,12 @@ const CreateClass = () => {
     const fetchTeachers = async () => {
       try {
         const result = await getAllOperators();
-        console.log(result.data.data);
-        setTeachers(result.data.data);
+        const filteredTeachers = result.data.data.filter((teacher) => !teacher.class);
+        setTeachers(filteredTeachers);
       } catch (e) {
         console.log(e);
-      } 
+      }
+    
     };
 
     fetchTeachers();
@@ -92,6 +93,7 @@ const CreateClass = () => {
               >
                 <option value="" disabled>Select a teacher</option>
                 {teachers.map((teacher) => (
+                  
                   <option key={teacher._id} value={teacher._id}>
                     {teacher.firstName + " " + teacher.lastName}
                   </option>

@@ -3,7 +3,6 @@ import './Body.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/footer/Footer';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const HomePage = () => {
   const cardImages = {
@@ -19,7 +18,6 @@ const HomePage = () => {
     'Suggestions': "https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-256.png",
   };
 
-  const {token,user}=useSelector((state)=>state.auth)
 
   return (
     <>
@@ -35,7 +33,14 @@ const HomePage = () => {
               {Object.keys(cardImages).map(cardTitle => (
                 <Link
                   key={cardTitle}
-                  to={cardTitle === 'Vardhak Deatils' ? '/student' : cardTitle === 'Grades' ? '/class/All' : cardTitle === 'Attendance' ? '/attend' : cardTitle === 'Monthly Report' ? '/mreport' : cardTitle === 'Management Team' ? '/auth/team' : cardTitle === 'Event' ? '/events' : '/home'}
+                  to={cardTitle === 'Vardhak Deatils' ? '/student' 
+                  : cardTitle === 'Grades' ? '/class/All' 
+                  : cardTitle === 'Attendance' ? '/attend' 
+                  : cardTitle === 'Monthly Report' ? '/mreport' 
+                  : cardTitle === 'Management Team' ? '/auth/team' 
+                  : cardTitle === 'Event' ? '/events' 
+                  : cardTitle === 'Exam Result' ? '/exam'
+                  : '/home'}
                 >
                   <li className="card">
                     <p style={{ marginTop: "15px" }}>{cardTitle}</p>

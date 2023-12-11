@@ -5,6 +5,7 @@ const ListCard = ({student}) => {
   return (
     <div className='student-list'>
       <div className="card-stu" key={student._id}>
+        <p>Roll No. : {student.id}</p>
         <h3>{student?.firstName + " " + student?.lastName}</h3>
         <div className='contact'>
         <p>Contact Number: {student?.contact}</p>

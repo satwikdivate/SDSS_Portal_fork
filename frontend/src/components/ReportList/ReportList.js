@@ -1,4 +1,5 @@
 import React from 'react';
+import "./ResportList.css"
 
 const ReportList = ({ reports, onDeleteReport, role }) => {
   const handleDownloadReport = (report) => {
@@ -12,18 +13,24 @@ const ReportList = ({ reports, onDeleteReport, role }) => {
     downloadLink.click();
   };
 
+  const handleDeleteReport = (reportId) => {
+    // Call the onDeleteReport function to delete the report with the given id.
+    onDeleteReport(reportId);
+  };
+
   return (
     <div className="report-list">
-      <h2>Reports List</h2>
       <ul>
         {reports.map((report) => (
           <li key={report.id}>
             <span>{report.monthName}</span>
-            {role === 'user' && 
-            (<button onClick={() => handleDownloadReport(report)}>Download</button>)}
-            {onDeleteReport && (
-              <button onClick={() => onDeleteReport(report.id)}>Delete</button>
-            )}
+            <div className='report-btns'>
+              <button onClick={() => handleDownloadReport(report)}>Download</button>
+              {role === 'Admin' && (
+              <button onClick={() => handleDeleteReport(report.id)}>Delete</button>
+              )}
+            </div>
+
           </li>
         ))}
       </ul>

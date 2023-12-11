@@ -1,6 +1,3 @@
-.student-list {
-  padding: 20px;
-}
 
 .card-stu {
   display: flex;
@@ -25,6 +22,7 @@
 .card-stu h3 {
   font-size: 18px;
   color: #333;
+
 }
 
 .card-stu p {

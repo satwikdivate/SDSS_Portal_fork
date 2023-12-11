@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../../Services/auth";
 import logo from "./../../../Assets/Swa-roopwardhinee_logo.png";
+import toast from 'react-hot-toast';
 
 const Register = () => {
 
@@ -14,7 +15,8 @@ const Register = () => {
     const toggleRegistrationForm = () => {
         setShowRegistration(!showRegistration);
         setofflogin(!displaylogin);
-        navigate("/login")
+        navigate("/login");
+        toast.error("failed")
     };
 
     const [text1, setText1] = useState("");
