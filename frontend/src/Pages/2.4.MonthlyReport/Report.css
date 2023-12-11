@@ -54,17 +54,6 @@
     padding: 0;
   }
   
-  .report-list  li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    margin: 15px 0;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
   /* ReportForm component styles */
   .report-form {
     margin-top: 20px;
@@ -74,11 +63,11 @@
     background-color: #f9f9f9;
   }
   
-  input[type="text"],
-  input[type="file"],
-  input[type="number"],
-  input[type="password"],
-  input[type="email"]   {
+  .report-form input[type="text"],
+  .report-form input[type="file"],
+  .report-form input[type="number"],
+  .report-form input[type="password"],
+  .report-form input[type="email"]   {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -98,6 +87,11 @@
   button:hover {
     opacity: 0.8;
   }
-  
-  /* Custom styles can be added here as needed */
-  
+
+  .report-btns{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    position: relative;
+    top: 5px;
+  }

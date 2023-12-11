@@ -6,7 +6,6 @@ import MonthlyReport from './Pages/2.4.MonthlyReport/MonthlyReport';
 import PrivateRoute from './components/Private/PrivateRoute'; // Create a PrivateRoute component for authenticated routes
 import StudentBio from './Pages/2.1.StudentDetails/StudentDetails';
 import Classcard from './components/ClassCard/classcard';
-import ListStudent from './components/Student List/StudentList';
 import Attendance from './Pages/2.3.Attendance/ViewAttendance/Atteendance.js';
 import AttendPage from './Pages/2.3.Attendance/AttendPage';
 // import MarkAttendance from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance';
@@ -27,28 +26,28 @@ function App() {
       <Routes>
         {/* <Route path='/' element={<CentralizedLoader />} /> */}
         <Route path="/login" element={
-        <OpenRoute>
-        <Login />
+          <OpenRoute>
+            <Login />
           </OpenRoute>
         } />
-    
-            <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/student" element={<StudentBio />} />
-            <Route path="/class/All" element={<Classcard />} />
-            <Route path='/class/:classsName' element={<ClassInfoPage />} />
-            <Route path="/u0/updateprofile" element={<FillProfile />} />
-            <Route path="/mreport" element={<MonthlyReport role="admin" />} />
-            <Route path="/attend" element={<AttendPage role="user" />} />
-            <Route path="/attend/view" element={<Attendance role="admin" />} />
-            <Route path="/attend/mark" element={<PrivateRoute role="admin" />} />  still woriking
-            <Route path="/events" element={<Event role="admin" />} />
-            <Route path="/auth/team" element={<Team />} />
-            <Route path='/request' element={<RequestApproval />} />
-       
-       
-          <Route path="/" element={<Login/>} />
-      
+
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/student" element={<StudentBio />} />
+        <Route path="/class/All" element={<Classcard />} />
+        <Route path='/class/:classsName' element={<ClassInfoPage />} />
+        <Route path="/u0/updateprofile" element={<FillProfile />} />
+        <Route path="/mreport" element={<MonthlyReport />} />
+        <Route path="/attend" element={<AttendPage />} />
+        <Route path="/attend/view" element={<Attendance role="admin" />} />
+        <Route path="/attend/mark" element={<PrivateRoute role="admin" />} />  still woriking
+        <Route path="/events" element={<Event role="admin" />} />
+        <Route path="/auth/team" element={<Team />} />
+        <Route path='/request' element={<RequestApproval />} />
+
+
+        <Route path="/" element={<Login />} />
+
       </Routes>
     </Router>
   );

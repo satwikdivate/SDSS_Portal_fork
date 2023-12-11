@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Event.css';
 import Header from '../../components/Header/Header';
+import { createEvent } from '../../Services/operator';
 
 const Event = ({ role }) => {
   const [events, setEvents] = useState([]);
@@ -8,7 +9,7 @@ const Event = ({ role }) => {
   const [eventDate, setEventDate] = useState('');
   const [eventDescription, setEventDescription] = useState('');
 
-  const addEvent = () => {
+  const addEvent = async() => {
     if (eventName && eventDate && eventDescription) {
       const newEvent = {
         name: eventName,
@@ -16,6 +17,11 @@ const Event = ({ role }) => {
         description: eventDescription,
       };
       setEvents([...events, newEvent]);
+      console.log(eventDate);
+      console.log(eventDescription);
+      console.log(eventName)
+
+      const result =await createEvent(eventName,eventDescription,eventDate)
       setEventName('');
       setEventDate('');
       setEventDescription('');

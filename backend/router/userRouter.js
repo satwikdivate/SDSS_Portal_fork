@@ -3,8 +3,9 @@ const { signUp, login, getStudent, getAllStudents, getAllOperators, getUserById 
 const { auth, isOperator, isAdmin, isAuthenticate } = require('../controller/auth');
 const { markAttendece, enrollStudent} = require('../controller/attendence');
 const { createClass, getStudentByClass, getAllClass, deleteClass } = require('../controller/class');
-const { createEvent, getAllEvents } = require('../controller/events');
+const { createEvent, getAllEvents, deleteCloudEvent } = require('../controller/events');
 const { aproveRequest, getAllRequest, getPendingRequest, getApproveRequest } = require('../controller/requestAccept');
+const { createReport, deleteEvent, updateReport } = require('../controller/reports');
 
 const router=express.Router();
 
@@ -31,9 +32,15 @@ router.post("/approveRequest",auth,isAdmin,aproveRequest)
 router.post("/getAllRequest",auth,isAdmin,getAllRequest)
 router.post("/getPendingRequest",auth,isAdmin,getPendingRequest);
 router.post("/getApproveRequest",auth,isAdmin,getApproveRequest);
+router.post("/createReport",auth,isAuthenticate,createReport)
+router.post("/deleteReport",auth,isAuthenticate,deleteCloudEvent)
+
 
 router.post("/createEvent",auth,isAuthenticate,createEvent)
-router.post("/getAllReportsRequest",auth,isAdmin,getAllEvents)
+router.post("/updteEvent",auth,isAuthenticate,updateReport)
+router.post("/deleteEvent",auth,isAuthenticate,deleteEvent)
+
+router.post("/getAllReportsRequest",auth,getAllEvents)
 
 router.post("/cloudUpload",auth,isAuthenticate,createEvent);
 

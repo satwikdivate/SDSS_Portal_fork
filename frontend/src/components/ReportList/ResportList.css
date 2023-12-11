@@ -1,0 +1,82 @@
+/* MonthlyReport.css */
+
+.report-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-content {
+  width: 80%;
+  max-width: 1200px;
+}
+
+.report-content {
+  background-color: #fff;
+  border-radius: 8px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.report-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.add-report-btn,
+.delete-report-btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.add-report-btn i,
+.delete-report-btn i {
+  margin-right: 5px;
+}
+
+.delete-report-btn {
+  background-color: #ff3d00;
+}
+
+.report-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.report-list li {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    border: 1px solid #ddd;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-list li span {
+  flex: 1;
+  font-size: 20px;
+  
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .main-content {
+    width: 100%;
+  }
+}

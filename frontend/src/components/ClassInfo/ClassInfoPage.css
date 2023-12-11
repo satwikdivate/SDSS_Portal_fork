@@ -1,7 +1,6 @@
 /* classInfoPage.css */
 
 .class-info-container {
-    /* max-width: 600px; */
     margin: 0 auto;
     padding: 20px;
     text-align: center;
@@ -12,7 +11,4 @@
     padding: 0;
   }
   
-  .student-list li {
-    margin-bottom: 8px;
-  }
   
