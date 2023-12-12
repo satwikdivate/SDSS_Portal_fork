@@ -330,7 +330,7 @@ export async function updateEvent(id, eventName, eventDate, eventDescrition) {
 export async function deleteEvent(id) {
     try {
 
-        const token = localStorage.getItem('token');
+        // const token = localStorage.getItem('token');
 
         const result = await apiConnector("POST", operator.DELETE_EVENT, {
             id

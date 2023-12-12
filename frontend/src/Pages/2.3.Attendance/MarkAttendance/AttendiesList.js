@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { studentByClass } from '../../../../Services/operator'; // Import your service function
-import Header from '../../../../components/Header/Header';
-import '../../../../components/classInfo/ClassInfoPage.css'
+import { studentByClass } from '../../../Services/operator'; // Import your service function
+import Header from '../../../components/Header/Header';
+import '../../../components/classInfo/ClassInfoPage.css'
 
 const AttendiesList = () => {
     const { classsName } = useParams();

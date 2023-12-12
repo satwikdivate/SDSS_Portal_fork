@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { getUser } from '../../Services/auth';
 import { useDispatch } from 'react-redux';
 import "./StudentDetails.css";
@@ -12,30 +12,18 @@ function StudentBio() {
   const dispatch = useDispatch();
 
 
-  const getData = async () => {
-
+  const getData = useCallback(async () => {
     try {
-      const token = localStorage.getItem("token");
-      // both call can give data  anyone can be used
-      // const result=await apiConnector("POST",user.GET_STUDENT,{token});
-
       const result1 = await dispatch(getUser());
-
-      console.log(result1.firstName)
-
-      // data set to useState
       setdata(result1);
-      // setUserData(result1)
-
-
     } catch (e) {
-      console.log("ERROR AT FRONTED:", e)
+      console.log("ERROR AT FRONTEND:", e);
     }
-  }
+  }, [dispatch]); // Add dispatch to the dependency array
 
   useEffect(() => {
-    getData();
-  }, [])
+    getData(); // Call getData inside the useEffect
+  }, [getData]);
 
   console.log("Data:", data
   );

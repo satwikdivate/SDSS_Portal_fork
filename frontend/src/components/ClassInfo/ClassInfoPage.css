@@ -1,18 +1,13 @@
-/* classInfoPage.css */
-
 .class-info-container {
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .student-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  
-  /* Card.css */
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.student-list {
+  list-style: none;
+  padding: 0;
+}
 
 .contact input[type="checkbox"] {
   appearance: none;
@@ -22,20 +17,21 @@
   width: 24px;
   height: 24px;
   background-color: #fff;
-  border: 2px solid #27ae60; /* Green border for attendance */
+  border: 2px solid #27ae65;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
 }
 
 .contact input[type="checkbox"]:checked {
-  
-  background-color: #27ae60; /* Green background for checked attendance */
-  border-color: #27ae60; /* Green border for checked attendance */
+
+  background-color: #27ae60;
+  border-color: #27ae60;
 }
 
 .contact input[type="checkbox"]:checked::before {
-  content: 'P'; /* Checkmark character */
+  content: 'P';
+  /* Checkmark character */
   font-size: 16px;
   color: #fff;
   font-weight: 600;
@@ -45,7 +41,7 @@
 }
 
 /* Style for the checkbox label text */
-.contact input[type="checkbox"] + label {
+.contact input[type="checkbox"]+label {
   margin-left: 8px;
   font-size: 16px;
   color: #333;
