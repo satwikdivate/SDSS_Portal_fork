@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import Header from '../../../../components/Header/Header';
 import { getAllClass, getById, enrollStudent } from '../../../../Services/operator';
-import '../../../2.2.ListGrade/classcard.css';
-
+// import '../../../2.2.ListGrade/classcard.css';
+import '../../../../components/classInfo/ClassInfoPage.css'
 
 
 const Classcard = () => {
