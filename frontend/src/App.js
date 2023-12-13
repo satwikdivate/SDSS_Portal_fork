@@ -19,7 +19,7 @@ import LandingRoute from "./components/OpenRoute/LandingRoute.js";
 import ClassInfoPage from './components/classInfo/ClassInfoPage.js';
 import AttendanceMarking from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance.js';
 import GradeAttendance from './Pages/2.3.Attendance/MarkAttendance/GradeforAttendance/GradeAttendance.js';
-import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/Design/AttendiesList.js';
+import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/AttendiesList.js';
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
         <Route path="/u0/updateprofile" element={<FillProfile />} />
         <Route path="/mreport" element={<MonthlyReport />} />
         <Route path="/attend" element={<AttendPage />} />
-        <Route path="/attend/view" element={<Attendance role="admin" />} />
+        <Route path="/attend/view" element={<Attendance />} />
         <Route path="/attend/mark" element={<GradeAttendance />} />
         <Route path="/attend/mark/:classsName" element={<AttendiesList />} />
         <Route path="/events" element={<Event role="admin" />} />

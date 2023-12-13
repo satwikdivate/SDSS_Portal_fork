@@ -16,7 +16,7 @@ export async function getAllClass() {
 }
 
 
-export async function markAttendence(attendenceId, userId, data, status) {
+export async function markAttendence(attendenceId, userId, data, status) { //data is Current Date
 
     try {
 
