@@ -43,7 +43,6 @@ const Classcard = () => {
     try {
       console.log('Enrolling in class:', classID);
       await enrollStudent(userID, classID);
-      console.log('Enrollment successful!');
       setEnrolledClasses((prevEnrolledClasses) => [...prevEnrolledClasses, classID]);
     } catch (e) {
       console.error('Failed to enroll:', e.message);
@@ -73,7 +72,6 @@ const Classcard = () => {
             <div key={classInfo._id} className='card-grade'>
               <h2>Standard: {classInfo.classsName}th</h2>
               <p>Class Teacher: {teacher?.firstName} {teacher?.lastName}</p>
-              {console.log(isAdmin)}
               {!isAdmin && (
               <button
                 className='enroll-class'

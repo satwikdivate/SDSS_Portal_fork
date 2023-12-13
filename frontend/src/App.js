@@ -24,7 +24,6 @@ import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/AttendiesList.j
 function App() {
 
   const role=localStorage.getItem("role")?localStorage.getItem("role"):null
-  console.log("ROle at app",role)
   return (
     <Router>
       <Routes>
