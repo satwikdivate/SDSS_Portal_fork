@@ -92,6 +92,34 @@ exports.markAttendece = async (req, res) => {
 //     }
 // }
 
+exports.getStudentIndivualAttendence=async(req,res)=>{
+
+  try{
+
+    const {attendeceId}=req.body;
+    if(!attendeceId)
+      return res.status(400).json({
+    message:"attendece Id not passed"});
+
+    const result =await Attendance.findById({_id:attendeceId});
+
+    if(result)
+        return res.status(200).json({
+                  message:"Attendece get suceefully",
+                  sucess:true,
+                  data:result
+              })
+      else
+      return res.status(400).json({
+        message:"something wrong at attendece get"});
+    
+
+  }catch(e){
+    console.log("ERROR AT Get student attendence")
+  }
+}
+
+
 exports.enrollStudent = async (req, res) => {
   try {
     const { userId, classId } = req.body;

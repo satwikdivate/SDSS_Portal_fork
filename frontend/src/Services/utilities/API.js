@@ -33,5 +33,6 @@ export const operator={
     CREATE_EVENT:BASE_URL+"/user/enrollStudent",
     UPDATE_EVENT:BASE_URL+"/user/updteEvent",
     DELETE_EVENT:BASE_URL+"/user/deleteEvent",
-    GET_CLASS_BY_ID:BASE_URL+"/user/classById"
+    GET_CLASS_BY_ID:BASE_URL+"/user/classById",
+    GET_STUDENT_INDIVUAL_ATTENDENCE:BASE_URL+"user/getStudentAttendece"
 }

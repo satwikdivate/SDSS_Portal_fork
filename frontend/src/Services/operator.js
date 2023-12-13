@@ -15,6 +15,18 @@ export async function getAllClass() {
 
 }
 
+export async function getIndivaulAttendence(attendeceId){
+        try{
+            const token = localStorage.getItem('token');
+            const result=await apiConnector("POST",operator.GET_STUDENT_INDIVUAL_ATTENDENCE,{
+                attendeceId,token
+            });
+
+            return result.data;
+        }catch(e){
+            console.log("ERROR AT GET INDIVUAL STUDNET ATTENDECE")
+        }
+}
 
 export async function markAttendence(allStudents, userId, data) {
 
