@@ -6,16 +6,15 @@ const wbm = require("wbm");
 exports.markAttendece = async (req, res) => {
   try {
     console.log("Hello");
-    const { allStudents,userId,data } = req.body;
+    const { allStudents, userId, data } = req.body;
 
-  console.log(allStudents)
-    for (var i in allStudents)
-    {
+    console.log(allStudents)
+    for (var i in allStudents) {
       console.log(allStudents[i].status, "    ", allStudents[i].attendenceId);
 
-      const  attendenceId =allStudents[i].attendenceId
-       const  status  = allStudents[i].status;
-        //   console.log(req.body);
+      const attendenceId = allStudents[i].attendanceId
+      const status = allStudents[i].status;
+      // console.log(req.body);
       if (!attendenceId || !userId || !data || !status)
         return res.status.json({
           message: "Something missing at markAttendence",
@@ -29,22 +28,22 @@ exports.markAttendece = async (req, res) => {
 
       const result = await Attendance.findById({ _id: attendenceId }).then(
         (addEntry) => {
-            console.log("Add entry ",addEntry)
+          console.log("Add entry ", addEntry)
           if (addEntry) {
             addEntry.attendance.push(newEntry);
             return addEntry.save();
           }
         }
 
-        );
-    //    result.push(result);
-    console.log("Result :"  ,result)
+      );
+      //    result.push(result);
+      console.log("Result :", result)
     }
 
     return res.status(200).json({
       message: "Attendece mark suceefully",
       sucess: true,
-      
+
     });
   } catch (e) {
     console.log("ERROR AT MARK ATTENDECE:", e.message);

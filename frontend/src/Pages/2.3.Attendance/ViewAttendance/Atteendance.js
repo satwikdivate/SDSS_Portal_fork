@@ -1,55 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../../components/Header/Header';
 import { PieChart, Pie, Cell } from 'recharts';
 import "./Attend.css";
 
-const Attendance = (role) => {
-  const dateAndAttendanceData = [
-    { date: '2023-10-01', attendance: 'Present' },
-    { date: '2023-10-02', attendance: 'Absent' },
-    { date: '2023-10-03', attendance: 'Present' },
-    { date: '2023-11-01', attendance: 'Present' },
-    { date: '2023-11-02', attendance: 'Present' },
-    { date: '2023-11-03', attendance: 'Present' },
-    { date: '2023-11-05', attendance: 'Present' },
-    { date: '2023-01-01', attendance: 'Present' },
-    { date: '2023-01-02', attendance: 'Absent' },
-    { date: '2023-02-01', attendance: 'Present' },
-    { date: '2023-02-02', attendance: 'Absent' },
-    { date: '2023-03-01', attendance: 'Present' },
-    { date: '2023-03-02', attendance: 'Absent' },
-    { date: '2023-04-01', attendance: 'Present' },
-    { date: '2023-04-02', attendance: 'Present' },
-    { date: '2023-05-01', attendance: 'Present' },
-    { date: '2023-05-02', attendance: 'Present' },
-    { date: '2023-06-01', attendance: 'Present' },
-    { date: '2023-06-02', attendance: 'Present' },
-    { date: '2023-07-01', attendance: 'Present' },
-    { date: '2023-07-02', attendance: 'Absent' },
-    { date: '2023-08-01', attendance: 'Present' },
-    { date: '2023-08-02', attendance: 'Absent' },
-    { date: '2023-09-01', attendance: 'Present' },
-    { date: '2023-09-02', attendance: 'Present' },
-    { date: '2023-10-01', attendance: 'Present' },
-    { date: '2023-10-02', attendance: 'Present' },
-    { date: '2023-11-01', attendance: 'Present' },
-    { date: '2023-11-02', attendance: 'Present' },
-    { date: '2023-12-01', attendance: 'Present' },
-    { date: '2023-12-02', attendance: 'Absent' },
-    { date: '2027-09-01', attendance: 'Present' },
-    { date: '2026-09-02', attendance: 'Present' },
-    { date: '2025-10-01', attendance: 'Present' },
-    { date: '2025-10-02', attendance: 'Present' },
-    { date: '2025-11-01', attendance: 'Present' },
-    { date: '2026-11-02', attendance: 'Present' },
-    { date: '2025-12-01', attendance: 'Present' },
-    { date: '2027-12-02', attendance: 'Absent' },
-  ];
+const Attendance = () => {
+
+  const attendanceData = [];
+  const user = localStorage.getItem('user');
+
 
   const uniqueDates = new Set();
   const uniqueData = [];
 
-  dateAndAttendanceData.forEach((entry) => {
+  attendanceData.forEach((entry) => {
     // Check if the date is not in the uniqueDates set
     if (!uniqueDates.has(entry.date)) {
       // Add the date to the uniqueDates set and push the entry to uniqueData
@@ -97,7 +60,7 @@ const Attendance = (role) => {
   });
 
   // Calculate the total entries for overall percentage
-  const totalEntries = dateAndAttendanceData.length;
+  const totalEntries = attendanceData.length;
 
   // Calculate the total present and absent percentages
   const presentPercentage = (presentCount / totalEntries) * 100;
@@ -189,12 +152,6 @@ const Attendance = (role) => {
         </div>
 
       </div>
-      {role === 'admin' &&
-        <div className='attendance-admin'>
-
-
-        </div>
-      }
 
       {/* <Footer /> */}
     </>

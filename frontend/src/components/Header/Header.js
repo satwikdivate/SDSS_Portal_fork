@@ -11,23 +11,23 @@ import { getAllOperators } from '../../Services/operator';
 const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const[loading,setloading]=useState(false);
-const mydispatch=useDispatch();
-  const {user}=useSelector((state)=>state.auth)
+  const [loading, setloading] = useState(false);
+  const mydispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth)
   const handle = () => {
     navigate("/u0/updateprofile");
     setIsMenuOpen(false); // Close the menu when a link is clicked
   };
 
-  const handle1 = async() => {
-   try{
-    setloading(false);
-     const result=await getAllOperators()
-     console.log(result.data.data);
-     setloading(true);
-   }catch(e){
-    console.log(e);
-   }
+  const handle1 = async () => {
+    try {
+      setloading(false);
+      const result = await getAllOperators()
+      console.log(result.data.data);
+      setloading(true);
+    } catch (e) {
+      console.log(e);
+    }
   };
   const headerHandle = () => {
     navigate("/home");
@@ -38,13 +38,13 @@ const mydispatch=useDispatch();
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const logout=(e)=>{
+  const logout = (e) => {
     e.preventDefault();
     dispatch(logoutUser(navigate));
   }
 
 
-  
+
   const [data, setdata] = useState();
   const dispatch = useDispatch();
 
@@ -58,7 +58,6 @@ const mydispatch=useDispatch();
 
       const result1 = await dispatch(getUser());
 
-      console.log(result1?.firstName)
 
       // data set to useState
       setdata(result1);

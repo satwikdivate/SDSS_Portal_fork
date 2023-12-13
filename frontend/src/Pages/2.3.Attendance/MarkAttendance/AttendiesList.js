@@ -1,41 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { studentByClass } from '../../../../Services/operator'; // Import your service function
-import Header from '../../../../components/Header/Header';
-import '../../../../components/classInfo/ClassInfoPage.css'
+import { studentByClass, markAttendence } from '../../../Services/operator'; // Import your service function
+import Header from '../../../components/Header/Header';
+import '../../../components/classInfo/ClassInfoPage.css'
 
 const AttendiesList = () => {
     const { classsName } = useParams();
     const [students, setStudents] = useState([]);
     const [ClassTeacher, setTeacher] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-    const [attendance, setAttendance] = useState({});
+    const [attendance, setAttendance] = useState([]);
 
     const handleToggleAttendance = (studentId) => {
         setAttendance((prevAttendance) => ({
             ...prevAttendance,
-            [studentId]: !prevAttendance[studentId] || false,
+            [studentId]: !prevAttendance[studentId] || !prevAttendance[studentId],
         }));
     };
 
+
+
     const handleSubmit = async () => {
         try {
-            // Convert attendance state to an array of objects for backend
-            const attendanceData = Object.keys(attendance).map((studentId) => ({
-                studentId,
-                status: attendance[studentId] ? 'Present' : 'Absent',
-            }));
+            const currentDate = new Date();
+            const day = currentDate.getDate().toString().padStart(2, '0');
+            const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            const year = currentDate.getFullYear();
 
-            console.log(attendanceData)
+            const formattedDate = `${day}-${month}-${year}`;
 
-            // Make API call to mark attendance
-            // await markAttendance(classsName, attendanceData);
+            const allStudentAttendance = {};
+
+            students.forEach((student) => {
+                const status = attendance[student._id] ? 'Present' : 'Absent';
+                const attendanceId = student.attendance
+
+                allStudentAttendance[student._id] = {
+                    status,
+                    attendanceId,
+                };
+            });
+
+            const userID = localStorage.getItem('loggedInId');
+
+            await markAttendence(allStudentAttendance, userID, formattedDate);
 
             console.log('Attendance marked successfully');
         } catch (error) {
             console.error('Error marking attendance:', error);
         }
     };
+
+
 
     const filteredStudents = students.filter((student) =>
         student.firstName.toLowerCase().includes(searchTerm.toLowerCase())

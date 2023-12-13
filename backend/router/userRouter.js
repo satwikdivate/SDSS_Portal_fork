@@ -20,9 +20,8 @@ router.post("/getAllStudents",auth,isAuthenticate,getAllStudents)
 router.post("/getAllOperators",auth,isAuthenticate,getAllOperators)
 
 // ROutes for operator and admin
-router.post("/markAttendece",auth,isAuthenticate ,markAttendece)
-router.post("/createClass",auth,isAuthenticate,createClass)
-router.post("/getStudentAttendece",auth,getStudentIndivualAttendence)
+router.post("/markAttendece",auth,isAuthenticate,isAdmin,markAttendece)
+router.post("/createClass",auth,isAuthenticate,isAdmin,createClass)
 
 // isStudent not added because Operator also a studnet
 router.post("/enrollStudent",auth,enrollStudent)

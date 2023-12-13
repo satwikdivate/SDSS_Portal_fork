@@ -28,13 +28,13 @@ export async function getIndivaulAttendence(attendeceId){
         }
 }
 
-export async function markAttendence(allStudents, userId, data) {
 
+export async function markAttendence(allStudents, userId, data) {
     try {
 
         const token = localStorage.getItem('token');
         const result = await apiConnector("POST", operator.MARK_ATTENDANCE, {
-           allStudents, userId, data, token
+            allStudents, userId, data, token
         })
 
         if (result.status === 200) {
@@ -342,7 +342,7 @@ export async function updateEvent(id, eventName, eventDate, eventDescrition) {
 export async function deleteEvent(id) {
     try {
 
-        const token = localStorage.getItem('token');
+        // const token = localStorage.getItem('token');
 
         const result = await apiConnector("POST", operator.DELETE_EVENT, {
             id
