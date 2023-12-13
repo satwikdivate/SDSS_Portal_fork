@@ -16,13 +16,13 @@ export async function getAllClass() {
 }
 
 
-export async function markAttendence(attendenceId, userId, data, status) {
+export async function markAttendence(allStudents, userId, data) {
 
     try {
 
         const token = localStorage.getItem('token');
         const result = await apiConnector("POST", operator.MARK_ATTENDANCE, {
-            attendenceId, userId, data, status, token
+           allStudents, userId, data, token
         })
 
         if (result.status === 200) {
