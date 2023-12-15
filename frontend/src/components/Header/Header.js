@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { getUser } from '../../Services/auth';
 import { getAllOperators } from '../../Services/operator';
+import Loading from '../SmallLoader/Loader';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -72,7 +73,9 @@ const Header = () => {
   useEffect(() => {
     getData();
   }, [])
-
+  if (!data || data.length === 0) {
+    return <Loading />;
+  }
 
 
   return (

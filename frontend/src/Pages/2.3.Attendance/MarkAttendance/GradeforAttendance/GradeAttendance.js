@@ -11,7 +11,6 @@ const Classcard = () => {
   const [teachers, setTeachers] = useState([]);
   const [isAdmin, setAdmin] = useState(false);
   const [enrolledClasses, setEnrolledClasses] = useState([]);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const userID = localStorage.getItem('loggedInId');
   const role = localStorage.getItem('role');
@@ -29,9 +28,7 @@ const Classcard = () => {
         setAdmin(role === 'Admin');
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
   
     fetchUserData();
@@ -53,9 +50,6 @@ const Classcard = () => {
     navigate(`/attend/mark/${className}`);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './../2.0.Landing/Body.css';
+import './../2.0.Home/Body.css';
 import Header from '../../components/Header/Header';
 import { Link } from 'react-router-dom';
 

@@ -3,6 +3,7 @@ import { getUser } from '../../Services/auth';
 import { useDispatch } from 'react-redux';
 import "./StudentDetails.css";
 import Header from '../../components/Header/Header';
+import Loading from '../../components/SmallLoader/Loader';
 
 
 function StudentBio() {
@@ -25,8 +26,10 @@ function StudentBio() {
     getData(); // Call getData inside the useEffect
   }, [getData]);
 
-  console.log("Data:", data
-  );
+  
+  if (!data || data.length === 0) {
+    return <Loading />;
+  }
 
   const personalProfile = data?.personalProfile
   console.log(personalProfile)

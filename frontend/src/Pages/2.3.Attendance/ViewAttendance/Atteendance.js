@@ -1,49 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Header from '../../../components/Header/Header';
+import { getIndivaulAttendence, getById } from './../../../Services/operator';
 import { PieChart, Pie, Cell } from 'recharts';
-import "./Attend.css";
+import './Attend.css';
+import Loading from '../../../components/SmallLoader/Loader';
 
 const Attendance = () => {
+  const [attendanceData, setAttendanceData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const userID = localStorage.getItem('loggedInId');
 
-  const attendanceData = [];
-  const user = localStorage.getItem('user');
-
-
-  const uniqueDates = new Set();
-  const uniqueData = [];
-
-  attendanceData.forEach((entry) => {
-    // Check if the date is not in the uniqueDates set
-    if (!uniqueDates.has(entry.date)) {
-      // Add the date to the uniqueDates set and push the entry to uniqueData
-      uniqueDates.add(entry.date);
-      uniqueData.push(entry);
+  const fetchData = useCallback(async () => {
+    try {
+      const user = await getById(userID);
+      const attendanceId = user.data.attendance;
+      const result1 = await getIndivaulAttendence(attendanceId);
+      setAttendanceData(result1.attendance.slice(1));
+      // console.log(result1.attendance.slice(1))
+    } catch (error) {
+      console.error('Error fetching attendance data:', error);
+      setError(true);
+    } finally {
+      setLoading(false);
     }
-  });
+  }, [userID]);
 
-  uniqueData.sort(
+  useEffect(() => {
+    const fetchDataAndSetState = async () => {
+      await fetchData();
+    };
 
-    (a, b) => new Date(a.date) - new Date(b.date)
-  )
-  // Initialize counters
+    fetchDataAndSetState();
+  }, [fetchData]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>Error fetching data</div>;
+  }
+
+
+  // Check if uniqueData is defined before sorting
+  attendanceData && attendanceData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  attendanceData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // console.log(attendanceData)
+
   let presentCount = 0;
   let absentCount = 0;
-
-  // Initialize an object to store month-wise data
   const monthWiseSummary = {};
 
-  uniqueData.forEach((entry) => {
-    if (entry.attendance === 'Present') {
+  attendanceData.forEach((entry) => {
+    if (entry.status === 'Present') {
       presentCount++;
-    } else if (entry.attendance === 'Absent') {
+    } else if (entry.status === 'Absent') {
       absentCount++;
     }
 
-    // Extract the month from the date
-    const [year, month] = entry.date.split('-');
+    // console.log(absentCount);
+
+    const [day, month, year] = entry.data.split('-');
+    console.log(day)
     const monthKey = `${year}-${month}`;
 
-    // Initialize the month-wise data if it doesn't exist
     if (!monthWiseSummary[monthKey]) {
       monthWiseSummary[monthKey] = {
         presentCount: 0,
@@ -51,22 +74,18 @@ const Attendance = () => {
       };
     }
 
-    // Update the month-wise data
-    if (entry.attendance === 'Present') {
+    if (entry.status === 'Present') {
       monthWiseSummary[monthKey].presentCount++;
-    } else if (entry.attendance === 'Absent') {
+    } else if (entry.status === 'Absent') {
       monthWiseSummary[monthKey].absentCount++;
     }
   });
 
-  // Calculate the total entries for overall percentage
-  const totalEntries = attendanceData.length;
 
-  // Calculate the total present and absent percentages
+  const totalEntries = attendanceData.length;
   const presentPercentage = (presentCount / totalEntries) * 100;
   const absentPercentage = (absentCount / totalEntries) * 100;
 
-  // Create a single data structure for the pie chart
   const combinedData = [
     { name: 'Present', value: presentPercentage },
     { name: 'Absent', value: absentPercentage },
@@ -87,24 +106,22 @@ const Attendance = () => {
                 <PieChart width={500} height={500}>
                   <Pie
                     data={combinedData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
+                    dataKey='value'
+                    nameKey='name'
+                    cx='50%'
+                    cy='50%'
                     outerRadius={250}
-                    fill="#8884d8"
-                  >
+                    fill='#8884d8'>
                     {combinedData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={colors[index]} />
                     ))}
                   </Pie>
-
                 </PieChart>
                 <p>Total Attendance Percentage: {presentPercentage.toFixed(3)}%</p>
               </div>
               <div className='attendance-summary'>
                 <h3>Month-wise Summary</h3>
-                <div className="summary-table-container">
+                <div className='summary-table-container'>
                   <table>
                     <thead>
                       <tr>
@@ -118,7 +135,7 @@ const Attendance = () => {
                         const monthName = new Date(2023, parseInt(month.split('-')[1]) - 1, 1).toLocaleString('en-US', { month: 'long' });
                         return (
                           <tr key={month}>
-                            <td>{monthName + " " + month.split('-')[0]}</td>
+                            <td>{monthName + ' ' + month.split('-')[0]}</td>
                             <td>{summary.presentCount}</td>
                             <td>{summary.absentCount}</td>
                           </tr>
@@ -139,23 +156,20 @@ const Attendance = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {uniqueData.map((row, index) => (
-                    <tr key={`row-${index}`}>
-                      <td>{row.date}</td>
-                      <td>{row.attendance}</td>
+                  {attendanceData.map((entry) => (
+                    <tr key={entry._id}>
+                      <td>{entry.data}</td>
+                      <td>{entry.status}</td>
                     </tr>
-                  ))}
+                  ))} 
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-
       </div>
-
-      {/* <Footer /> */}
     </>
   );
-}
+};
 
 export default Attendance;

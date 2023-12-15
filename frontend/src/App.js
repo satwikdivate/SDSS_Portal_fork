@@ -1,29 +1,37 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Pages/2.0.Landing/Home';
-import FillProfile from './Pages/3.0.Profile/FillProfile';
-import MonthlyReport from './Pages/2.4.MonthlyReport/MonthlyReport';
-import StudentBio from './Pages/2.1.StudentDetails/StudentDetails';
-import Classcard from './Pages/2.2.ListGrade/classcard.js';
-import Attendance from './Pages/2.3.Attendance/ViewAttendance/Atteendance.js';
-import AttendPage from './Pages/2.3.Attendance/AttendPage';
-// import MarkAttendance from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance';
-import Event from './Pages/2.7.BigEvent/Event.js';
-import Team from './Pages/2.9.ManagementTeam/Team.js';
-// import CentralizedLoader from './components/Loader/Loader.js';
-import OpenRoute from "./components/OpenRoute/OpenRoute.js";
+
+
+//Login
 import Register from "./Pages/1.Login&Reegister/Registration/Register.js";
 import Login from "./Pages/1.Login&Reegister/Login/Login.js";
-import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js";
-import LandingRoute from "./components/OpenRoute/LandingRoute.js";
-import ClassInfoPage from './components/classInfo/ClassInfoPage.js';
-import AttendanceMarking from './Pages/2.3.Attendance/MarkAttendance/MarkAttendance.js';
-import GradeAttendance from './Pages/2.3.Attendance/MarkAttendance/GradeforAttendance/GradeAttendance.js';
-import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/AttendiesList.js';
+import OpenRoute from "./components/OpenRoute/OpenRoute.js"; // Check : Authenticate Useer
+
+
+import Home from './Pages/2.0.Home/Home'; // Homee Page :  All Features 
+import StudentBio from './Pages/2.1.StudentDetails/StudentDetails';// Student : Details Indivituals
+import Classcard from './Pages/2.2.ListGrade/classcard.js'; // Classes : 5th to 16th
+import ClassInfoPage from './components/classInfo/ClassInfoPage.js'; // Classes : Indivitual Information 
+import AttendPage from './Pages/2.3.Attendance/AttendPage'; // Attendance : View / Mark
+import Attendance from './Pages/2.3.Attendance/ViewAttendance/Atteendance.js'; // Atteendance : View Indivitual Attendance 
+import GradeAttendance from './Pages/2.3.Attendance/MarkAttendance/GradeforAttendance/GradeAttendance.js'; // Attendance : Classes
+import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/AttendiesList.js'; // Attendance : StudentList
+import MonthlyReport from './Pages/2.4.MonthlyReport/MonthlyReport'; // Report Monthly
+import Event from './Pages/2.7.BigEvent/Event.js'; // Events : Upcomming Events
+import Team from './Pages/2.9.ManagementTeam/Team.js'; // Team : Our Official Managemeent Team
+
+// Profile
+import FillProfile from './Pages/3.0.Profile/FillProfile'; // Profile : Update Personal, Family, Educational Details 
+
+// Requests
+import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js"; // Role : Change Role -> Student to Operator
+
+
 
 function App() {
 
-  const role=localStorage.getItem("role")?localStorage.getItem("role"):null
+  // const role=localStorage.getItem("role")?localStorage.getItem("role"):null
+
   return (
     <Router>
       <Routes>
