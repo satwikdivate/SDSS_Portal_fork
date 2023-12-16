@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/Header/Header';
-import ReportList from '../../components/ReportList/ReportList';
+import Header from '../../../components/Header/Header';
+import ReportList from '../../../components/ReportList/ReportList';
 import ReportForm from './ReportForm';
 import "./Report.css"
-import { getAllMonthReports } from '../../Services/operator';
+import { getAllMonthReports } from '../../../Services/operator';
 
 const MonthlyReport = () => {
   const role = localStorage.getItem('role');

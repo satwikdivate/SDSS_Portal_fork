@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const mongoURI = "mongodb+srv://datasdss:sdss2003@web.kwojvcr.mongodb.net/?retryWrites=true&w=majority";
 
+
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

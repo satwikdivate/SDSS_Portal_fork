@@ -16,15 +16,16 @@ import AttendPage from './Pages/2.3.Attendance/AttendPage'; // Attendance : View
 import Attendance from './Pages/2.3.Attendance/ViewAttendance/Atteendance.js'; // Atteendance : View Indivitual Attendance 
 import GradeAttendance from './Pages/2.3.Attendance/MarkAttendance/GradeforAttendance/GradeAttendance.js'; // Attendance : Classes
 import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/AttendiesList.js'; // Attendance : StudentList
-import MonthlyReport from './Pages/2.4.MonthlyReport/MonthlyReport'; // Report Monthly
-import Event from './Pages/2.7.BigEvent/Event.js'; // Events : Upcomming Events
-import Team from './Pages/2.9.ManagementTeam/Team.js'; // Team : Our Official Managemeent Team
+import MonthlyReport from './Pages/2.4.Reports/MonthlyReport/MonthlyReport'; // Report Monthly
+import Event from './Pages/2.6.BigEvent/Event.js'; // Events : Upcomming Events
+import Team from './Pages/2.8.ManagementTeam/Team.js'; // Team : Our Official Managemeent Team
 
 // Profile
 import FillProfile from './Pages/3.0.Profile/FillProfile'; // Profile : Update Personal, Family, Educational Details 
 
 // Requests
 import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js"; // Role : Change Role -> Student to Operator
+import Reports from './Pages/2.4.Reports/Reports.js';
 
 
 
@@ -48,16 +49,17 @@ function App() {
         <Route path="/class/All" element={<Classcard />} />
         <Route path='/class/:classsName' element={<ClassInfoPage />} />
         <Route path="/u0/updateprofile" element={<FillProfile />} />
-        <Route path="/mreport" element={<MonthlyReport />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/reports/daily-report" element={<MonthlyReport />} />
+        <Route path="/reports/monthly-report" element={<MonthlyReport />} />
+        <Route path="/reports/last-year report" element={<MonthlyReport />} />
         <Route path="/attend" element={<AttendPage />} />
         <Route path="/attend/view" element={<Attendance />} />
         <Route path="/attend/mark" element={<GradeAttendance />} />
         <Route path="/attend/mark/:classsName" element={<AttendiesList />} />
-        <Route path="/events" element={<Event role="admin" />} />
+        <Route path="/events" element={<Event />} />
         <Route path="/auth/team" element={<Team />} />
         <Route path='/request' element={<RequestApproval />} />
-
-
         <Route path="/" element={<Login />} />
 
 

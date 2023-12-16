@@ -6,15 +6,14 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const cardImages = {
-    'Vardhak Deatils': "https://cdn4.iconfinder.com/data/icons/education-759/2050/Education_flat-07-256.png",
-    'Grades': 'https://i.pinimg.com/736x/91/30/da/9130da19ff4982a9f4931b3b14e4d09a.jpg',
-    'Attendance': 'https://icon-library.com/images/attendance-icon/attendance-icon-15.jpg',
-    'Monthly Report': "https://cdn3.iconfinder.com/data/icons/luchesa-vol-9/128/Report-256.png",
-    'Last Year Report': "https://cdn2.iconfinder.com/data/icons/leto-most-searched-mix-6/64/__analytics_report_sales-256.png",
+    'Vardhak Deatils': "https://cdn1.iconfinder.com/data/icons/digital-marketing-53/48/17-Search-256.png",
+    'Grades': 'https://cdn4.iconfinder.com/data/icons/education-325/48/27-Learning-256.png',
+    'Attendance': 'https://cdn1.iconfinder.com/data/icons/browser-and-interface-7/48/13-Browser-Interface-time-256.png',
+    'Reports' : 'https://cdn1.iconfinder.com/data/icons/bank-and-finance-15/48/21-Report-256.png',
     'Exam Result': "https://cdn2.iconfinder.com/data/icons/xomo-basics/128/document-03-512.png",
     'Event': "https://cdn0.iconfinder.com/data/icons/business-startup-10/50/64-512.png",
     'Shakha TimeTable': "https://cdn2.iconfinder.com/data/icons/mentoring-and-training-13/64/working_time_work_timetable_efficiency_schedule_time-256.png",
-    'Management Team': "https://cdn0.iconfinder.com/data/icons/leto-leadership/64/_leader_connection_team-256.png",
+    'Management Team': "https://cdn3.iconfinder.com/data/icons/business-strategy-7/48/4-Business_Strategy-256.png",
     'Suggestions': "https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-256.png",
   };
 
@@ -36,7 +35,7 @@ const HomePage = () => {
                   to={cardTitle === 'Vardhak Deatils' ? '/student' 
                   : cardTitle === 'Grades' ? '/class/All' 
                   : cardTitle === 'Attendance' ? '/attend' 
-                  : cardTitle === 'Monthly Report' ? '/mreport' 
+                  : cardTitle === 'Reports' ? '/reports' 
                   : cardTitle === 'Management Team' ? '/auth/team' 
                   : cardTitle === 'Event' ? '/events' 
                   : cardTitle === 'Exam Result' ? '/exam'
