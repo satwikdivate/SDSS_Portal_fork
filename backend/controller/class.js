@@ -1,4 +1,5 @@
 const Class = require("../db/class");
+const dailyUpdate = require("../db/dailyClassUpdate");
 const User = require("../db/user");
 
 exports.createClass=async(req,res)=>{
@@ -158,5 +159,70 @@ exports.deleteClass=async(req,res)=>{
         })
     }catch(e){
         console.log("ERROR AT DELETE CLASS",e);
+    }
+}
+
+
+exports.markDailyClassUpdate = async(req,res)=>{
+
+    
+        try{
+    
+        const{classTeacher,subject,whatTeaches,date,classId}=req.body;
+
+        if(!classTeacher || !subject || !whatTeaches || !date)
+            return res.status(400).json({
+        message:"Data missing at daily update"})
+
+
+        const result= await dailyUpdate.create({classTeacher,subject,whatTeaches,date});
+        
+
+        if(result){
+
+            const add=await Class.findById({_id:classId});
+
+            add.dailyUpdate.push(result._id);
+            add.save();
+            return res.status(200).json({
+                message:"Daily Update added sucessfully"});
+        }
+        else
+        return res.status(400).json({
+            message:"SOme thing went wrong at Daily Update added sucessfully"});
+
+
+        }catch(e){
+            console.log("ERROR AT DAILY UPDATE ",e)
+        }
+
+}
+
+exports.getClassByUpdate=async(req,res)=>{
+
+    try{
+        const {id}=req.body;
+
+        if(!id)
+            return res.status(400).json({
+        message:"Id missing at getClassUpdate"});
+
+        const result= await Class.findById({_id:id});
+
+        const data=[];
+
+        for( i of result.dailyUpdate){
+            console.log(i)
+            const individualDailyUpdate=await dailyUpdate.findById({_id:i});
+            console.log(individualDailyUpdate)
+            data.push(individualDailyUpdate)
+        }
+
+        return res.status(200).json({
+            data:data,
+            message:"All data fetched sucessfully"
+        })
+    }catch(e){
+        console.log("ERROR AT Get CLASS UPDATE ",e);
     }
 }

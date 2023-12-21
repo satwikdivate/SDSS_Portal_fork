@@ -342,11 +342,11 @@ export async function updateEvent(id, eventName, eventDate, eventDescrition) {
 export async function deleteEvent(id) {
     try {
 
-        // const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
 
         const result = await apiConnector("POST", operator.DELETE_EVENT, {
             id
-        });
+        },token);
 
         if (result)
             toast.success("Event deleted  succefuly");
@@ -357,5 +357,38 @@ export async function deleteEvent(id) {
 
     } catch (e) {
         console.log("ERROR AT CREATE EVENT");
+    }
+}
+
+export async function markDailyClassUpdate(classTeacher,subject,whatTeaches,date,classId){
+
+    try{
+
+       
+        const token = localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.CLASS_DAILY_UPDATE,{
+            classTeacher,subject,whatTeaches,date,classId,token
+        })
+
+        return result.data;
+    }catch(e){
+        console.log("ERROR AT MARK DAILY CLASS UPDATE");
+    }
+}
+
+export async function getDailyUpdateClass(id){
+    try{
+
+        
+        const token = localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.CLASS_DAILY_UPDATE,{
+            id
+        })
+
+        return result.data;
+    }catch(e){
+        console.log("ERROR AT MARK DAILY CLASS UPDATE");
     }
 }

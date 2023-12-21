@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { studentByClass, markAttendence } from '../../../Services/operator'; // Import your service function
 import Header from '../../../components/Header/Header';
-import '../../../components/classInfo/ClassInfoPage.css'
+import '../../../components/ClassInfo/ClassInfoPage.css'
 import Loading from '../../../components/SmallLoader/Loader';
 
 const AttendiesList = () => {
