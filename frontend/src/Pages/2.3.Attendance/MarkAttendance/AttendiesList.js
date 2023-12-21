@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import { studentByClass, markAttendence } from '../../../Services/operator'; // Import your service function
 import Header from '../../../components/Header/Header';
 import '../../../components/classInfo/ClassInfoPage.css'
+import Loading from '../../../components/SmallLoader/Loader';
 
 const AttendiesList = () => {
     const { classsName } = useParams();
     const [students, setStudents] = useState([]);
     const [ClassTeacher, setTeacher] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(true);
     const [attendance, setAttendance] = useState([]);
 
     const handleToggleAttendance = (studentId) => {
@@ -66,11 +68,20 @@ const AttendiesList = () => {
                 setTeacher(response.classTeacher.firstName + ' ' + response.classTeacher.lastName);
             } catch (error) {
                 console.error('Error fetching student details:', error);
-            }
+            }finally {
+                setLoading(false);
+              }
         };
 
         fetchStudents();
     }, [classsName]);
+
+
+    if (loading) {
+        return <Loading />;
+    }
+
+
 
     return (
         <>

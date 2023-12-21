@@ -25,6 +25,7 @@ const Event = ({ role }) => {
       setEventName('');
       setEventDate('');
       setEventDescription('');
+      console.log(result);
     } else {
       alert('Please enter event name, date, and description');
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './../2.0.Landing/Body.css';
+import './../2.0.Home/Body.css';
 import Header from '../../components/Header/Header';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,8 @@ const AttendPage = () => {
 
 
   const cardImages = {
-    'View Attendance': "https://cdn4.iconfinder.com/data/icons/education-759/2050/Education_flat-07-256.png",
-    'Mark Attendance': 'https://i.pinimg.com/736x/91/30/da/9130da19ff4982a9f4931b3b14e4d09a.jpg',
+    'View Attendance': "https://cdn1.iconfinder.com/data/icons/business-marketing-22/48/6-Growth-256.png",
+    'Mark Attendance': 'https://cdn0.iconfinder.com/data/icons/scientific-study-4/48/3-Report-256.png',
   };
 
   return (

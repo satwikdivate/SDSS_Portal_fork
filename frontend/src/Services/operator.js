@@ -22,7 +22,7 @@ export async function getIndivaulAttendence(attendeceId){
                 attendeceId,token
             });
 
-            return result.data;
+            return result.data.data;
         }catch(e){
             console.log("ERROR AT GET INDIVUAL STUDNET ATTENDECE")
         }

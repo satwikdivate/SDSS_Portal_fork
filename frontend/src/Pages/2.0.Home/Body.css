@@ -1,0 +1,125 @@
+.search-module {
+  text-align: center;
+  margin: 20px;
+}
+
+input[type="search"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Home Page Styles */
+.home-page {
+  margin: 40px;
+}
+
+/* Modules Container Styles */
+.modules {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  gap: 30px;
+}
+
+.card::before {
+  height: 140px;
+  width: calc(100% + 100px);
+  content: '';
+  position: absolute;
+  background-image: radial-gradient(circle, #cfe5fb 0%, #8dacd2 100%);
+  border-radius: 4px 4px 100% 100%;
+  transition: all 2s ease-out;
+  top: 0;
+  z-index: -25;
+}
+
+/* Card Styles */
+.card {
+  /* width: 180px; */
+  width: 200px;
+  min-width: 160px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin: 10px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  color: #463f3f;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 17px;
+  overflow: hidden;
+  transition: 0.5s all ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Image Styles */
+.card .card-image {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 100%;
+  margin: 35px 0;
+  background: #fff;
+  box-shadow: 0 0 #3d37374d;
+  transition: all .6s ease;
+  border: 1px solid #777;
+  border: 2px solid black;
+}
+
+.card .card-image img {
+  margin: 15px;
+  width: 70%;
+  border-radius: 10%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  * {
+    overflow-y: visible;
+  }
+
+  .search-module {
+    margin: 10px 0;
+  }
+
+  input[type="search"] {
+    width: 80%;
+    max-width: 100%;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card {
+    max-width: 100%;
+    font-size: 14px;
+    margin: 10px 0;
+  }
+
+  .card .card-image {
+    width: 80px;
+    height: 80px;
+    margin: 15px;
+  }
+}

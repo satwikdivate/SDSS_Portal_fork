@@ -45,7 +45,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Styles for the summary section */
 .attendance-summary {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -58,7 +57,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content:baseline;
   overflow-y: auto;
 }
 
@@ -96,12 +95,10 @@ th, td {
   border: 1px solid #ddd;
 }
 
-/* Styles for table header cells */
 th {
   font-weight: bold;
 }
 
-/* Styles for alternating rows */
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
