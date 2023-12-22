@@ -1,5 +1,7 @@
 const Attendance = require("../db/attendance");
 const Class = require("../db/class");
+const dailyStudentCount = require("../db/dailyStudentCount");
+const dailyStudent = require("../db/dailyStudentCount");
 const User = require("../db/user");
 const wbm = require("wbm");
 
@@ -163,3 +165,40 @@ exports.enrollStudent = async (req, res) => {
     console.log("ERROR AT ENROLLSTUDENT:", e);
   }
 };
+
+
+exports.markShakhaAttendence=async(req,res)=>{
+try{
+
+  const { startCount,MiddleCount, endCount}=req.body;
+
+  if(!startCount || !MiddleCount || !endCount)
+    return res.status(400).json({
+  message:"SOmething missing at mark sStudent"});
+
+
+  const result= await dailyStudentCount.create({startCount,MiddleCount,endCount});
+
+
+  if(result)
+      res.status(200).json({
+    message:"Attendence mark succcesfully"})
+}catch(E){
+  console.log("ERROR AT SHAKHA ATTENDCE ",E)
+}
+
+}
+
+exports.getDailyStudentCount=async(req,res)=>{
+
+  try{
+
+    const result=await dailyStudentCount.find({});
+
+    return res.status(200).json({
+      data:result
+    })
+  }catch(e){
+    console.log("ERROR AT GET STUDENT COUNT",e);
+  }
+}

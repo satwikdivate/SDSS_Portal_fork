@@ -1,7 +1,7 @@
 const express=require('express');
 const { signUp, login, getStudent, getAllStudents, getAllOperators, getUserById } = require('../controller/user');
 const { auth, isOperator, isAdmin, isAuthenticate } = require('../controller/auth');
-const { markAttendece, enrollStudent, getStudentIndivualAttendence} = require('../controller/attendence');
+const { markAttendece, enrollStudent, getStudentIndivualAttendence, markShakhaAttendence, getDailyStudentCount} = require('../controller/attendence');
 const { createClass, getStudentByClass, getAllClass, deleteClass, getClassById, markDailyClassUpdate, getClassByUpdate } = require('../controller/class');
 const { createEvent, getAllEvents, deleteCloudEvent } = require('../controller/events');
 const { aproveRequest, getAllRequest, getPendingRequest, getApproveRequest } = require('../controller/requestAccept');
@@ -25,6 +25,8 @@ router.post("/getStudentAttendece",auth,getStudentIndivualAttendence);
 router.post("/createClass",auth,isAuthenticate,isAdmin,createClass)
 router.post("/dailyUpdate",auth,isAuthenticate,markDailyClassUpdate)
 router.post("/classByUpdate",auth,isAuthenticate,getClassByUpdate)
+router.post("/dailyAttendence",auth,isAuthenticate,markShakhaAttendence);
+router.post("/getdailyAttendence",auth,isAuthenticate,getDailyStudentCount)
 
 // isStudent not added because Operator also a studnet
 router.post("/enrollStudent",auth,enrollStudent)

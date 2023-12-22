@@ -392,3 +392,45 @@ export async function getDailyUpdateClass(id){
         console.log("ERROR AT MARK DAILY CLASS UPDATE");
     }
 }
+
+
+export async function getStudentDailyAttendence(){
+    
+    try{
+
+        const token = localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.GET_STUDENT_DAILY_COUNT,{token});
+
+        return result.data;
+
+
+
+    }catch(e){
+        console.log("ERROR AT GET STUDNET DAILY COUT",e);
+    }
+}
+
+export async  function markShlhaDilyAttendece(startCount,MiddleCount,endCount){
+   
+    try{
+
+        const token = localStorage.getItem('token');
+
+        const result= await apiConnector("POST",operator.MARK_STUDENT_DAILY_COUNT,{
+            startCount,MiddleCount,endCount,token
+        })
+
+        if(result){
+            toast.success("Student Attendence marked succefully");
+        }else
+            toast.error("Something went wrong")
+
+        
+
+
+
+    }catch(e){
+        console.log("ERROR AT GET STUDNET DAILY COUT",e);
+    }
+}
