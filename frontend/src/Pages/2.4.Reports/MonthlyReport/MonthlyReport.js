@@ -63,7 +63,7 @@ const MonthlyReport = () => {
               <ReportList reports={reports} role={role} onDeleteReport={handleDeleteReport} />
             </div>
           )}
-          {role === 'Student' && (
+          {role === 'Student' || role === 'Operator' && (
             <div className="report-content">
               <h1>मासिक आढावा</h1>
               <ReportList reports={reports} role={role} />

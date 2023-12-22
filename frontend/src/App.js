@@ -26,6 +26,7 @@ import FillProfile from './Pages/3.0.Profile/FillProfile'; // Profile : Update P
 // Requests
 import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js"; // Role : Change Role -> Student to Operator
 import Reports from './Pages/2.4.Reports/Reports.js';
+import ClassReport from './components/ClassReport/ClassReport.js';
 
 
 
@@ -60,6 +61,7 @@ function App() {
         <Route path="/events" element={<Event />} />
         <Route path="/auth/team" element={<Team />} />
         <Route path='/request' element={<RequestApproval />} />
+        <Route path='/class-report' element={<ClassReport />} />
         <Route path="/" element={<Login />} />
 
 

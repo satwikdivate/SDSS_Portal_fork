@@ -2,35 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import { logoutUser } from '../../Services/auth';
-
-import { useDispatch, useSelector } from "react-redux"
-
+import { useDispatch} from "react-redux"
 import { getUser } from '../../Services/auth';
-import { getAllOperators } from '../../Services/operator';
 import Loading from '../SmallLoader/Loader';
 import SDSS from "./../../Assets/SDSS.png"
 
 const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loading, setloading] = useState(false);
-  const mydispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth)
   const handle = () => {
     navigate("/u0/updateprofile");
     setIsMenuOpen(false); // Close the menu when a link is clicked
   };
 
-  const handle1 = async () => {
-    try {
-      setloading(false);
-      const result = await getAllOperators()
-      console.log(result.data.data);
-      setloading(true);
-    } catch (e) {
-      console.log(e);
-    }
-  };
   const headerHandle = () => {
     navigate("/home");
     setIsMenuOpen(false); // Close the menu when a link is clicked
@@ -55,8 +39,6 @@ const Header = () => {
 
     try {
       const token = localStorage.getItem("token");
-      // both call can give data  anyone can be used
-      // const result=await apiConnector("POST",user.GET_STUDENT,{token});
 
       const result1 = await dispatch(getUser());
 
@@ -73,7 +55,7 @@ const Header = () => {
 
   useEffect(() => {
     getData();
-  }, [])
+  }, [data])
   if (!data || data.length === 0) {
     return <Loading />;
   }
@@ -90,7 +72,7 @@ const Header = () => {
         <p className="logo" onClick={headerHandle}>स्वामी <span>दयानंद</span> सरस्वती शाखा</p>
       </div>
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
-        <a href="#home" className="active" onClick={headerHandle}>मुख्य पान</a>
+        <a className="active" onClick={headerHandle}>मुख्य पान</a>
         <a href="#about" onClick={handle}>इतिहास</a>
         <a href="#contact" onClick={handle}>संपर्क</a>
         <button className='login-btn' onClick={handle}>{data?.firstName}</button>

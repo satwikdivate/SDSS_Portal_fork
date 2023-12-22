@@ -35,7 +35,7 @@ input[type="search"] {
   width: calc(100% + 100px);
   content: '';
   position: absolute;
-  background-image: radial-gradient(circle, #cfe5fb 0%, #8dacd2 100%);
+  background-image: radial-gradient(circle, rgb(254, 235, 243) 0%, rgb(148, 187, 233) 100%);
   border-radius: 4px 4px 100% 100%;
   transition: all 2s ease-out;
   top: 0;
