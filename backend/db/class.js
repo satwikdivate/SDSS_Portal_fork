@@ -26,6 +26,11 @@ const classSchema = new mongoose.Schema({
     type:String,
     required: true,
       }
+    ,
+    dailyUpdate:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"dailyUpdate"
+    }]
 });
 // make Profile ans User because we are making user as primary and inside that we add the prodile schma 
 const Class = mongoose.model("Class", classSchema);
