@@ -35,8 +35,8 @@ export const operator={
     DELETE_EVENT:BASE_URL+"/user/deleteEvent",
     GET_CLASS_BY_ID:BASE_URL+"/user/classById",
     GET_STUDENT_INDIVUAL_ATTENDENCE:BASE_URL+"/user/getStudentAttendece",
-    CLASS_DAILY_UPDATE:BASE_URL+"/dailyUpdate",
-    GET_CLASS_DAILY_UPDATE:BASE_URL+"/classByUpdate",
-    MARK_STUDENT_DAILY_COUNT:BASE_URL+"/dailyAttendence",
-    GET_STUDENT_DAILY_COUNT:BASE_URL+"/getdailyAttendence"
+    CLASS_DAILY_UPDATE:BASE_URL+"/user/dailyUpdate",
+    GET_CLASS_DAILY_UPDATE:BASE_URL+"/user/classByUpdate",
+    MARK_STUDENT_DAILY_COUNT:BASE_URL+"/user/dailyAttendence",
+    GET_STUDENT_DAILY_COUNT:BASE_URL+"/user/getdailyAttendence"
 }
