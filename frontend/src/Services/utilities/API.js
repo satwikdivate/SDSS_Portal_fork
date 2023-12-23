@@ -22,7 +22,7 @@ export const operator={
     CREATE_CLASS:BASE_URL+"/user/createClass",
     ENROLL_STUDENT:BASE_URL+"/user/enrollStudent",
     STUDENT_BY_CLASS:BASE_URL+"/user/getStudentByClass",   
-     FILE_UPLOAD:BASE_URL+"/user/cloudUpload",
+    FILE_UPLOAD:BASE_URL+"/user/cloudUpload",
     DELETE_CLASS:BASE_URL+"/user/deleteClass",
     APPROVE_REQUEST:BASE_URL+"/user/approveRequest",
     GET_ALL_REQUEST:BASE_URL+"/user/getAllRequest",

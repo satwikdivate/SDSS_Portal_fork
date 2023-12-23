@@ -2,9 +2,11 @@ import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/footer/Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const role = localStorage.getItem("role");
   const cardImages = {
     'Vardhak Deatils': "https://cdn1.iconfinder.com/data/icons/digital-marketing-53/48/17-Search-256.png",
     'Grades': 'https://cdn4.iconfinder.com/data/icons/education-325/48/27-Learning-256.png',
@@ -16,7 +18,9 @@ const HomePage = () => {
     'Management Team': "https://cdn3.iconfinder.com/data/icons/business-strategy-7/48/4-Business_Strategy-256.png",
     'Suggestions': "https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-256.png",
   };
-
+  const requets = () => {
+    navigate("/request");
+  };
 
   return (
     <>
@@ -25,6 +29,11 @@ const HomePage = () => {
         <main>
           <div className="search-module">
             <input type="search" placeholder="Search" />
+            {role === "Admin" && (
+          <button className="login-btn" onClick={requets}>
+            All Requests
+          </button>
+        )}
           </div>
 
           <div className="modules">

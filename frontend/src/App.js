@@ -11,7 +11,7 @@ import OpenRoute from "./components/OpenRoute/OpenRoute.js"; // Check : Authenti
 import Home from './Pages/2.0.Home/Home'; // Homee Page :  All Features 
 import StudentBio from './Pages/2.1.StudentDetails/StudentDetails';// Student : Details Indivituals
 import Classcard from './Pages/2.2.ListGrade/classcard.js'; // Classes : 5th to 16th
-import ClassInfoPage from '../src/components/ClassInfo/ClassInfoPage.js'; // Classes : Indivitual Information 
+import ClassInfoPage from '../src/components/classInfo/ClassInfoPage.js'; // Classes : Indivitual Information 
 import AttendPage from './Pages/2.3.Attendance/AttendPage'; // Attendance : View / Mark
 import Attendance from './Pages/2.3.Attendance/ViewAttendance/Atteendance.js'; // Atteendance : View Indivitual Attendance 
 import GradeAttendance from './Pages/2.3.Attendance/MarkAttendance/GradeforAttendance/GradeAttendance.js'; // Attendance : Classes

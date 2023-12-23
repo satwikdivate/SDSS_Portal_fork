@@ -15,17 +15,17 @@ export async function getAllClass() {
 
 }
 
-export async function getIndivaulAttendence(attendeceId){
-        try{
-            const token = localStorage.getItem('token');
-            const result=await apiConnector("POST",operator.GET_STUDENT_INDIVUAL_ATTENDENCE,{
-                attendeceId,token
-            });
+export async function getIndivaulAttendence(attendeceId) {
+    try {
+        const token = localStorage.getItem('token');
+        const result = await apiConnector("POST", operator.GET_STUDENT_INDIVUAL_ATTENDENCE, {
+            attendeceId, token
+        });
 
-            return result.data.data;
-        }catch(e){
-            console.log("ERROR AT GET INDIVUAL STUDNET ATTENDECE")
-        }
+        return result.data.data;
+    } catch (e) {
+        console.log("ERROR AT GET INDIVUAL STUDNET ATTENDECE")
+    }
 }
 
 
@@ -346,7 +346,7 @@ export async function deleteEvent(id) {
 
         const result = await apiConnector("POST", operator.DELETE_EVENT, {
             id
-        },token);
+        }, token);
 
         if (result)
             toast.success("Event deleted  succefuly");
@@ -360,77 +360,74 @@ export async function deleteEvent(id) {
     }
 }
 
-export async function markDailyClassUpdate(classTeacher,subject,whatTeaches,date,classId){
+export async function markDailyClassUpdate(classTeacher, subject, whatTeaches, date, classId) {
 
-    try{
+    try {
 
-       
+
         const token = localStorage.getItem('token');
 
-        const result= await apiConnector("POST",operator.CLASS_DAILY_UPDATE,{
-            classTeacher,subject,whatTeaches,date,classId,token
+        const result = await apiConnector("POST", operator.CLASS_DAILY_UPDATE, {
+            classTeacher, subject, whatTeaches, date, classId, token
         })
 
         return result.data;
-    }catch(e){
+    } catch (e) {
         console.log("ERROR AT MARK DAILY CLASS UPDATE");
     }
 }
 
-export async function getDailyUpdateClass(id){
-    try{
+export async function getDailyUpdateClass(id) {
+    try {
 
-        
+
         const token = localStorage.getItem('token');
 
-        const result= await apiConnector("POST",operator.CLASS_DAILY_UPDATE,{
+        const result = await apiConnector("POST", operator.CLASS_DAILY_UPDATE, {
             id
         })
 
         return result.data;
-    }catch(e){
+    } catch (e) {
         console.log("ERROR AT MARK DAILY CLASS UPDATE");
     }
 }
 
 
-export async function getStudentDailyAttendence(){
-    
-    try{
+export async function getStudentDailyAttendence() {
+
+    try {
 
         const token = localStorage.getItem('token');
 
-        const result= await apiConnector("POST",operator.GET_STUDENT_DAILY_COUNT,{token});
+        const result = await apiConnector("POST", operator.GET_STUDENT_DAILY_COUNT, { token });
 
         return result.data;
 
 
 
-    }catch(e){
-        console.log("ERROR AT GET STUDNET DAILY COUT",e);
+    } catch (e) {
+        console.log("ERROR AT GET STUDNET DAILY COUT", e);
     }
 }
 
-export async  function markShlhaDilyAttendece(startCount,MiddleCount,endCount){
-   
-    try{
+export async function markShlhaDilyAttendece(startCount, MiddleCount, endCount) {
+
+    try {
 
         const token = localStorage.getItem('token');
 
-        const result= await apiConnector("POST",operator.MARK_STUDENT_DAILY_COUNT,{
-            startCount,MiddleCount,endCount,token
+        const result = await apiConnector("POST", operator.MARK_STUDENT_DAILY_COUNT, {
+            startCount, MiddleCount, endCount, token
         })
 
-        if(result){
+        if (result) {
             toast.success("Student Attendence marked succefully");
-        }else
+        } else
             toast.error("Something went wrong")
 
-        
 
-
-
-    }catch(e){
-        console.log("ERROR AT GET STUDNET DAILY COUT",e);
+    } catch (e) {
+        console.log("ERROR AT GET STUDNET DAILY COUT", e);
     }
 }

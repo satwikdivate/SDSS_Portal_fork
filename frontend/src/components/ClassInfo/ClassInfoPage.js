@@ -14,11 +14,13 @@ const ClassInfoPage = () => {
   const [students, setStudents] = useState([]);
   const [ClassTeacher, setTeacher] = useState("");
   const [isClassReportOpen, setIsClassReportOpen] = useState(false);
-
+  const [classDetails, setClassDeails]  = useState([]);
+   
   useEffect(() => {
     const fetchStudents = async () => {
       try {
         const response = await studentByClass(classsName);
+        setClassDeails(response);
         setStudents(response.data);
         setTeacher(response.classTeacher.firstName + " " + response.classTeacher.lastName);
       } catch (error) {
@@ -68,7 +70,7 @@ const ClassInfoPage = () => {
         </ul>
       </div>
       {isClassReportOpen && (
-        <ClassReport onClose={handleCloseClassReport} /* additional props as needed */ />
+        <ClassReport onClose={handleCloseClassReport} classId = {classsName} classteacher = {classDetails.classTeacher._id}  /* additional props as needed */ />
       )}
     </>
   );
