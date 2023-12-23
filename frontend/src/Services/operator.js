@@ -383,7 +383,7 @@ export async function getDailyUpdateClass(id) {
 
         const token = localStorage.getItem('token');
 
-        const result = await apiConnector("POST", operator.CLASS_DAILY_UPDATE, {
+        const result= await apiConnector("POST",operator.GET_CLASS_DAILY_UPDATE,{
             id
         })
 
@@ -411,14 +411,14 @@ export async function getStudentDailyAttendence() {
     }
 }
 
-export async function markShlhaDilyAttendece(startCount, MiddleCount, endCount) {
-
-    try {
+export async  function markShlhaDilyAttendece(startCount,MiddleCount,endCount){
+   
+    try{
 
         const token = localStorage.getItem('token');
 
-        const result = await apiConnector("POST", operator.MARK_STUDENT_DAILY_COUNT, {
-            startCount, MiddleCount, endCount, token
+        const result= await apiConnector("POST",operator.MARK_STUDENT_DAILY_COUNT,{
+            startCount,MiddleCount,endCount,token
         })
 
         if (result) {

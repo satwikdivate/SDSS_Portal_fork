@@ -11,7 +11,7 @@ const ClassReport = ({ onClose, classId, classteacher }) => {
   const today = new Date();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     console.log(`Subject: ${subject}, Lesson: ${lesson}, Number of Students: ${numStudents}`);
     if (subject === 'Other') {
       console.log(`Other Subject Name: ${otherSubject}`);

@@ -170,14 +170,14 @@ exports.enrollStudent = async (req, res) => {
 exports.markShakhaAttendence=async(req,res)=>{
 try{
 
-  const { startCount,MiddleCount, endCount}=req.body;
+  const { startCount,MiddleCount, endCount,date}=req.body;
 
-  if(!startCount || !MiddleCount || !endCount)
+  if(!startCount || !MiddleCount || !endCount || !date)
     return res.status(400).json({
   message:"SOmething missing at mark sStudent"});
 
 
-  const result= await dailyStudentCount.create({startCount,MiddleCount,endCount});
+  const result= await dailyStudentCount.create({startCount,MiddleCount,endCount,date});
 
 
   if(result)
