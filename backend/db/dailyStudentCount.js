@@ -15,7 +15,12 @@ const dailyStudentschma=moogoes.Schema({
     endCount:{
         type:String,
         require:true
+    },
+    date:{
+        type:String,
+        require:true
     }
+
 });
 
 const dailyStudentCount=moogoes.model("dailyStudentCount",dailyStudentschma);
