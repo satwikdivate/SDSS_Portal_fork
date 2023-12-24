@@ -384,7 +384,7 @@ export async function getDailyUpdateClass(id){
         const token = localStorage.getItem('token');
 
         const result= await apiConnector("POST",operator.GET_CLASS_DAILY_UPDATE,{
-            id
+            id,token
         })
 
         return result.data;
@@ -426,11 +426,7 @@ export async  function markShlhaDilyAttendece(startCount,MiddleCount,endCount,da
         }else
             toast.error("Something went wrong")
 
-        
-
-
-
-    }catch(e){
+        }catch(e){
         console.log("ERROR AT GET STUDNET DAILY COUT",e);
     }
 }
