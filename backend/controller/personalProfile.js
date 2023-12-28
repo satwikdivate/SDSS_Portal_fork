@@ -1,3 +1,4 @@
+const { uploadImageToCloudinary } = require('../config/imageUpload');
 const PersonalProfile = require('../db/personalProfile');
 const personalProfile=require('../db/personalProfile');
 const Profile = require('../db/profile');
@@ -34,4 +35,31 @@ exports.createPersonalProfile=async(req,res)=>{
     }catch(e){
         console.log("ERROR AT PROFILE SCHEMA:",e.message);
     }
+}
+
+exports.uploadProfilePhoto=async(req,res)=>{
+    try{
+
+        // const {monthName,descitopn}=req.body;
+        const profilePhotoFile=req.files.profilePhotoFile;
+        const{id}=req.body;
+
+        const updateCloud=await uploadImageToCloudinary(
+            profilePhotoFile,
+           "ds3cpwvtf"
+        )
+
+        const user= await User.findById({_id:id});
+        user.profilePhto=updateCloud.url;
+        user.save();
+
+        return res.status(200).json({
+            message:"Profile Phto Updated sucessfuly",
+            user
+        });
+
+    }catch(e){
+        console.log("ERROR AT UPLOAD PROFILE PHOTO",e.message);
+    }
+
 }

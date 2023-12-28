@@ -55,9 +55,11 @@ const userSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Class",
      
-    }
+    },
+    profilePhto:{
+      type:String
+    },
   },
-  
   {
     timestamps: true,
   }

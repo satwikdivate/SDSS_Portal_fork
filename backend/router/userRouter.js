@@ -6,6 +6,8 @@ const { createClass, getStudentByClass, getAllClass, deleteClass, getClassById, 
 const { createEvent, getAllEvents, deleteCloudEvent } = require('../controller/events');
 const { aproveRequest, getAllRequest, getPendingRequest, getApproveRequest } = require('../controller/requestAccept');
 const { createReport, deleteEvent, updateReport } = require('../controller/reports');
+const { uploadProfilePhoto } = require('../controller/personalProfile');
+const { createHighlight, updateHighlight, getAllHighlights, deleteHighlight } = require('../controller/Highlights');
 
 const router=express.Router();
 
@@ -14,6 +16,7 @@ router.post("/signUp",signUp);
 router.post("/login",login);
 router.post("/auth",auth)
 router.post("/getUserById",auth,getUserById)
+router.post("/uploadPersonalPhto",auth,uploadProfilePhoto);
 
 router.post("/getStudent",auth,getStudent)
 router.post("/getAllStudents",auth,isAuthenticate,getAllStudents)
@@ -39,6 +42,7 @@ router.post("/approveRequest",auth,isAdmin,aproveRequest)
 router.post("/getAllRequest",auth,isAdmin,getAllRequest)
 router.post("/getPendingRequest",auth,isAdmin,getPendingRequest);
 router.post("/getApproveRequest",auth,isAdmin,getApproveRequest);
+
 router.post("/createReport",auth,isAuthenticate,createReport)
 router.post("/deleteReport",auth,isAuthenticate,deleteCloudEvent)
 
@@ -46,9 +50,12 @@ router.post("/deleteReport",auth,isAuthenticate,deleteCloudEvent)
 router.post("/createEvent",auth,isAuthenticate,createEvent)
 router.post("/updteEvent",auth,isAuthenticate,updateReport)
 router.post("/deleteEvent",auth,isAuthenticate,deleteEvent)
-
 router.post("/getAllReportsRequest",auth,getAllEvents)
-
 router.post("/cloudUpload",auth,isAuthenticate,createEvent);
 
+
+router.post("/createHighlight",auth,isAdmin,createHighlight);
+router.post("/updateHighlight",auth,isAdmin,updateHighlight);
+router.post("/deleteHighlight",auth,isAdmin,deleteHighlight);
+router.post("/getAllHighlight",auth,isAdmin,getAllHighlights);
 module.exports=router;

@@ -40,3 +40,10 @@ export const operator={
     MARK_STUDENT_DAILY_COUNT:BASE_URL+"/user/dailyAttendence",
     GET_STUDENT_DAILY_COUNT:BASE_URL+"/user/getdailyAttendence"
 }
+
+export const highlight={
+    CREATE_HIGHLIGHT:BASE_URL+"/user/createHighlight",
+    DELETE_HIGHLIGHT:BASE_URL+"/user/deleteHighlight",
+    UPDATE_HIGHLIGHT:BASE_URL+"/user/updateHighlight",
+    GETALLHIGHLIGHT:BASE_URL+"/user/getAllHighlight"
+}

@@ -22,6 +22,7 @@ const personalProfileSchema = mongoose.Schema({
     type: String,
     
   },
+  
 });
 
 const PersonalProfile = mongoose.model(
