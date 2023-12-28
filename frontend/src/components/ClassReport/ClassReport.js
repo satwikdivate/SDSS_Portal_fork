@@ -1,30 +1,44 @@
-import React, { useState } from 'react';
-import { format } from 'date-fns';
-import { markDailyClassUpdate } from '../../Services/operator';
-import './ClassReport.css'; // Update the import statement
+import React, { useState } from "react";
+import { format } from "date-fns";
+import { markDailyClassUpdate } from "../../Services/operator";
+import "./ClassReport.css"; // Update the import statement
+import toast from "react-hot-toast";
 
 const ClassReport = ({ onClose, classId, classteacher }) => {
-  const [lesson, setLesson] = useState('');
-  const [numStudents, setNumStudents] = useState('');
-  const [subject, setSubject] = useState('English');
-  const [otherSubject, setOtherSubject] = useState('');
+  const [lesson, setLesson] = useState("");
+  const [numStudents, setNumStudents] = useState("");
+  const [subject, setSubject] = useState("English");
+  const [otherSubject, setOtherSubject] = useState("");
   const today = new Date();
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
-    console.log(`Subject: ${subject}, Lesson: ${lesson}, Number of Students: ${numStudents}`);
-    if (subject === 'Other') {
+    e.preventDefault();
+    console.log(
+      `Subject: ${subject}, Lesson: ${lesson}, Number of Students: ${numStudents}`
+    );
+    if (subject === "Other") {
       console.log(`Other Subject Name: ${otherSubject}`);
     }
-    const response = await markDailyClassUpdate(classteacher,subject, lesson, today, classId);
-    console.log(response);
+    if (!lesson) {
+      toast.error("Empty Data");
+      return;
+    }
+    const response = await markDailyClassUpdate(
+      classteacher,
+      subject,
+      lesson,
+      today,
+      classId
+    );
+    toast.success(response.message);
+    onClose();
   };
 
   const handleSubjectChange = (e) => {
     const selectedSubject = e.target.value;
     setSubject(selectedSubject);
-    if (selectedSubject !== 'Other') {
-      setOtherSubject('');
+    if (selectedSubject !== "Other") {
+      setOtherSubject("");
     }
   };
 
@@ -33,7 +47,6 @@ const ClassReport = ({ onClose, classId, classteacher }) => {
     onClose();
   };
 
-
   return (
     <div className="ClassReport">
       <header className="ClassReport-header">
@@ -41,13 +54,17 @@ const ClassReport = ({ onClose, classId, classteacher }) => {
         <button className="close-button" onClick={handleClose}>
           X
         </button>
-        <p className="date-info">{`Date: ${format(today, 'MMMM d, yyyy')}`}</p>
-        <p className="date-info">{`Day : ${format(today, 'EEEE')}`}</p>
+        <p className="date-info">{`Date: ${format(today, "MMMM d, yyyy")}`}</p>
+        <p className="date-info">{`Day : ${format(today, "EEEE")}`}</p>
         <hr />
         <form onSubmit={handleSubmit}>
           <label className="form-label">
             Subject:
-            <select className="form-input" value={subject} onChange={handleSubjectChange}>
+            <select
+              className="form-input"
+              value={subject}
+              onChange={handleSubjectChange}
+            >
               <option value="English">English</option>
               <option value="Mathematics">Mathematics</option>
               <option value="Science">Science</option>
@@ -55,7 +72,7 @@ const ClassReport = ({ onClose, classId, classteacher }) => {
             </select>
           </label>
 
-          {subject === 'Other' && (
+          {subject === "Other" && (
             <label className="form-label">
               Other Subject Name
               <input

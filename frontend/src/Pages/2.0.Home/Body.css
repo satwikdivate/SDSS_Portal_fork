@@ -34,7 +34,7 @@ input[type="search"] {
 }
 
 .card::before {
-  height: 140px;
+  height: 8.5em;
   width: calc(100% + 100px);
   content: '';
   position: absolute;
@@ -71,7 +71,7 @@ input[type="search"] {
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 

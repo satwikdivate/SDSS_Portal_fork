@@ -38,6 +38,11 @@ const ClassInfoPage = () => {
     navigate(`/attend/mark/${classID}`);
   };
 
+  const handleClasshistory = () => {
+    const classID = classsName;
+    navigate(`/class-analysis/${classID}`);
+  };
+
   const handleOpenClassReport = () => {
     setIsClassReportOpen(true);
   };
@@ -63,6 +68,9 @@ const ClassInfoPage = () => {
           </button>
           <button className='Report--navigate' onClick={handleOpenClassReport}>
             Class Report
+          </button>
+          <button className='Report--navigate' onClick={handleClasshistory}>
+            Classes History
           </button>
         </div>
         <ul className='student-list'>

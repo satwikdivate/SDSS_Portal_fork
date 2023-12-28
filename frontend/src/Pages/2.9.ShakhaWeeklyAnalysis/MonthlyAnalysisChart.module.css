@@ -1,0 +1,53 @@
+.monthlyAnalysisChart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+}
+
+.dropdowns {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
+.dropdownContainer {
+  margin: 20px;
+  width: 15%;
+}
+
+.label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.select {
+  padding: 8px;
+  font-size: 14px;
+    border: 1px solid;
+}
+
+/* Style the options */
+.select option {
+  background-color: #f8f8f8;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Style the selected option */
+.select option:checked {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.chartContainer {
+  width: 100%;
+  max-width: 1200px;
+  height: 600px;
+  margin-top: 20px;
+}
+
+/* Add additional styles as needed */

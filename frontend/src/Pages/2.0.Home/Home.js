@@ -12,11 +12,12 @@ const HomePage = () => {
     'Grades': 'https://cdn4.iconfinder.com/data/icons/education-325/48/27-Learning-256.png',
     'Attendance': 'https://cdn1.iconfinder.com/data/icons/browser-and-interface-7/48/13-Browser-Interface-time-256.png',
     'Reports' : 'https://cdn1.iconfinder.com/data/icons/bank-and-finance-15/48/21-Report-256.png',
-    'Exam Result': "https://cdn2.iconfinder.com/data/icons/xomo-basics/128/document-03-512.png",
     'Event': "https://cdn0.iconfinder.com/data/icons/business-startup-10/50/64-512.png",
-    'Shakha TimeTable': "https://cdn2.iconfinder.com/data/icons/mentoring-and-training-13/64/working_time_work_timetable_efficiency_schedule_time-256.png",
     'Management Team': "https://cdn3.iconfinder.com/data/icons/business-strategy-7/48/4-Business_Strategy-256.png",
+    'Shakha TimeTable': "https://cdn2.iconfinder.com/data/icons/mentoring-and-training-13/64/working_time_work_timetable_efficiency_schedule_time-256.png",
+    'Exam Result': "https://cdn2.iconfinder.com/data/icons/xomo-basics/128/document-03-512.png",
     'Suggestions': "https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-256.png",
+    'Weekly Analysis': 'https://cdn2.iconfinder.com/data/icons/free-simple-line-mix/48/24-Data_Analysis-256.png',
   };
   const requets = () => {
     navigate("/request");
@@ -48,6 +49,7 @@ const HomePage = () => {
                   : cardTitle === 'Management Team' ? '/auth/team' 
                   : cardTitle === 'Event' ? '/events' 
                   : cardTitle === 'Exam Result' ? '/exam'
+                  : cardTitle === 'Weekly Analysis' ? '/shakha-analysis'
                   : '/home'}
                 >
                   <li className="card">

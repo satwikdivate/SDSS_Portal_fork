@@ -5,9 +5,11 @@ import ListCard from '../StudentListCard/ListCard';
 const StudentList = ({ students, isAdmin }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredStudents = students.filter((student) =>
-    student.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredStudents = students.filter((student) => {
+    const fullName = (student.firstName + student.lastName).toLowerCase();
+    return fullName.includes(searchTerm.toLowerCase());
+});
+
 
   return (
     <div>

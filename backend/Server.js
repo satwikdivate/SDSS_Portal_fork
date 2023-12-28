@@ -26,7 +26,7 @@ app.use(fileUpload({
 }))
 
 app.listen(process.env.PORT,(req,res)=>{
-  console.log("Conneted at 4000")
+  console.log(`Conneted at ${process.env.PORT}`)
 })
 
 cloudinaryConnect();

@@ -19,6 +19,7 @@ import AttendiesList from './Pages/2.3.Attendance/MarkAttendance/AttendiesList.j
 import MonthlyReport from './Pages/2.4.Reports/MonthlyReport/MonthlyReport'; // Report Monthly
 import Event from './Pages/2.6.BigEvent/Event.js'; // Events : Upcomming Events
 import Team from './Pages/2.8.ManagementTeam/Team.js'; // Team : Our Official Managemeent Team
+import WeeklyReport from './Pages/2.9.ShakhaWeeklyAnalysis/MonthlyAnalysisChart.js';
 
 // Profile
 import FillProfile from './Pages/3.0.Profile/FillProfile'; // Profile : Update Personal, Family, Educational Details 
@@ -27,12 +28,12 @@ import FillProfile from './Pages/3.0.Profile/FillProfile'; // Profile : Update P
 import RequestApproval from "./Pages/4.0.admin-request/RequestApproval.js"; // Role : Change Role -> Student to Operator
 import Reports from './Pages/2.4.Reports/Reports.js';
 import ClassReport from './components/ClassReport/ClassReport.js';
+import ClassAnalysis from './components/ClassAnalysis/ClassAnalysis.js';
+import DailyReport from './Pages/2.4.Reports/DailyReport/DailyReport.js';
 
 
 
 function App() {
-
-  // const role=localStorage.getItem("role")?localStorage.getItem("role"):null
 
   return (
     <Router>
@@ -50,10 +51,12 @@ function App() {
         <Route path="/class/All" element={<Classcard />} />
         <Route path='/class/:classsName' element={<ClassInfoPage />} />
         <Route path="/u0/updateprofile" element={<FillProfile />} />
+        <Route path="/class-analysis/:classsName" element={<ClassAnalysis />} />
         <Route path="/reports" element={<Reports />} />
-        <Route path="/reports/daily-report" element={<MonthlyReport />} />
+        <Route path="/reports/daily-report" element={<DailyReport />} />
         <Route path="/reports/monthly-report" element={<MonthlyReport />} />
         <Route path="/reports/last-year report" element={<MonthlyReport />} />
+        <Route path="/shakha-analysis" element={<WeeklyReport />} />
         <Route path="/attend" element={<AttendPage />} />
         <Route path="/attend/view" element={<Attendance />} />
         <Route path="/attend/mark" element={<GradeAttendance />} />

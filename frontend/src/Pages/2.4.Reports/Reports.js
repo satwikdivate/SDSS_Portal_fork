@@ -10,7 +10,6 @@ const Reports = () => {
         'Daily Report': 'https://cdn3.iconfinder.com/data/icons/business-strategy-7/48/19-Presentation-256.png',
         'Monthly Report': "https://cdn2.iconfinder.com/data/icons/free-simple-line-mix/48/8-Medical_report-512.png",
         'Last Year Report': "https://cdn3.iconfinder.com/data/icons/business-strategy-7/48/20-Business_Planning-256.png",
-        'Weekly Analysis': 'https://cdn2.iconfinder.com/data/icons/free-simple-line-mix/48/24-Data_Analysis-256.png',
     };
 
     return (
