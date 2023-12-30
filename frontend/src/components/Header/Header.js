@@ -10,19 +10,29 @@ import SDSS from "./../../Assets/SDSS.png";
 const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [data, setdata] = useState();
+  const dispatch = useDispatch();
 
   const handle = () => {
     navigate("/u0/updateprofile");
-    setIsMenuOpen(false); // Close the menu when a link is clicked
+    setIsMenuOpen(false);
   };
 
   const headerHandle = () => {
     navigate("/home");
-    setIsMenuOpen(false); // Close the menu when a link is clicked
+    setIsMenuOpen(false);
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  const portal = (e) => {;
+
   };
 
   const logout = (e) => {
@@ -30,29 +40,47 @@ const Header = () => {
     dispatch(logoutUser(navigate));
   };
 
-  const [data, setdata] = useState();
-  const dispatch = useDispatch();
-
   const getData = async () => {
     try {
       const token = localStorage.getItem("token");
-
       const result1 = await dispatch(getUser());
-
-      // data set to useState
       setdata(result1);
-      // setUserData(result1)
     } catch (e) {
-      console.log("ERROR AT FRONTED:", e);
+      console.log("ERROR AT FRONTEND:", e);
     }
   };
 
   useEffect(() => {
     getData();
   }, [data]);
+
   if (!data || data.length === 0) {
     return <Loading />;
   }
+
+  const renderDropdownItems = () => {
+    return (
+      <div className="dropdown">
+        <p>
+          <i class="bx bx-user-circle"></i>
+          <strong>{data.firstName +" "+ data.lastName}</strong>
+        </p>
+        <p>
+          <i class="bx bx-user"></i>Role: <strong>{data.role}</strong>
+        </p>
+          <p className="drop red+" onClick={portal}>
+          <i class='bx bxs-notepad'></i>Portal
+        </p>
+        <p className="drop" onClick={handle}>
+          <i class="bx bxs-user-detail"></i>Update Profile
+        </p>
+        <hr />
+        <p className="drop red+" onClick={logout}>
+          <i class="bx bx-log-out"></i>Logout
+        </p>
+      </div>
+    );
+  };
 
   return (
     <header className={`header ${isMenuOpen ? "menu-open" : ""}`}>
@@ -68,22 +96,41 @@ const Header = () => {
           स्वामी <span>दयानंद</span> सरस्वती शाखा
         </p>
       </div>
+
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
-        <a className="active" onClick={headerHandle}>
-          मुख्य पान
+        <a href="/" className="active" onClick={headerHandle}>
+          <i class="bx bxs-home"></i>मुख्य पान
         </a>
         <a href="#about" onClick={handle}>
-          इतिहास
+          <i class="bx bx-history"></i>इतिहास
         </a>
         <a href="#contact" onClick={handle}>
-          संपर्क
+          <i class="bx bxs-phone-call"></i>संपर्क
         </a>
-        <button className="login-btn" onClick={handle}>
-          {data?.firstName}
-        </button>
-        <button className="login-btn" onClick={logout}>
-          Logout
-        </button>
+
+        <div className="profile-container">
+          <div className="profile-section" onClick={toggleDropdown}>
+            {data.profilePicture == null ? (
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
+                alt="Profile"
+                className="profile-picture"
+              />
+            ) : (
+              <img
+                src={data.profilePicture}
+                alt="Profile"
+                className="profile-picture"
+              />
+            )}
+
+            <h4>
+              <i class="bx bxs-chevron-down"></i>
+            </h4>
+          </div>
+          {isDropdownOpen && window.innerWidth <= 768 && renderDropdownItems()}
+        </div>
+        {isDropdownOpen && window.innerWidth > 768 && renderDropdownItems()}
       </nav>
     </header>
   );

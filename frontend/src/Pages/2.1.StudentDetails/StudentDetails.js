@@ -47,7 +47,7 @@ function StudentBio() {
           <h2>Personal Information</h2>
 
 
-          <div className="personal-info">
+          <div className="personal-info"> 
             <p>Username: {data?.id}</p>
             <p>Name: {data?.firstName + " " + data?.lastName}</p>
             <p>Standard: {"hello"}</p>

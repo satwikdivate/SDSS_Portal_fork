@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    /* margin: 25px; */
     cursor: pointer;
     position: relative;
     background-color: #fff;
@@ -12,16 +11,17 @@
     border: 0.2px solid #999;
     width: 600px;
     height: 230px;
-}
-
-.addclass {
+  }
+  
+  .addclass {
     font-size: 60px;
-}
-.addclass span {
+  }
+  
+  .addclass span {
     font-size: 40px;
   }
-
-.modal-overlay {
+  
+  .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -31,9 +31,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.modal {
+  }
+  
+  .modal {
     background: #fff;
     padding: 20px;
     border: 3px solid #999;
@@ -41,17 +41,17 @@
     width: 80%;
     max-width: 500px;
     position: relative;
-}
-
-.modal h3 {
+  }
+  
+  .modal h3 {
     text-align: center;
     font-size: 2em;
     padding-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 3px solid #999;
-}
-
-.close-btn {
+  }
+  
+  .close-btn {
     position: absolute;
     top: -15px;
     right: -20px;
@@ -61,28 +61,28 @@
     width: 30px;
     height: 30px;
     padding: 0;
-}
-
-.modal button {
+  }
+  
+  .modal button {
     cursor: pointer;
-}
-
-/* Additional Styles for Dropdown */
-.modal label,
-.modal select {
+  }
+  
+  /* Additional Styles for Dropdown */
+  .modal label,
+  .modal select {
     display: block;
     margin-bottom: 10px;
-}
-
-.modal select {
+  }
+  
+  .modal select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
-
-.modal button[type="submit"] {
+  }
+  
+  .modal button[type="submit"] {
     background: #3498db;
     color: #fff;
     padding: 8px 16px;
@@ -90,14 +90,37 @@
     border-radius: 4px;
     margin-top: 10px;
     cursor: pointer;
-}
-
-.modal button.login-btn {
-    background: #3498db; /* Update the color if needed */
+  }
+  
+  .modal button.login-btn {
+    background: #3498db;
     color: #fff;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
     margin-top: 10px;
     cursor: pointer;
-}
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .add-card-grade {
+      width: 90%;
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+  
+    .addclass {
+      font-size: 40px;
+    }
+  
+    .addclass span {
+      font-size: 30px;
+    }
+  
+    .modal {
+      width: 100%;
+      max-width: none;
+    }
+  }
+  

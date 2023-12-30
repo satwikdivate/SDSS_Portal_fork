@@ -27,7 +27,7 @@ const AttendanceListCard= ({ student }) => {
             id={`attendance-${student._id}`}
             checked={attendance[student._id] || false}
             onChange={() => handleToggleAttendance(student._id)}
-          />
+          ></input>
         </div>
       </div>
     </div>

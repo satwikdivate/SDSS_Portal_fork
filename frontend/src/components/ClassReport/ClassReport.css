@@ -19,6 +19,10 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
   .ClassReport-header h1 {
@@ -71,7 +75,7 @@
     border-radius: 4px;
     /* margin-top: 10px; */
     position: fixed;
-    top:  115px;
+    top:  50px;
     right: 495px;
   }
   
@@ -83,4 +87,10 @@
     border:none;
     background-color:#333;  
     margin:10px 0;
+  }
+  @media (max-width: 768px) {
+    .close-button{
+      right: 55px;
+      top: 85px;
+    }
   }

@@ -82,3 +82,24 @@
 .Atteendance-nagivate:hover, .Report--navigate:hover {
   background-color: #2980b9;
 }
+
+@media (max-width: 768px) {
+  .class-info-container {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .class-feature {
+    float: none;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .Atteendance-nagivate, .Report--navigate {
+    margin-right: 0;
+    margin: 10px;
+  }
+}
+
+
+/* Additional styles for the checkbox */

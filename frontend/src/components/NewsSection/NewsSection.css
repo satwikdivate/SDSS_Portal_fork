@@ -1,0 +1,58 @@
+/* src/components/News.css */
+
+.news-container {
+    padding: 20px;
+  }
+  
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .news-card {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .news-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .news-card-content {
+    padding: 15px;
+  }
+  
+  .news-details {
+    display: none;
+    background-color: #fff;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .news-card:hover .news-details {
+    display: block;
+  }
+  
+  .news-details p {
+    margin: 0;
+  }
+  
+  .news-card h3 {
+    margin-top: 0;
+  }
+  
+  .news-card small {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+  }
+  

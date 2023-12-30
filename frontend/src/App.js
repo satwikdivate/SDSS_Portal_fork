@@ -7,7 +7,7 @@ import Register from "./Pages/1.Login&Reegister/Registration/Register.js";
 import Login from "./Pages/1.Login&Reegister/Login/Login.js";
 import OpenRoute from "./components/OpenRoute/OpenRoute.js"; // Check : Authenticate Useer
 
-
+import Landing from './Pages/1.1.LandingPage/Landing.js';
 import Home from './Pages/2.0.Home/Home'; // Homee Page :  All Features 
 import StudentBio from './Pages/2.1.StudentDetails/StudentDetails';// Student : Details Indivituals
 import Classcard from './Pages/2.2.ListGrade/classcard.js'; // Classes : 5th to 16th
@@ -46,6 +46,7 @@ function App() {
         } />
 
         <Route path="/register" element={<Register />} />
+        <Route path='/landing' element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/student" element={<StudentBio />} />
         <Route path="/class/All" element={<Classcard />} />

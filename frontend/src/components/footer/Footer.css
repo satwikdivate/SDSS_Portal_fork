@@ -1,38 +1,53 @@
 .footer {
-    background-color: #333;
-    color: #fff;
-    padding: 30px;
-  }
-  
-.footer-conatiner{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 30px;
 }
- .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.footer-container {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically on small screens */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically on small screens */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ngo-name {
+  font-size: 20px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 0; /* Add margin on top and bottom for better spacing on small screens */
+}
+
+.social-icons i {
+  font-size: 24px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0; /* Add margin on top and bottom for better spacing on small screens */
+}
+
+/* Media query for responsiveness on smaller screens */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack elements vertically on small screens */
+    text-align: center; /* Center-align text on small screens */
   }
-  
-  .ngo-name {
-    font-size: 20px;
+
+  .social-icons {
+    margin-top: 20px; /* Add more space between content and social icons on small screens */
   }
-  
-  .social-icons a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  .social-icons i {
-    font-size: 24px;
-  }
-  
-  .social-icons{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 0 10px;
-  }
+}
