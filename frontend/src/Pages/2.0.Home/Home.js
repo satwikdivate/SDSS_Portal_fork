@@ -1,12 +1,15 @@
 import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import { Link, useNavigate } from 'react-router-dom';
+import sdss from "../../Assets/SDSS.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const role = localStorage.getItem("role");
+
+  
   const cardImages = {
     'Vardhak Deatils': "https://cdn1.iconfinder.com/data/icons/digital-marketing-53/48/17-Search-256.png",
     'Grades': 'https://cdn4.iconfinder.com/data/icons/education-325/48/27-Learning-256.png',
@@ -38,6 +41,8 @@ const HomePage = () => {
           </div>
 
           <div className="modules">
+            
+      <img src={sdss} alt='logo' className='background-png'/>``
             <ul className="card-container">
               {Object.keys(cardImages).map(cardTitle => (
                 <Link
@@ -57,6 +62,7 @@ const HomePage = () => {
                     <div className="card-image">
                       <img src={cardImages[cardTitle]} alt={cardTitle} />
                     </div>
+                    
                   </li>
                 </Link>
               ))}

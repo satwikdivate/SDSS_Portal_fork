@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { studentByClass } from "../../Services/operator";
 import Header from "../Header/Header";
 import "./ClassInfoPage.css";
-import Loading from "../../components/SmallLoader/Loader";
+import Loading from "../SmallLoader/Loader";
 import StudentList from "../Student List/StudentList";
 import ClassReport from "../ClassReport/ClassReport"; // Import your ClassReport component
 

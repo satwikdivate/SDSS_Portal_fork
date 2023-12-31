@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./NewsUpdates.css"; // Import the CSS file
 import Header from "../Header/Header";
+import { createHighlight } from "../../Services/highlights";
 
 const NewsUpdatesPost = () => {
   const [headline, setHeadline] = useState("");
@@ -9,11 +10,15 @@ const NewsUpdatesPost = () => {
   const [location, setLocation] = useState("");
   const [content, setContent] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Perform your post request or data handling here
     console.log("News Posted:", { headline, picture, date, location, content });
-    
+    const newcontent = location + ", " + date + " : " + content;
+    console.log(newcontent);
+
+    const res = await createHighlight(headline, newcontent, picture);
+    console.log(res);
     // Reset form fields after submission
     setHeadline("");
     setPicture(null);
@@ -33,7 +38,7 @@ const NewsUpdatesPost = () => {
       <div className="news-container">
         <h2 className="news-heading">Post News</h2>
         <div className="news-details">
-          <form className="news-form" onSubmit={handleSubmit}>
+          <form className="news-form">
             <label className="news-label" htmlFor="headline">
               Headline:
             </label>
@@ -87,7 +92,11 @@ const NewsUpdatesPost = () => {
               required
             ></textarea>
 
-            <button className="news-button" type="submit">
+            <button
+              className="news-button"
+              type="submit"
+              onClick={handleSubmit}
+            >
               Post News
             </button>
           </form>

@@ -47,7 +47,7 @@ exports.isAdmin = (req, res, next) => {
         success: false,
         message: "This is a protected route for Admin only",
       });
-    }
+    }``
     next();
   } catch (e) {
     console.log("ERROR AR STUDENT VALIDATION :", e.message);

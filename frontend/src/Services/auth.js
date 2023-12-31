@@ -1,9 +1,7 @@
 import { apiConnector } from "./utilities/apiCOnnector";
-import auth, {
-  loading,
+import  {
   setLoading,
   setToken,
-  token,
   setUser,
 } from "../slices/auth";
 import toast from "react-hot-toast";
@@ -37,7 +35,7 @@ export function login(username, password, navigate) {
       localStorage.setItem("loggedInId", result.data.user[0]._id);
       localStorage.setItem("role", result.data.user[0].role);
 
-      navigate("/home");
+      navigate("/landing");
 
       // console.log("SETTED TOKEN:",token)
       dispatch(setLoading(false));

@@ -44,7 +44,7 @@ const Classcard = () => {
     };
 
     fetchUserData();
-  }, [role]);
+  }, );
 
   const enrollClass = async (classID) => {
     try {

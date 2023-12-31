@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom"
-import { UseSelector } from 'react-redux/es/hooks/useSelector'
 
 function HomeRoute({children}) {
  

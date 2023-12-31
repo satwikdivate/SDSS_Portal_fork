@@ -13,6 +13,7 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [data, setdata] = useState();
   const dispatch = useDispatch();
+  const role = localStorage.getItem("role");
 
   const handle = () => {
     navigate("/u0/updateprofile");
@@ -31,18 +32,20 @@ const Header = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  const portal = (e) => {;
-
-  };
+  const portal = (e) => {};
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(logoutUser(navigate));
   };
 
+  const newspost = (e) => {
+    e.preventDefault();
+    navigate("/postupdate");
+  };
+
   const getData = async () => {
     try {
-      const token = localStorage.getItem("token");
       const result1 = await dispatch(getUser());
       setdata(result1);
     } catch (e) {
@@ -52,7 +55,7 @@ const Header = () => {
 
   useEffect(() => {
     getData();
-  }, [data]);
+  }, []);
 
   if (!data || data.length === 0) {
     return <Loading />;
@@ -63,21 +66,27 @@ const Header = () => {
       <div className="dropdown">
         <p>
           <i class="bx bx-user-circle"></i>
-          <strong>{data.firstName +" "+ data.lastName}</strong>
+          <strong>{data.firstName + " " + data.lastName}</strong>
         </p>
         <p>
           <i class="bx bx-user"></i>Role: <strong>{data.role}</strong>
         </p>
-          <p className="drop red+" onClick={portal}>
-          <i class='bx bxs-notepad'></i>Portal
+        <p className="drop red+" onClick={portal}>
+          <h5><i class="bx bxs-notepad"></i>Portal</h5>
         </p>
         <p className="drop" onClick={handle}>
-          <i class="bx bxs-user-detail"></i>Update Profile
+          <h5><i class="bx bxs-user-detail"></i>Update Profile</h5>
         </p>
+        {role === "Admin" && (
+          <p className="drop" onClick={newspost}>
+            <h5><i class="bx bx-news"></i>Post New Update</h5>
+          </p>
+        )}
+
         <hr />
-        <p className="drop red+" onClick={logout}>
-          <i class="bx bx-log-out"></i>Logout
-        </p>
+        <p className="drop red" onClick={logout}>
+          <h5><i class="bx bx-log-out"></i>Logout
+</h5>        </p>
       </div>
     );
   };
@@ -98,7 +107,7 @@ const Header = () => {
       </div>
 
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
-        <a href="/" className="active" onClick={headerHandle}>
+        <a href="/" onClick={headerHandle}>
           <i class="bx bxs-home"></i>मुख्य पान
         </a>
         <a href="#about" onClick={handle}>

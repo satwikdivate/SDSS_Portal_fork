@@ -4,7 +4,7 @@ import "./FillProfile.css"
 import { getUser } from '../../Services/auth';
 import { useDispatch } from 'react-redux';
 import { updateAcProfile, updateFamilyProfile } from '../../Services/profile';
-import Footer from '../../components/footer/Footer';
+import Footer from '../../components/Footer/Footer';
 const FillProfile = () => {
     const [currentSection, setCurrentSection] = useState('personal');
     const [showPopup, setShowPopup] = useState(false);

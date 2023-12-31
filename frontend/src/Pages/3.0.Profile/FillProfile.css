@@ -78,7 +78,7 @@
 
 
 /* Common styling for form elements (adjust as needed) */
-label {
+.form-pp label {
   font-size: 16px;
   color: #333;
   margin-bottom: 10px;

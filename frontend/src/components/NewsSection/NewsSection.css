@@ -7,6 +7,10 @@
   .news-list {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
   }
   
   .news-card {
@@ -25,18 +29,7 @@
     padding: 15px;
   }
   
-  .news-details {
-    display: none;
-    background-color: #fff;
-    padding: 15px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    transition: opacity 0.3s ease;
-  }
+
   
   .news-card:hover .news-details {
     display: block;
