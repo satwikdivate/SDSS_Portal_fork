@@ -73,7 +73,7 @@ export  async function signUp(
       } else toast.success("Something went wrong at signup");
       
     } catch (e) {
-      console.log("ERROR AT SIGNUP", e.data.messsage);
+      console.log("ERROR AT SIGNUP", e);
       toast.error(e.response.data.messsage);
     }
   };
