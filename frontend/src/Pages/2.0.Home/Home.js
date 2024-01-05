@@ -1,7 +1,7 @@
 import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
+// import Footer from '../../components/Footer/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import sdss from "../../Assets/SDSS.png";
 
@@ -70,7 +70,7 @@ const HomePage = () => {
           </div>
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -58,32 +58,37 @@ const Register = () => {
     });
   }, []);
 
-  const handleRegister = () => {
-    if (registerData.isAdmin)
-      dispatch(
-        signUp(
-          registerData.FirstName,
-          registerData.LastName,
-          registerData.email,
-          registerData.registrationPassword,
-          "Admin",
-          navigate
-        )
-      );
-    else
-      dispatch(
-        signUp(
-          registerData.FirstName,
-          registerData.LastName,
-          registerData.email,
-          registerData.conactNumber,
-          registerData.registrationPassword,
-          registerData.isAdmin,
-          navigate
-        )
-      );
-
-    console.log(registerData);
+  const handleRegister =async () => {
+    try{
+      let result;
+      if (registerData.isAdmin)
+    result=await signUp(
+      registerData.FirstName,
+      registerData.LastName,
+      registerData.email,
+      registerData.registrationPassword,
+      "Admin",
+       )
+   
+      else
+      result= await signUp(
+      registerData.FirstName,
+      registerData.LastName,
+      registerData.email,
+      registerData.conactNumber,
+      registerData.registrationPassword,
+      registerData.isAdmin,
+    
+      )
+     console.log(result)
+      
+      console.log(registerData);
+      signUp(registerData.FirstName,registerData.LastName,registerData.email,registerData.conactNumber,registerData.registrationPassword,registerData.isAdmin);
+      console.log("first")
+    }catch(e){
+      console.log("ERROR AT SIGNUP",e);
+    }
+      
   };
   const [registerData, setRegisterData] = useState({
     FirstName: "",

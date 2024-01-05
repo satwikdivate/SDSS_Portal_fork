@@ -46,7 +46,7 @@ export function login(username, password, navigate) {
   };
 }
 
-export function signUp(
+export  async function signUp(
   firstName,
   lastName,
   email,
@@ -55,7 +55,7 @@ export function signUp(
   role,
   navigate
 ) {
-  return async (dispatch) => {
+  // return async (dispatch) => {
     try {
       const result = await apiConnector("POST", user.SIGNUP, {
         firstName,
@@ -69,14 +69,15 @@ export function signUp(
       console.log("RESULT AT SIGNUP", result);
       if (result.status === 200) {
         toast.success("Signup Succefully");
-        navigate("/login");
+        navigate("/");
       } else toast.success("Something went wrong at signup");
+      
     } catch (e) {
-      console.log("ERROR AT SIGNUP", e.response.data.messsage);
+      console.log("ERROR AT SIGNUP", e.data.messsage);
       toast.error(e.response.data.messsage);
     }
   };
-}
+// }
 
 export function getUser() {
   return async (dispatch) => {
