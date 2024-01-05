@@ -31,13 +31,11 @@ export function login(username, password, navigate) {
 
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("user", JSON.stringify(result.data.user[0]));
-      // console.log(result.data);
       localStorage.setItem("loggedInId", result.data.user[0]._id);
       localStorage.setItem("role", result.data.user[0].role);
 
       navigate("/landing");
 
-      // console.log("SETTED TOKEN:",token)
       dispatch(setLoading(false));
     } catch (e) {
       console.log("ERROR AT AUTH FOR SIGNUP ", e.message);
@@ -72,7 +70,7 @@ export function signUp(
         navigate("/login");
       } else toast.success("Something went wrong at signup");
     } catch (e) {
-      console.log("ERROR AT SIGNUP", e.response.data.messsage);
+      
       toast.error(e.response.data.messsage);
     }
   };
@@ -108,7 +106,7 @@ export function logoutUser(navigate) {
 
       console.log("Hello");
       // redirect to login
-      navigate("/");
+      navigate("/login");
     } catch (e) {
       console.log("ERROR AT LOGOUT ", e.message);
     }

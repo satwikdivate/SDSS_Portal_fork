@@ -22,9 +22,7 @@ const HomePage = () => {
     'Suggestions': "https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-256.png",
     'Weekly Analysis': 'https://cdn2.iconfinder.com/data/icons/free-simple-line-mix/48/24-Data_Analysis-256.png',
   };
-  const requets = () => {
-    navigate("/request");
-  };
+
 
   return (
     <>
@@ -33,11 +31,7 @@ const HomePage = () => {
         <main>
           <div className="search-module">
             <input type="search" placeholder="Search" />
-            {role === "Admin" && (
-          <button className="login-btn" onClick={requets}>
-            All Requests
-          </button>
-        )}
+            
           </div>
 
           <div className="modules">

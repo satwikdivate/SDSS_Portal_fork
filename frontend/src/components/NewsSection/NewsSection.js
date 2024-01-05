@@ -1,33 +1,21 @@
 // src/components/News.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./NewsSection.css"
-
+import {getAllHighlight} from "../../Services/highlights";
 
 const NewsSection = () => {
+  const [newsData, setNewsData] = useState([]);
 
-  const newsData = [
-    {
-      id: 1,
-      title: 'Lorem Ipsum News 1',
-      shortContent: 'Short description of the news article 1.',
-      content: 'Longer content of the news article 1.',
-      date: '2023-01-01',
-    },
-    {
-      id: 2,
-      title: 'Lorem Ipsum News 2',
-      shortContent: 'Short description of the news article 2.',
-      content: 'Longer content of the news article 2.',
-      date: '2023-02-15',
-    },
-    {
-      id: 3,
-      title: 'Lorem Ipsum News 3',
-      shortContent: 'Short description of the news article 3.',
-      content: 'Longer content of the news article 3.',
-      date: '2023-03-30',
-    },  
-  ];
+  const getnewsData = async() =>{
+    const result = await getAllHighlight();
+    console.log(result);
+    setNewsData(result);
+  }
+
+  useEffect(() => {
+    getnewsData();
+  }, []);
+
   
   return (
     <div className="news-container">

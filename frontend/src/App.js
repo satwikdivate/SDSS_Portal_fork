@@ -43,7 +43,7 @@ function App() {
       <Routes>
 
         {/* All User Routes */}
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/u0/updateprofile" element={<FillProfile />} />
         <Route path='/landing' element={<Landing />} />

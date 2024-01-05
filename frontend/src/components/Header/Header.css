@@ -126,6 +126,31 @@
   position: relative;
   top: 7px;
 }
+.requests{
+  position:relative;
+  background-color: transparent;
+  
+}
+
+.requests i{
+  color: black;
+  font-size: 1.5em;
+}
+
+.requests i p{
+  background-color: rgba(255, 0, 0, 0.671);
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  font-size: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .profile-container {
   position: relative;

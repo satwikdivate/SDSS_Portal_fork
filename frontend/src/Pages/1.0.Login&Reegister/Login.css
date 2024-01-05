@@ -188,9 +188,6 @@ button {
   margin-bottom: 16px;
 }
 
-
-
-/* Styles for the registration form */
 .register {
   background-color: #fff;
   padding: 2rem;
@@ -201,6 +198,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .register h2 {

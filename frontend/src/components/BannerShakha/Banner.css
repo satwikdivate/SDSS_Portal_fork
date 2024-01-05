@@ -2,7 +2,7 @@
 .banner-container {
   margin-top: 50px;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
 }
 
@@ -16,6 +16,8 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  overflow: hidden;
+
 }
 
 .slide {

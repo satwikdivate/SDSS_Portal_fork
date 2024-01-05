@@ -15,15 +15,11 @@ const FillProfile = () => {
     const getData=async()=>{
 
         try{
-            // const token = localStorage.getItem("token");
-            // both call can give data  anyone can be used
-            // const result=await apiConnector("POST",user.GET_STUDENT,{token});
-
+           
             const result1=await dispatch(getUser());
 
             console.log(result1.firstName)
 
-            // data set to useState
             setdata(result1);
             // setUserData(result1)
             
@@ -114,9 +110,7 @@ const submitData = () => {
         };
         // for the acedmic profile
         dispatch(updateAcProfile(completeUserData.educational.schoolName,completeUserData.educational.schoolAddress,completeUserData.educational.classTeacher,completeUserData.educational.medium))
-        // for personalprofile
-        // dispatch(updatePersonalProfile(completeUserData.personal.address,completeUserData.personal.dob,completeUserData.personal.email,completeUserData.personal.firstName,completeUserData.personal.lastName,completeUserData.personal.phone,completeUserData.personal.standard))
-        // for familyprofile
+        
         dispatch(updateFamilyProfile(completeUserData.family.fatherContact,completeUserData.family.fatherName,completeUserData.family.income,completeUserData.family.income,completeUserData.family.motherContact,completeUserData.family.motherName,completeUserData.family.occupation,completeUserData.family.siblingCount))
         
         console.log("coMPLETE uSER DATA:",completeUserData);

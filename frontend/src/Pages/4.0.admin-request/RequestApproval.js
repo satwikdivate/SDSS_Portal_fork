@@ -19,6 +19,8 @@ const RequestApproval = () => {
         // Fetch pending requests
         const pending = await getPendingRequest();
         setPendingRequests(pending.data);
+        console.log(pending.data);
+
 
         // Fetch user details for all requests
         const allRequests = [...approved.data, ...pending.data];

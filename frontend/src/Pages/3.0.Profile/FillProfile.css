@@ -12,7 +12,11 @@
   padding: 25px;
   background-color: #f0f0f0;
   width: 75%;
-  box-shadow: 2px 2px 10px 1px;
+  box-shadow: 0 0 10px #00000052;
+  border-radius: 15px;
+  border: 1px solid #999;
+
+
 
 }
 
@@ -20,11 +24,13 @@
   position: relative;
   background-color: #f0f0f0;
   width: 25%;
+  border-radius: 15px;
   margin: 10px;
   padding: 25px;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 2px 10px 1px;
+  border: 1px solid #999;
+  box-shadow: 2px 2px 10px 1px #00000052;
 }
 
 .profile-info {
@@ -37,6 +43,7 @@
   align-items: center; /* Center the content horizontally */
   text-align: center; /* Center the text inside the section */
   margin: 10px;
+  
 }
 
 .profile-image img {

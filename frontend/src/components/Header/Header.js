@@ -6,12 +6,15 @@ import { useDispatch } from "react-redux";
 import { getUser } from "../../Services/auth";
 import Loading from "../SmallLoader/Loader";
 import SDSS from "./../../Assets/SDSS.png";
+import { getPendingRequest } from '../../Services/operator';
+
 
 const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [data, setdata] = useState();
+  const [requestcount, setrequestcount] = useState(0);
   const dispatch = useDispatch();
   const role = localStorage.getItem("role");
 
@@ -48,6 +51,10 @@ const Header = () => {
     try {
       const result1 = await dispatch(getUser());
       setdata(result1);
+      const pending = await getPendingRequest();
+        setrequestcount(pending.data.length);
+        console.log(pending.data);
+
     } catch (e) {
       console.log("ERROR AT FRONTEND:", e);
     }
@@ -61,6 +68,10 @@ const Header = () => {
     return <Loading />;
   }
 
+  const requets = () => {
+    navigate("/request");
+  };
+
   const renderDropdownItems = () => {
     return (
       <div className="dropdown">
@@ -72,21 +83,29 @@ const Header = () => {
           <i class="bx bx-user"></i>Role: <strong>{data.role}</strong>
         </p>
         <p className="drop red+" onClick={portal}>
-          <h5><i class="bx bxs-notepad"></i>Portal</h5>
+          <h5>
+            <i class="bx bxs-notepad"></i>Portal
+          </h5>
         </p>
         <p className="drop" onClick={handle}>
-          <h5><i class="bx bxs-user-detail"></i>Update Profile</h5>
+          <h5>
+            <i class="bx bxs-user-detail"></i>Update Profile
+          </h5>
         </p>
         {role === "Admin" && (
           <p className="drop" onClick={newspost}>
-            <h5><i class="bx bx-news"></i>Post New Update</h5>
+            <h5>
+              <i class="bx bx-news"></i>Post New Update
+            </h5>
           </p>
         )}
 
         <hr />
         <p className="drop red" onClick={logout}>
-          <h5><i class="bx bx-log-out"></i>Logout
-</h5>        </p>
+          <h5>
+            <i class="bx bx-log-out"></i>Logout
+          </h5>{" "}
+        </p>
       </div>
     );
   };
@@ -116,6 +135,12 @@ const Header = () => {
         <a href="#contact" onClick={handle}>
           <i class="bx bxs-phone-call"></i>संपर्क
         </a>
+
+        {role === "Admin" && (
+          <a className="requests" onClick={requets}>
+            <i class='bx bxs-bell-ring'><p>{requestcount}</p></i>
+          </a>
+        )}
 
         <div className="profile-container">
           <div className="profile-section" onClick={toggleDropdown}>
