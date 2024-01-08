@@ -53,7 +53,8 @@ export  async function signUp(
   contact,
   password,
   role,
-  navigate
+  navigate,
+  standard
 ) {
   // return async (dispatch) => {
     try {
@@ -64,6 +65,7 @@ export  async function signUp(
         email,
         password,
         role,
+        standard
       });
 
       console.log("RESULT AT SIGNUP", result);
@@ -74,7 +76,8 @@ export  async function signUp(
       
     } catch (e) {
       console.log("ERROR AT SIGNUP", e);
-      toast.error(e.response.data.messsage);
+      console.log(e.response.data.message)
+      toast.error(e.response.data.message);
     }
   };
 // }

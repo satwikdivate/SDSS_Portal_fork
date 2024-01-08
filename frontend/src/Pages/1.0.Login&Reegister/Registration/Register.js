@@ -69,7 +69,9 @@ const Register = () => {
       registerData.conactNumber,
       registerData.registrationPassword,
       "Admin",
-      navigate
+      navigate,
+      registerData.standard
+
        )
    
       else
@@ -80,7 +82,8 @@ const Register = () => {
       registerData.conactNumber,
       registerData.registrationPassword,
       registerData.isAdmin,
-    navigate
+    navigate,
+    registerData.standard
       )
      console.log(result)
       
