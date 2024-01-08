@@ -1,14 +1,11 @@
 import React from 'react';
 import './Body.css';
 import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+// import Footer from '../../components/Footer/Footer';
+import { Link } from 'react-router-dom';
 import sdss from "../../Assets/SDSS.png";
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const role = localStorage.getItem("role");
-
   
   const cardImages = {
     'Vardhak Deatils': "https://cdn1.iconfinder.com/data/icons/digital-marketing-53/48/17-Search-256.png",
@@ -64,7 +61,7 @@ const HomePage = () => {
           </div>
         </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

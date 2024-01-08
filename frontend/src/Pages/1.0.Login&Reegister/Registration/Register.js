@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signUp } from "../../../Services/auth";
 import logo from "./../../../Assets/Swa-roopwardhinee_logo.png";
@@ -8,7 +7,6 @@ import toast from "react-hot-toast";
 const Register = () => {
   const [showRegistration, setShowRegistration] = useState(false);
   const [displaylogin, setofflogin] = useState(true);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toggleRegistrationForm = () => {
@@ -58,32 +56,37 @@ const Register = () => {
     });
   }, []);
 
-  const handleRegister = () => {
-    if (registerData.isAdmin)
-      dispatch(
-        signUp(
-          registerData.FirstName,
-          registerData.LastName,
-          registerData.email,
-          registerData.registrationPassword,
-          "Admin",
-          navigate
-        )
-      );
-    else
-      dispatch(
-        signUp(
-          registerData.FirstName,
-          registerData.LastName,
-          registerData.email,
-          registerData.conactNumber,
-          registerData.registrationPassword,
-          registerData.isAdmin,
-          navigate
-        )
-      );
-
-    console.log(registerData);
+  const handleRegister =async () => {
+    try{
+      let result;
+      if (registerData.isAdmin)
+    result=await signUp(
+      registerData.FirstName,
+      registerData.LastName,
+      registerData.email,
+      registerData.registrationPassword,
+      "Admin",
+       )
+   
+      else
+      result= await signUp(
+      registerData.FirstName,
+      registerData.LastName,
+      registerData.email,
+      registerData.conactNumber,
+      registerData.registrationPassword,
+      registerData.isAdmin,
+    
+      )
+     console.log(result)
+      
+      console.log(registerData);
+      signUp(registerData.FirstName,registerData.LastName,registerData.email,registerData.conactNumber,registerData.registrationPassword,registerData.isAdmin);
+      console.log("first")
+    }catch(e){
+      console.log("ERROR AT SIGNUP",e);
+    }
+      
   };
   const [registerData, setRegisterData] = useState({
     FirstName: "",

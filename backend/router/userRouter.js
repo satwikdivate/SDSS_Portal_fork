@@ -57,5 +57,5 @@ router.post("/cloudUpload",auth,isAuthenticate,createEvent);
 router.post("/createHighlight",auth,isAdmin,createHighlight);
 router.post("/updateHighlight",auth,isAdmin,updateHighlight);
 router.post("/deleteHighlight",auth,isAdmin,deleteHighlight);
-router.post("/getAllHighlight",auth,isAdmin,getAllHighlights);
+router.post("/getAllHighlight",auth,getAllHighlights);
 module.exports=router;
