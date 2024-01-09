@@ -3,13 +3,13 @@ import { highlight } from "./utilities/API";
 import { apiConnector } from "./utilities/apiCOnnector";
 
 
-export async function createHighlight(title,description,image){
+export async function createHighlight(title,description,image,newType){
     try{
 
         const token=localStorage.getItem('token');
 
         const result= await apiConnector("POST",highlight.CREATE_HIGHLIGHT,{
-            title,description,image,token
+            title,description,image,token,newType
         }, {
             'Content-Type': 'multipart/form-data',
         }, {});
@@ -61,10 +61,10 @@ export async function deleteHighlight(id){
     }
 }
 
-export async function getAllHighlight(){
+export async function getAllHighlight(newType){
     try{
         const token=localStorage.getItem('token');
-        const result=await apiConnector("POST",highlight.GETALLHIGHLIGHT,{token});
+        const result=await apiConnector("POST",highlight.GETALLHIGHLIGHT,{token,newType});
 
         if(result)
              toast.success("Highlight fetched succfully");

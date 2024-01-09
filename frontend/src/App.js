@@ -33,6 +33,7 @@ import ClassReport from './components/ClassReport/ClassReport.js';
 import ClassAnalysis from './components/ClassAnalysis/ClassAnalysis.js';
 import DailyReport from './Pages/2.4.Reports/DailyReport/DailyReport.js';
 import NewsUpdatesPost from './components/NewsUpdates/NewsUpdate.js';
+import OpenRoute from './components/OpenRoute/OpenRoute.js';
 
 
 
@@ -43,11 +44,14 @@ function App() {
       <Routes>
 
         {/* All User Routes */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={  <OpenRoute/> } />
+        <Route path="/login" element={  <Login/> } />
         <Route path="/register" element={<Register />} />
         <Route path="/u0/updateprofile" element={<FillProfile />} />
         <Route path='/landing' element={<Landing />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={ 
+          <Home/>
+       } />
         <Route path="/class/All" element={<Classcard />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/reports/daily-report" element={<DailyReport />} />

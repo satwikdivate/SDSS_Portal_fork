@@ -70,7 +70,11 @@ exports.signUp = async (req, res) => {
 
     
     const result= await Class.findOne({classsName:standard});
-    console.log("result of class",result._id);
+    console.log("result of class",result);
+    console.log(result)
+    if(!result)
+      return res.status(404).json({
+    message:"Class Not present"})
     // creating entry in DB
     const user = await User.create({
       id: recordCount + 1000,
@@ -87,14 +91,14 @@ exports.signUp = async (req, res) => {
       class:result._id
     });
 
-    console.log("RESULT OF CLASS ",result)
+    // console.log("RESULT OF CLASS ",result)
     console.log("User,",user._id+"")
-    if(result.length==0){
-      return res.status(404).json({
-        message:"Invalid class"
-      })
-    }
-    // add the student in class
+    // if(result.length==0){
+    //   return res.status(404).json({
+    //     message:"Invalid class"
+    //   })
+    // }
+    // // add the student in class
     result.studentList.push(user._id+"");
     await result.save();
 

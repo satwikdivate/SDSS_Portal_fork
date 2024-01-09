@@ -72,7 +72,7 @@ const AttendiesList = () => {
         };
 
         fetchStudents();
-    }, );
+    },[] );
 
     if (loading) {
         return <Loading />;
