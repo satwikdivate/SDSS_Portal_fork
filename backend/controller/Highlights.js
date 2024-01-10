@@ -6,12 +6,12 @@ const highlight = require("../db/Highlights");
 exports.createHighlight=async(req,res)=>{
 
     try{
-        const{title,description}=req.body;
+        const{title,description,newType}=req.body;
         const image=req.files.image;
 
-        if(!title || !image || !description)
+        if(!title || !image || !description || !newType)
             return res.status(400).json({
-            message:"SOmething missing at createHighlight"
+            message:"Something missing at createHighlight"
          })
 
          const updateCloud=await uploadImageToCloudinary(
@@ -19,7 +19,7 @@ exports.createHighlight=async(req,res)=>{
            "ds3cpwvtf"
         )
          const result= await highlight.create({
-            title,image:updateCloud.url,description
+            title,image:updateCloud.url,description,newType
          });
 
          return res.status(200).json({
@@ -90,8 +90,22 @@ exports.getAllHighlights=async(req,res)=>{
 
     try{
 
-        const result= await highlight.find();
+        const {newType}=req.body;
+        if(!newType){
+            return res.status(404).json({
+                message:"Type not forund"
+            })
+        }
+        if(newType=="All"){
+            const result= await highlight.find( );
+            console.log(result);
+            return res.status(200).json({
+                message:"All highlights",
+                data:result
+            })
+        }
 
+        const result=await highlight.find({newType:newType});
         return res.status(200).json({
             message:"All highlights",
             data:result
