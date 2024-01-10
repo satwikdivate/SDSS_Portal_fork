@@ -70,6 +70,7 @@ export async function getAllHighlight(){
              toast.success("Highlight fetched succfully");
         else    
              toast.error("Error while fetching highlight");
+        return result.data;
     }catch(e){
         console.log("ERROR AT GET ALL HIGHLIGHT ",e.message);
     }

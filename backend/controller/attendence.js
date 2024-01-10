@@ -134,11 +134,11 @@ exports.enrollStudent = async (req, res) => {
     const findStudent = await User.findById({ _id: userId });
 
     // if student not enrolled in any course
-    if (findStudent.class == null) {
+    if (findStudent.standard == null) {
       // update studnet
       const updatedUser = await User.findByIdAndUpdate(
         userId,
-        { class: classId },
+        { standard: classId },
         { new: true }
       );
 

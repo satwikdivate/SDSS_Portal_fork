@@ -90,7 +90,7 @@ exports.getAllHighlights=async(req,res)=>{
 
     try{
 
-        const result= await highlight.find({});
+        const result= await highlight.find();
 
         return res.status(200).json({
             message:"All highlights",

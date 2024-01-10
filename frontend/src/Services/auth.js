@@ -51,7 +51,8 @@ export  async function signUp(
   contact,
   password,
   role,
-  navigate
+  navigate,
+  standard
 ) {
   // return async (dispatch) => {
     try {
@@ -62,17 +63,22 @@ export  async function signUp(
         email,
         password,
         role,
+        standard
       });
 
       console.log("RESULT AT SIGNUP", result);
       if (result.status === 200) {
         toast.success("Signup Succefully");
-        navigate("/");
+        toast.success(result.data.data.rollNo);
+        navigate("/login");
       } else toast.success("Something went wrong at signup");
       
     } catch (e) {
       console.log("ERROR AT SIGNUP", e.response.data.messsage);
       toast.error(e.response.data.messsage);
+      console.log("ERROR AT SIGNUP", e);
+      console.log(e.response.data.message)
+      toast.error(e.response.data.message);
     }
   };
 // }

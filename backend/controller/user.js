@@ -14,10 +14,10 @@ const requetsDB = require("../db/requestDB");
 // signup
 exports.signUp = async (req, res) => {
   try {
-    const { firstName, lastName, contact, email, password, role } = req.body;
+    const { firstName, lastName, contact, email, password, role,standard} = req.body;
 
     // validation of input
-    if (!firstName || !lastName || !contact || !email || !password) {
+    if (!firstName || !lastName || !contact || !email || !password || !standard) {
       return res.status(400).json({
         messsage: "Something is missing at signup",
         sucess: false,
@@ -68,6 +68,10 @@ exports.signUp = async (req, res) => {
       attendance: [null],
     });
 
+    
+    const result= await Class.findOne({classsName:standard});
+    console.log("result of class",result._id);
+    
     // creating entry in DB
     const user = await User.create({
       id: recordCount + 1000,
@@ -81,7 +85,19 @@ exports.signUp = async (req, res) => {
       familyProfile,
       academicProfile,
       attendance: attendence,
+      class:result._id
     });
+
+    console.log("RESULT OF CLASS ",result)
+    console.log("User,",user._id+"")
+    if(result.length==0){
+      return res.status(404).json({
+        message:"Invalid class"
+      })
+    }
+    // add the student in class
+    result.studentList.push(user._id+"");
+    await result.save();
 
     // console.log(user.email);
     // for Role

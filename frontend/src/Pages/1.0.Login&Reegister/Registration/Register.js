@@ -64,8 +64,12 @@ const Register = () => {
       registerData.FirstName,
       registerData.LastName,
       registerData.email,
+      registerData.conactNumber,
       registerData.registrationPassword,
       "Admin",
+      navigate,
+      registerData.standard
+
        )
    
       else
@@ -76,12 +80,13 @@ const Register = () => {
       registerData.conactNumber,
       registerData.registrationPassword,
       registerData.isAdmin,
-    
+    navigate,
+    registerData.standard
       )
      console.log(result)
       
       console.log(registerData);
-      signUp(registerData.FirstName,registerData.LastName,registerData.email,registerData.conactNumber,registerData.registrationPassword,registerData.isAdmin);
+      // signUp(registerData.FirstName,registerData.LastName,registerData.email,registerData.conactNumber,registerData.registrationPassword,registerData.isAdmin);
       console.log("first")
     }catch(e){
       console.log("ERROR AT SIGNUP",e);

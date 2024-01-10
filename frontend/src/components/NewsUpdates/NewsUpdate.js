@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./NewsUpdates.css"; // Import the CSS file
 import Header from "../Header/Header";
 import { createHighlight } from "../../Services/highlights";
+import Loading from "../SmallLoader/Loader";
 
 const NewsUpdatesPost = () => {
   const [headline, setHeadline] = useState("");
+  const [loading, setloader]  = useState(true);
   const [picture, setPicture] = useState(null);
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
@@ -19,6 +21,7 @@ const NewsUpdatesPost = () => {
 
     const res = await createHighlight(headline, newcontent, picture);
     console.log(res);
+    setloader(false);
     // Reset form fields after submission
     setHeadline("");
     setPicture(null);
@@ -31,6 +34,11 @@ const NewsUpdatesPost = () => {
     const selectedFile = e.target.files[0];
     setPicture(selectedFile);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
+
 
   return (
     <>

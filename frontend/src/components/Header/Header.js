@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   const headerHandle = () => {
-    navigate("/home");
+    navigate("/landing");
     setIsMenuOpen(false);
   };
 
@@ -35,7 +35,9 @@ const Header = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  const portal = (e) => {};
+  const portal = (e) => {
+    navigate("/home");
+  };
 
   const logout = (e) => {
     e.preventDefault();
@@ -64,7 +66,7 @@ const Header = () => {
     getData();
   }, []);
 
-  if (!data || data.length === 0) {
+  if (!data) {
     return <Loading />;
   }
 

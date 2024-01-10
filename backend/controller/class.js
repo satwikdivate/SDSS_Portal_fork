@@ -80,7 +80,7 @@ exports.getStudentByClass=async(req,res)=>{
                 message:"Class not presnet"
             })
 
-        // Loop through each student ID in the class and fetch their data
+        // Loop through eacht ID in the class and fetch their data
         for (const studentId of result.studentList) {
             const student = await User.findById({ _id: studentId });
     

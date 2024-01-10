@@ -27,7 +27,7 @@ const Classcard = () => {
         const teachersData = await Promise.all(teacherPromises);
         setTeachers(teachersData.map((teacher) => teacher.data));
 
-        setAdmin(role === "Admin");
+        setAdmin(role === "Admin" || role === "Operator");
 
         // Build a set of enrolled classes for the current user
         const enrolledSet = new Set();
@@ -44,7 +44,7 @@ const Classcard = () => {
     };
 
     fetchUserData();
-  }, );
+  }, []);
 
   const enrollClass = async (classID) => {
     try {

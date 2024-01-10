@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const dotenv = require('dotenv');
 
-const mongoURI = "mongodb+srv://datasdss:sdss2003@web.kwojvcr.mongodb.net/?retryWrites=true&w=majority/Shakha";
+const mongoURI = "mongodb+srv://datasdss:sdss2003@web.kwojvcr.mongodb.net/?retryWrites=true&w=majority";
 
 // process.config();
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
