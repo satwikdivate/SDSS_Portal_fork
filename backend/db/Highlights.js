@@ -16,7 +16,7 @@ const highlightsSchma=new mongoose.Schema({
     },
     newType:{
         type:String,
-        enum:["Maidan","Tasika","Karyalay","Sampark","All"],
+        enum:["Maidan","Tasika","Karykram","Sampark","All"],
         require:true
     }
 })

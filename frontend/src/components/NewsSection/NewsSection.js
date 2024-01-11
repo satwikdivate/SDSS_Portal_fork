@@ -1,49 +1,113 @@
 // src/components/News.js
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React, { useEffect, useState } from "react";
 import "./NewsSection.css";
 import { getAllHighlight } from "../../Services/highlights";
+import NewsCategory from "../Category-News/Newscategory";
 
 const NewsSection = () => {
-  const [newsData, setNewsData] = useState([]);
+  const [Maidan, setMaidan] = useState([]);
+  const [Tasika, setTasika] = useState([]);
+  const [Karykram, setKarykram] = useState([]);
+  const [Sampark, setSampark] = useState([]);
+
+  const [isOpenMaidan, setIsOpenMaidan] = useState(false);
+  const [isOpenTasika, setIsOpenTasika] = useState(false);
+  const [isOpenKarykram, setIsOpenKarykram] = useState(false);
+  const [isOpenSampark, setIsOpenSampark] = useState(false);
 
   const getnewsData = async () => {
-    const result = await getAllHighlight();
-    setNewsData(result.data);
-  }
+    const Maidan = await getAllHighlight("Maidan");
+    setMaidan(Maidan);
+    const Tasika = await getAllHighlight("Tasika");
+    const Karykram = await getAllHighlight("Karykram");
+    const Sampark = await getAllHighlight("Sampark");
+  };
+
+  const toggleDropdownMaidan = () => {
+    setIsOpenTasika(false);
+    setIsOpenKarykram(false);
+    setIsOpenSampark(false);
+    setIsOpenMaidan(!isOpenMaidan);
+  };
+  const toggleDropdownTasika = () => {
+    setIsOpenTasika(!isOpenTasika);
+    setIsOpenMaidan(false);
+    setIsOpenKarykram(false);
+    setIsOpenSampark(false);
+  };
+
+  const toggleDropdownKaryakram = () => {
+    setIsOpenKarykram(!isOpenKarykram);
+    setIsOpenTasika(false);
+    setIsOpenMaidan(false);
+    setIsOpenSampark(false);
+  };
+  const toggleDropdownSampark = () => {
+    setIsOpenSampark(!isOpenSampark);
+    setIsOpenTasika(false);
+    setIsOpenKarykram(false);
+    setIsOpenMaidan(false);
+  };
 
   useEffect(() => {
     getnewsData();
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2, // Display two news cards in one slide
-    slidesToScroll: 1,
-  };
-
   return (
     <div className="news-container">
       <h2>Latest News</h2>
-      <Slider {...settings}>
-        {newsData.map((article) => (
-          <div key={article.id} className="news-card">
-            <div className="news-card-content">
-              <img src={article.image} alt='highlight' className='highlight-img'/>
-              <h3>{article.title}</h3>
-              <p>{article.description}</p>
-              <small>{article.date}</small>
-            </div>
-            <div className="news-details">
-              <p>{article.content}</p>
-            </div>
-          </div>
-        ))}
-      </Slider>
+      <div className="Maidan-News news">
+        <div className="category-dropdown-line">
+          <button className="news-dropdown" onClick={toggleDropdownMaidan}>
+            <h2>Maidan News</h2>{" "}
+            {isOpenMaidan ? (
+              <i class="bx bx-minus"></i>
+            ) : (
+              <i class="bx bx-plus"></i>
+            )}
+          </button>
+        </div>
+        <NewsCategory category={Maidan} isOpen={isOpenMaidan} />
+      </div>
+      <div className="Tasika-News news">
+        <div className="category-dropdown-line">
+          <button className="news-dropdown" onClick={toggleDropdownTasika}>
+            <h2>Tasika News</h2>{" "}
+            {isOpenTasika ? (
+              <i class="bx bx-minus"></i>
+            ) : (
+              <i class="bx bx-plus"></i>
+            )}
+          </button>
+        </div>
+        <NewsCategory category={Tasika} isOpen={isOpenTasika} />
+      </div>
+      <div className="Karykram-News news">
+        <div className="category-dropdown-line">
+          <button className="news-dropdown" onClick={toggleDropdownKaryakram}>
+            <h2>Karykram News</h2>{" "}
+            {isOpenKarykram ? (
+              <i class="bx bx-minus"></i>
+            ) : (
+              <i class="bx bx-plus"></i>
+            )}
+          </button>
+        </div>
+        <NewsCategory category={Karykram} isOpen={isOpenKarykram} />
+      </div>
+      <div className="Sampark-News news">
+        <div className="category-dropdown-line">
+          <button className="news-dropdown" onClick={toggleDropdownSampark}>
+            <h2>Sampark News</h2>{" "}
+            {isOpenSampark ? (
+              <i class="bx bx-minus"></i>
+            ) : (
+              <i class="bx bx-plus"></i>
+            )}
+          </button>
+        </div>
+        <NewsCategory category={Sampark} isOpen={isOpenSampark} />
+      </div>
     </div>
   );
 };

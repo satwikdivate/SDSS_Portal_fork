@@ -107,7 +107,7 @@ exports.getAllHighlights=async(req,res)=>{
 
         const result=await highlight.find({newType:newType});
         return res.status(200).json({
-            message:"All highlights",
+            message:newType,
             data:result
         })
         }catch(e){

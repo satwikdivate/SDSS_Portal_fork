@@ -2,7 +2,6 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import React, { useEffect } from 'react'
-import Unauthorized from "./Unauthorized";
 
 function OpenRoute({ children }) {
     // const navigate=useNavigate();

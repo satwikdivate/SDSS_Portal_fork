@@ -6,39 +6,35 @@ import Loading from "../SmallLoader/Loader";
 
 const NewsUpdatesPost = () => {
   const [headline, setHeadline] = useState("");
-  const [loading, setloader]  = useState(true);
   const [picture, setPicture] = useState(null);
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
   const [content, setContent] = useState("");
+  const [selectedDropdownValue, setSelectedDropdownValue] = useState("");
+
+  const dropdownOptions = ["Maidan", "Tasika", "Karyakram", "Sampark"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform your post request or data handling here
-    console.log("News Posted:", { headline, picture, date, location, content });
+    console.log("News Posted:", { headline, picture, date, location, content, selectedDropdownValue });
     const newcontent = location + ", " + date + " : " + content;
     console.log(newcontent);
 
-    const res = await createHighlight(headline, newcontent, picture);
+    const res = await createHighlight(headline, newcontent, picture, selectedDropdownValue);
     console.log(res);
-    setloader(false);
-    // Reset form fields after submission
+
     setHeadline("");
     setPicture(null);
     setDate("");
     setLocation("");
     setContent("");
+    setSelectedDropdownValue("");
   };
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setPicture(selectedFile);
   };
-
-  if (loading) {
-    return <Loading />;
-  }
-
 
   return (
     <>
@@ -100,6 +96,9 @@ const NewsUpdatesPost = () => {
               required
             ></textarea>
 
+            {/* Dropdown */}
+            
+
             <button
               className="news-button"
               type="submit"
@@ -110,6 +109,23 @@ const NewsUpdatesPost = () => {
           </form>
 
           <div className="news-preview">
+          <label className="news-label" htmlFor="dropdown">
+              Choose Category:
+            </label>
+            <div className="news-dropdown-container">
+              <select
+                className="news-input news-input[type='select']"
+                id="dropdown"
+                value={selectedDropdownValue}
+                onChange={(e) => setSelectedDropdownValue(e.target.value)}
+                required
+              >
+                <option value="" disabled>Select category</option>
+                {dropdownOptions.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
             <label className="news-label" htmlFor="picture">
               Choose Picture:
             </label>
