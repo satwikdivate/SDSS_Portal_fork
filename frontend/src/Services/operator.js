@@ -48,6 +48,7 @@ export async function markAttendence(allStudents, userId, data) {
     } else toast.error("Something went wrong at  attenedece");
   } catch (e) {
     console.log("ERROR AT THE MARK ATTENDECE:", e);
+    toast.error("Unauthorized  accesss ");
   }
 }
 
@@ -411,5 +412,6 @@ export async function markShlhaDilyAttendece(
     } else toast.error("Something went wrong");
   } catch (e) {
     console.log("ERROR AT GET STUDNET DAILY COUT", e);
+    toast.error("Unauthorized access");
   }
 }

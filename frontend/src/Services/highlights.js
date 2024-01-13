@@ -21,6 +21,7 @@ export async function createHighlight(title,description,image,newType){
         return result.data;
     }catch(e){
         console.log("ERROR AT THE CREATE HIGHLIGHT",e.message);
+        toast.error("Something went wrong while creating highlight")
     }
 }
 
@@ -42,6 +43,7 @@ export async function updateHighlight(id,title,description,image){
         return result.data;
     }catch(e){
         console.log("ERROR AT THE UPDATE HIGHLIGHT",e.message);
+        toast.error("Something went wrong while updating highlight");
     }
 }
 
@@ -58,6 +60,7 @@ export async function deleteHighlight(id){
 
     }catch(e){
         console.log("ERROR AT DELETE HIGHLIGHT ",e.messsage);
+        toast.error("Something went wrong while creating new");
     }
 }
 
@@ -66,8 +69,10 @@ export async function getAllHighlight(newType){
         const token=localStorage.getItem('token');
         const result=await apiConnector("POST",highlight.GETALLHIGHLIGHT,{token,newType});
 
-        if(result)
-             toast.success("Highlight fetched succfully");
+        if(result){
+            
+        }
+            //  toast.success("Highlight fetched succfully");
         else    
              toast.error("Error while fetching highlight");
         return result.data;

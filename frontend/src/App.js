@@ -34,6 +34,7 @@ import ClassAnalysis from './components/ClassAnalysis/ClassAnalysis.js';
 import DailyReport from './Pages/2.4.Reports/DailyReport/DailyReport.js';
 import NewsUpdatesPost from './components/NewsUpdates/NewsUpdate.js';
 import OpenRoute from './components/OpenRoute/OpenRoute.js';
+import Contactform from './Pages/5.0Contact/Contactform.js';
 
 
 
@@ -44,7 +45,7 @@ function App() {
       <Routes>
 
         {/* All User Routes */}
-        <Route path="/" element={  <OpenRoute/> } />
+        <Route path="/" element={  <Login/> } />
         <Route path="/login" element={  <Login/> } />
         <Route path="/register" element={<Register />} />
         <Route path="/u0/updateprofile" element={<FillProfile />} />
@@ -77,7 +78,8 @@ function App() {
         <Route path='/class-report' element={<ClassReport />} />
         <Route path='/postupdate' element={<NewsUpdatesPost />} />
 
-
+       {/* contact route */}
+       <Route path='/contact' element={<Contactform/>}/>
       </Routes>
     </Router>
   );

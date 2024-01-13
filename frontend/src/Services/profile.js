@@ -28,6 +28,7 @@ export function updateAcProfile(
       else toast.success("Acedamic Profile updated sucessfully");
     } catch (e) {
       console.log("ERROR AT THE UPDATE ACOOUNT PROFILE", e);
+      toast.error(e.response.data.message)
     }
   };
 }

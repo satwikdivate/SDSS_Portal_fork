@@ -195,6 +195,13 @@ exports.getDailyStudentCount=async(req,res)=>{
 
     const result=await dailyStudentCount.find({});
 
+    const total=[];
+    for( i of result){
+
+      let avgcount=(i.startCount+i.MiddleCount+i.endCount)/3.0;
+      total.push(i.date,avgcount);
+    }
+
     return res.status(200).json({
       data:result
     })
@@ -202,3 +209,6 @@ exports.getDailyStudentCount=async(req,res)=>{
     console.log("ERROR AT GET STUDENT COUNT",e);
   }
 }
+
+
+// exports.get

@@ -19,8 +19,11 @@ const NewsSection = () => {
     const Maidan = await getAllHighlight("Maidan");
     setMaidan(Maidan);
     const Tasika = await getAllHighlight("Tasika");
+    setTasika(Tasika);
     const Karykram = await getAllHighlight("Karykram");
+    setKarykram(Karykram);
     const Sampark = await getAllHighlight("Sampark");
+    setSampark(Sampark);
   };
 
   const toggleDropdownMaidan = () => {

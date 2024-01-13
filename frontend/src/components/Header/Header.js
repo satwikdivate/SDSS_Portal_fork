@@ -134,7 +134,7 @@ const Header = () => {
         <a href="#about" onClick={handle}>
           <i class="bx bx-history"></i>इतिहास
         </a>
-        <a href="#contact" onClick={handle}>
+        <a href="/contact" onClick={handle}>
           <i class="bx bxs-phone-call"></i>संपर्क
         </a>
 
