@@ -2,16 +2,20 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { Label } from 'recharts';
 import "./contact.css"
+import { createContactus } from '../../Services/contactus';
 function Contactform() {
 
     const{register,handleSubmit,formState:{errors}}=useForm();
-
+// async function handelSubmit(data){
+//     await createContactus(data.firstName,data.lastName,data.phoneNo,data.message)
+// }
+    
   return (
     <div>
-
+{/* handleSubmit((data)=> createContactus(data.firstName,data.lastName,data.phoneNo,data.message)) */}
     <div>Contactform</div>
 
-    <form onSubmit={handleSubmit((data)=>console.log(data))}>
+    <form onSubmit={handleSubmit((data)=> createContactus(data.firstName,data.lastName,data.phoneNo,data.message)) }>
  
         <div>First Name</div>
  

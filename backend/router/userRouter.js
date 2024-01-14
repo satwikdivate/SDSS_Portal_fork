@@ -8,6 +8,7 @@ const { aproveRequest, getAllRequest, getPendingRequest, getApproveRequest } = r
 const { createReport, deleteEvent, updateReport } = require('../controller/reports');
 const { uploadProfilePhoto } = require('../controller/personalProfile');
 const { createHighlight, updateHighlight, getAllHighlights, deleteHighlight } = require('../controller/Highlights');
+const { createcontactus, getAllContactRequest } = require('../controller/contactus');
 
 const router=express.Router();
 
@@ -58,4 +59,8 @@ router.post("/createHighlight",auth,isAdmin,createHighlight);
 router.post("/updateHighlight",auth,isAdmin,updateHighlight);
 router.post("/deleteHighlight",auth,isAdmin,deleteHighlight);
 router.post("/getAllHighlight",auth,getAllHighlights);
+
+
+router.post("/contactus",createcontactus);
+router.post("/getallcontactrequest",auth,isAdmin,getAllContactRequest);
 module.exports=router;

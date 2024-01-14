@@ -45,3 +45,8 @@ export const highlight={
     UPDATE_HIGHLIGHT:BASE_URL+"/user/updateHighlight",
     GETALLHIGHLIGHT:BASE_URL+"/user/getAllHighlight"
 }
+
+export const contactus={
+    CREATE_CONTACT_US:BASE_URL+"/user/contactus",
+    GET_ALL_CONTACT:BASE_URL+"/user/getallcontactrequest"
+}
