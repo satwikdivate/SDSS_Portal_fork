@@ -1,0 +1,160 @@
+.news-container {
+    max-width: 90%;
+    padding: 20px;
+    text-align: center;
+}
+
+.news-heading {
+    text-align: center;
+    color: #333;
+    position: relative;
+    font-size: 50px;
+}
+
+.news-details {
+    display: flex;
+}
+
+.news-heading::before,
+.news-heading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 500px;
+    height: 2px;
+    background-color: #ccc;
+}
+
+.news-heading::before {
+    left: 0;
+}
+
+.news-heading::after {
+    right: 0;
+}
+
+.news-form {
+    display: flex;
+    border: 1px solid #ccc;
+    flex-direction: column;
+    margin: 10px;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    /* Adjusted for smaller screens */
+}
+
+.news-label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+}
+
+.news-input {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.news-textarea {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    height: 150px;
+}
+
+.news-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.news-button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the file input */
+.news-input[type="file"],
+.news-input[type="date"],
+.news-input[type="select"] {
+    padding: 10px;
+}
+
+/* Styling for the news card preview */
+.news-preview {
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    height: 25%;
+    width: 100%;
+    /* Adjusted for smaller screens */
+    text-align: center;
+}
+
+.news-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.news-dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.news-dropdown-options option {
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.news-dropdown-options option:hover {
+    background-color: #f2f2f2;
+}
+
+
+/* Added styles for small screens */
+@media (max-width: 600px) {
+    .news-heading {
+        font-size: 30px;
+    }
+
+    .news-heading::before,
+    .news-heading::after {
+        width: 130px;
+    }
+
+    .news-details {
+        flex-direction: column;
+    }
+
+    .news-form {
+        width: 100%;
+    }
+
+    .news-preview {
+        width: 100%;
+    }
+}
