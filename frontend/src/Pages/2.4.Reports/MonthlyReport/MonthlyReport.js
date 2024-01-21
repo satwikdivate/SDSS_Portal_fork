@@ -40,12 +40,21 @@ const MonthlyReport = () => {
     const updatedReports = reports.filter((report) => report.id !== reportId);
     setReports(updatedReports);
   };
-
+console.log(role)
   return (
     <>
       <div className="report-container">
         <div className="main-content">
-          {role === "Admin" && (
+        {
+          role==="Student" &&(
+            <div>
+
+            <h1>Monthly Report</h1>
+            <ReportList reports={reports} role={role} onDeleteReport={handleDeleteReport} />
+            </div>
+          )
+        }
+          {(role === 'Admin' || role=="Operator" )&& (
             <div className="report-content">
               <h1>Monthly Report</h1>
               <div className="report-nav">
@@ -67,13 +76,12 @@ const MonthlyReport = () => {
               />
             </div>
           )}
-          {role === "Student" ||
-            (role === "Operator" && (
-              <div className="report-content">
-                <h1>मासिक आढावा</h1>
-                <ReportList reports={reports} role={role} />
-              </div>
-            ))}
+          {/* {role === 'Student' || role === 'Operator' && (
+            <div className="report-content">
+              <h1>मासिक आढावा</h1>
+              <ReportList reports={reports} role={role} />
+            </div>
+          )} */}
         </div>
       </div>
     </>

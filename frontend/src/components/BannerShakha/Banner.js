@@ -1,51 +1,74 @@
-import React, { useState, useEffect } from "react";
-import "./Banner.css"; // Add styling in this CSS file if needed
+import React, { useState } from 'react';
+import './Banner.css';
+import { useNavigate } from 'react-router-dom';
 
-const Banner = () => {
-  const images = [
-    "https://s3.amazonaws.com/thumbnails.venngage.com/template/1216a39a-5e4f-4154-a853-0b0139f2b6b6.png",
-    "https://s3.amazonaws.com/thumbnails.venngage.com/template/895562e2-bf99-4c3a-9f4a-74b50fad3a25.png",
-    "https://s3.amazonaws.com/thumbnails.venngage.com/template/4a99c240-ceb3-4511-ad41-fa3db339ce50.png",
-    "https://s3.amazonaws.com/thumbnails.venngage.com/template/5f421881-197e-4b3d-8eb6-1e6bf7382120.png",
-  ];
+const banners = [
+  {
+    title: 'Discover Your Inner Radiance with Swa-Roopwardhinee',
+    subtitle: 'Empowering Your Journey to Self-Discovery and Fulfillment',
+    buttonText: 'Explore Now',
+    backgroundColor: '#009D94',
+  },
+  {
+    title: 'Awaken Your Potential with Swa-Roopwardhinee',
+    subtitle: 'Embark on a Journey of Self-Transformation and Empowerment',
+    buttonText: 'Discover More',
+    backgroundColor: '#008080',
+  },
+  {
+    title: 'Empower Your Essence with Swa-Roopwardhinee',
+    subtitle: 'Unlock the Infinite Possibilities Within You',
+    buttonText: 'Begin Your Journey',
+    backgroundColor: '#309490',
+  },
+  {
+    title: 'Harmony of Mind, Body, and Spirit',
+    subtitle: 'Experience the Balance with Swa-Roopwardhinee',
+    buttonText: 'Discover Harmony',
+    backgroundColor: '#44A9AA',
+  },
+];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Slider = () => {
+  const [currentBanner, setCurrentBanner] = useState(0);
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : images.length - 1));
+  const nextBanner = () => {
+    setCurrentBanner((prevBanner) => (prevBanner < banners.length - 1 ? prevBanner + 1 : 0));
   };
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex < images.length - 1 ? prevIndex + 1 : 0));
+  const prevBanner = () => {
+    setCurrentBanner((prevBanner) => (prevBanner > 0 ? prevBanner - 1 : banners.length - 1));
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000); // Change slide every 5 seconds
+  const renderCurrentBanner = () => {
+    const { title, subtitle, buttonText, backgroundColor } = banners[currentBanner];
+    return (
+      <div className="banner" style={{ backgroundColor }}>
+        <h1>{title}</h1>
+        <p>{subtitle}</p>
+        <a href='https://www.swaroopwardhinee.org/'><button onClick={exploreNow}>{buttonText}</button></a>
+      </div>
+    );
+  };
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [currentIndex]);
+  const exploreNow = () => {
+        alert("Redirecting to explore page!");
+    
+  };
 
   return (
-    <div className="banner-container">
-      <div className="slider">
-        {images.map((image, index) => (
-          <div key={index} className={`slide ${index === currentIndex ? 'active' : ''}`}>
-            <img src={image} alt={`Slide ${index + 1}`} className="slide-image" />
+    <div className="banner-slider-container">
+      <div className="slider-content" style={{ transform: `translateX(${-currentBanner * 100}%)` }}>
+        {banners.map((_, index) => (
+          <div key={index} className="banner-container">
+            {renderCurrentBanner()}
           </div>
         ))}
       </div>
-      <button className="nav-button prev" onClick={handlePrev}>
-        &lt;
-      </button>
-      <button className="nav-button next" onClick={handleNext}>
-        &gt;
-      </button>
+      <button className="prev-button" onClick={prevBanner}>&#8249;</button>
+      <button className="next-button" onClick={nextBanner}>&#8250;</button>
     </div>
   );
 };
 
-export default Banner;
+export default Slider;

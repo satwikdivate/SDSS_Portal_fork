@@ -1,8 +1,10 @@
 .custom-slider {
   position: relative;
   width: 100%;
-  overflow: hidden;
   border-radius:0;
+  overflow: hidden;
+  margin-top: -20px;
+  margin-bottom: 30px;
 }
 
 .custom-slider .slider-container {
@@ -17,9 +19,7 @@
   padding: 0 10px;
 }
 
-.custom-slider .highlight-img {
-  width: 200px;
-}
+
 
 .custom-slider .news-card-content {
   background-color: #fff;
@@ -28,6 +28,7 @@
   border-radius: 3px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 350px;
+  height: 200px;
 }
 .custom-slider .news-card-content p{
   height: 150px;
@@ -57,16 +58,39 @@
 
 .custom-slider .slider-container .slide .img-container {
   width: 350px;
-  height: 250px;
+  height: 350px;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 25px;
 }
 
 .custom-slider .slider-container .slide .img-container img {
-  width: 150px;
+  width: 250px;
   border-radius: 3px;
+  padding: 0;
+}
+
+.news-delete-button{
+  position: relative;
+  top: 70px;
+  right: -150px;
+  background-color:transparent;
+  color:#333;
+  font-size: 1.1em;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  padding: 10px ;
+}
+.news-delete-button img{
+  padding: 0;
+}
+
+.slide:hover .news-delete-button{
+  opacity: 1;
+}
+.news-delete-button:hover{
+  background-color:rgb(253, 86, 86)
 }

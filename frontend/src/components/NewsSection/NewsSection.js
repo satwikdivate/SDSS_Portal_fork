@@ -11,56 +11,74 @@ const NewsSection = () => {
   const [Sampark, setSampark] = useState(null);
 
   const getnewsData = async () => {
-    const Maidan = await getAllHighlight("Maidan");
-    setMaidan(Maidan);
-    console.log(Maidan);
-    const Tasika = await getAllHighlight("Tasika");
-    setTasika(Tasika);
-    const Karykram = await getAllHighlight("Karykram");
-    setKarykram(Karykram);
-    const Sampark = await getAllHighlight("Sampark");
-    setSampark(Sampark);
+    try {
+      const maidanData = await getAllHighlight("Maidan");
+      console.log("Maidan Data:", maidanData);
+      setMaidan(maidanData);
+
+      const tasikaData = await getAllHighlight("Tasika");
+      console.log("Tasika Data:", tasikaData);
+      setTasika(tasikaData);
+
+      const karykramData = await getAllHighlight("Karykram");
+      console.log("Karykram Data:", karykramData);
+      setKarykram(karykramData);
+
+      const samparkData = await getAllHighlight("Sampark");
+      console.log("Sampark Data:", samparkData);
+      setSampark(samparkData);
+    } catch (error) {
+      console.error("Error fetching news data:", error);
+    }
   };
 
   useEffect(() => {
+    console.log("Fetching news data...");
     getnewsData();
   }, []);
 
   return (
     <div className="news-container">
-
-      <div className="Maidan-News news">
-        <div className="category-dropdown-line">
-          <div className="news-dropdown">
-            <h2>Maidan News</h2>{" "}
-          </div>
-          <NewsCategory category={Maidan} />
-        </div>
-      </div>
-      <div className="Tasika-News news">
-        <div className="category-dropdown-line">
-          <div className="news-dropdown">
-            <h2>Tasika News</h2>{" "}
+      {Maidan && Maidan.data.length > 0 && (
+        <div className="Maidan-News news">
+          <div className="category-dropdown-line">
+            <div className="news-dropdown">
+              <h2>Maidan News</h2>
+            </div>
+            <NewsCategory category={Maidan} />
           </div>
         </div>
-        <NewsCategory category={Tasika} />
-      </div>
-      <div className="Karykram-News news">
-        <div className="category-dropdown-line">
-          <div className="news-dropdown">
-            <h2>Karykram News</h2>{" "}
+      )}
+      {Tasika && Tasika.data.length > 0 && (
+        <div className="Tasika-News news">
+          <div className="category-dropdown-line">
+            <div className="news-dropdown">
+              <h2>Tasika News</h2>
+            </div>
           </div>
+          <NewsCategory category={Tasika} />
         </div>
-        <NewsCategory category={Karykram} />
-      </div>
-      <div className="Sampark-News news">
-        <div className="category-dropdown-line">
-          <div className="news-dropdown">
-            <h2>Sampark News</h2>{" "}
+      )}
+      {Karykram && Karykram.data.length > 0 && (
+        <div className="Karykram-News news">
+          <div className="category-dropdown-line">
+            <div className="news-dropdown">
+              <h2>Karykram News</h2>
+            </div>
           </div>
+          <NewsCategory category={Karykram} />
         </div>
-        <NewsCategory category={Sampark} />
-      </div>
+      )}
+      {Sampark && Sampark.data.length > 0 && (
+        <div className="Sampark-News news">
+          <div className="category-dropdown-line">
+            <div className="news-dropdown">
+              <h2>Sampark News</h2>
+            </div>
+          </div>
+          <NewsCategory category={Sampark} />
+        </div>
+      )}
     </div>
   );
 };

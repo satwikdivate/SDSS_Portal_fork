@@ -69,7 +69,7 @@ export  async function signUp(
       console.log("RESULT AT SIGNUP", result);
       if (result.status === 200) {
         toast.success("Signup Succefully");
-        toast.success(result.data.data.rollNo);
+        console.log(result.data.data.rollNo);
         navigate("/login");
       } else toast.success("Something went wrong at signup");
       
@@ -112,8 +112,8 @@ export function logoutUser(navigate) {
       localStorage.removeItem("role");
 
       console.log("Hello");
-      // redirect to login
-      navigate("/login");
+      navigate("/")
+      // redirect to logi
     } catch (e) {
       console.log("ERROR AT LOGOUT ", e.message);
     }

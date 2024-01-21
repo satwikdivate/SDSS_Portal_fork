@@ -13,7 +13,7 @@
   width: 95%;
 }
 
-h1 {
+.all-attend  h1 {
   font-size: 24px;
   text-align: center;
   margin: 20px 0;
@@ -40,7 +40,7 @@ h1 {
   align-items: center;
 }
 
-h2 {
+.all-attend  h2 {
   font-size: 18px;
   margin-bottom: 20px;
 }
@@ -79,7 +79,7 @@ h2 {
   overflow-y: scroll;
 }
 
-table {
+.all-attend  table {
   width: 100%;
   border-collapse: collapse;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);

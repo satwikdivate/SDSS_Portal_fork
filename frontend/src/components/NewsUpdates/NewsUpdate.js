@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import "./NewsUpdates.css"; // Import the CSS file
-import Header from "../Header/Header";
+import "./NewsUpdates.css"; 
 import { createHighlight } from "../../Services/highlights";
-import Loading from "../SmallLoader/Loader";
 
 const NewsUpdatesPost = () => {
   const [headline, setHeadline] = useState("");

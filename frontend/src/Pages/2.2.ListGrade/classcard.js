@@ -4,11 +4,13 @@ import Header from "../../components/Header/Header";
 import CreateClass from "../../components/CreateClass/CreateClass";
 import { getAllClass, getById, enrollStudent } from "../../Services/operator";
 import "./classcard.css";
+import { operator } from "../../Services/utilities/API";
 
 const Classcard = () => {
   const [classes, setClasses] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [isAdmin, setAdmin] = useState(false);
+  const[admin,userAdmin]=useState('');
   const [enrolledClasses, setEnrolledClasses] = useState(new Set());
   const navigate = useNavigate();
   const userID = localStorage.getItem("loggedInId");
@@ -67,6 +69,7 @@ const Classcard = () => {
     navigate(`/class/${className}`);
   };
 
+  console.log(isAdmin);
   return (
     <>
       
@@ -82,22 +85,24 @@ const Classcard = () => {
               <p>
                 Class Teacher: {teacher?.firstName} {teacher?.lastName}
               </p>
-              {!isAdmin ? (
-                <button
-                  className="enroll-class"
-                  onClick={() => enrollClass(classInfo._id)}
-                  disabled={isEnrolled}
-                >
-                  {isEnrolled ? "Enrolled" : "Enroll Now"}
-                </button>
-              ) : (
+              {(role=="Admin" || role=="Operator")? (
                 <button
                   className="showallStudent"
                   onClick={() => redirectToClassInfo(classInfo._id)}
                 >
                   <i className="bx bx-right-arrow-circle"></i>
                 </button>
-              )}
+               
+              ) 
+              : (
+                
+              <div>
+                {
+                 
+                }
+              </div>
+              )
+              }
             </div>
           );
         })}

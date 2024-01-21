@@ -3,7 +3,7 @@ import CustomSlider from "../CustomSlider/CustomSlider";
 import "../../components/NewsSection/NewsSection.css";
 
 const NewsCategory = ({ category }) => {
-  const [nonews, setNonews] = useState(false);
+  const [noNews, setNonews] = useState(false);
 
   useEffect(() => {
     // Check if category is null or does not have data
@@ -21,7 +21,7 @@ const NewsCategory = ({ category }) => {
   // Render null if no news or display news slider
   return (
     <div className="category">
-      {nonews ? (
+      {noNews ? (
         <p>No news available.</p>
       ) : (
         <CustomSlider newsData={news} />

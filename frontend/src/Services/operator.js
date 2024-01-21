@@ -255,6 +255,7 @@ export async function getPendingRequest() {
     return result.data;
   } catch (e) {
     console.log("EROR AT GET PENDING REQUEST", e);
+    // toast.error("Unauthorized Acess");
   }
 }
 
@@ -273,18 +274,19 @@ export async function getAllOperators() {
   }
 }
 
-export async function createEvent(eventName, eventDescritio, eventDate) {
+export async function createEvent(eventName,eventDate,eventDescrition) {
   try {
     const token = localStorage.getItem("token");
 
     const result = await apiConnector("POST", operator.CREATE_EVENT, {
       eventName,
       eventDate,
-      eventDescritio,
+      eventDescrition,
       token,
     });
 
-    if (result) toast.success("Event Created succefuly");
+    console.log("RESULT AT CRETAE EVENT ",result);
+    if (result.data) toast.success("Event Created succefuly");
     else toast.error("Something went wrong while creting event");
   } catch (e) {
     console.log("ERROR AT CREATE EVENT", e);

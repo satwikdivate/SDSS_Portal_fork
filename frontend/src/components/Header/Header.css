@@ -22,6 +22,7 @@
 .navbar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .navbar a {
@@ -30,6 +31,8 @@
   font-weight: 500;
   margin-right: 3.5rem;
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .navbar a button {
@@ -101,6 +104,7 @@
   color: #000000;
   transform: scale(1.05);
 }
+
 
 #menu-icon {
   font-size: 1.6rem;
@@ -181,7 +185,8 @@
   transition: 0.3s ease-in-out;
 }
 
-.dropdown p {
+.dropdown p,
+.dropdown .drop {
   width: 250px;
   margin: 3px 0;
   padding: 8px 12px;
@@ -250,12 +255,29 @@ nav i {
   cursor: pointer;
 }
 
+.auth{
+  margin-right: 50px;
+}
+
 /* Adjust the styling of the hr element as needed */
 .dropdown hr {
   margin: 10px 0;
   border: 0.5px solid var(--text-color);
   width: 100%;
 }
+.static-nav-item{
+  background-color: #000328;
+  color: #fff;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0.7em;
+  font-size: 0.8em;
+  transition: background-color 0.5s;
+}
+
+
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {

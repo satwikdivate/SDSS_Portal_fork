@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Event.css';
 import Header from '../../components/Header/Header';
 import { createEvent } from '../../Services/operator';
 
-const Event = ({ role }) => {
+
+const Event = ({  }) => {
   const [events, setEvents] = useState([]);
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
   const [eventDescription, setEventDescription] = useState('');
+  const role=localStorage.getItem("role");
+
+ 
+  useEffect(()=>{
+    // const result=NULL;
+  },[]);
 
   const addEvent = async() => {
     if (eventName && eventDate && eventDescription) {
@@ -16,12 +23,12 @@ const Event = ({ role }) => {
         date: eventDate,
         description: eventDescription,
       };
-      setEvents([...events, newEvent]);
+      // setEvents([...events, newEvent]);
       console.log(eventDate);
       console.log(eventDescription);
       console.log(eventName)
 
-      const result =await createEvent(eventName,eventDescription,eventDate)
+      const result =await createEvent(eventName,eventDate,eventDescription)
       setEventName('');
       setEventDate('');
       setEventDescription('');
@@ -39,7 +46,7 @@ const Event = ({ role }) => {
 
       {/* Add Event */}
       {/* Only Admin Role can Add Events */}
-      {role === 'admin' && (
+      {role === 'Admin' && (
         <div>
           <div className="form-group">
             <label className="label">Event Name:</label>
