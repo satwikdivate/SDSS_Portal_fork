@@ -28,6 +28,7 @@ const MonthlyAnalysisChart = () => {
         // Filter data based on the selected week, month, and year
         const filteredData = result.data.filter((entry) => {
           const entryWeek = getWeekNumber(entry.date);
+          console.log(entryWeek);
           return (
             entry.date.split("-")[1] === selectedMonth &&
             entry.date.split("-")[2] === selectedYear

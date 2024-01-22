@@ -11,8 +11,6 @@ import {
 // import Footer from '../../components/Footer/Footer';
 const FillProfile = () => {
   const [currentSection, setCurrentSection] = useState("personal");
-  const [showPopup, setShowPopup] = useState(false);
-  const [relationships, setRelationships] = useState([]);
   const [data, setdata] = useState();
   const dispatch = useDispatch();
 
@@ -35,21 +33,12 @@ const FillProfile = () => {
 
   console.log("Data:", data);
 
-  const [newRelationship, setNewRelationship] = useState({
-    name: "",
-    relation: "",
-    dob: "",
-  });
 
   const [personalData, setPersonalData] = useState({
-    address: "",
     age: "",
     dob: "",
-    email: data?.email,
-    firstName: data?.firstName,
-    lastName: data?.lastName,
-    phone: data?.contact,
-    standard: "",
+    grade: "",
+    bloodGroup :""
   });
 
   const [educational, setEducationalData] = useState({
@@ -68,12 +57,6 @@ const FillProfile = () => {
     siblingCount: "",
   });
 
-  const [userData, setUserData] = useState({
-    personal: { ...personalData },
-    educational: { ...educational },
-    family: { ...familyData },
-    relationships: [],
-  });
 
   const changeSection = (section) => {
     setCurrentSection(section);
@@ -82,7 +65,14 @@ const FillProfile = () => {
 
   const submitPersonalUpdate = async () => {
     console.log(personalData);
-    await updatePersonalProfile(personalData);
+    dispatch(
+      updatePersonalProfile(
+        personalData.age,
+        personalData.dob,
+        personalData.grade,
+        personalData.bloodGroup,
+      )
+    );
   };
 
   const submitAcademicUpdate = async () => {
@@ -143,7 +133,7 @@ const FillProfile = () => {
                   <input
                     type="text"
                     name="firstName"
-                    value={personalData.firstName || data?.firstName}
+                    value={data?.firstName|| personalData.firstName }
                     onChange={(e) =>
                       setPersonalData({
                         ...personalData,
@@ -160,7 +150,7 @@ const FillProfile = () => {
                     type="text"
                     placeholder="Last Name"
                     name="lastName"
-                    value={personalData?.lastName || data?.lastName}
+                    value={data?.lastName || personalData?.lastName }
                     defaultValue={data?.lastName}
                     onChange={(e) =>
                       setPersonalData({
@@ -176,7 +166,7 @@ const FillProfile = () => {
                     type="text"
                     placeholder="Email"
                     name="email"
-                    value={personalData.email || data?.email}
+                    value={data?.email || personalData.email}
                     onChange={(e) =>
                       setPersonalData({
                         ...personalData,
@@ -259,15 +249,31 @@ const FillProfile = () => {
                     min="5"
                     max="16"
                     name="standard"
-                    value={personalData.standard || data?.personalProfile.grade}
+                    value={personalData.grade || data?.personalProfile.grade}
                     onChange={(e) =>
                       setPersonalData({
                         ...personalData,
-                        standard: e.target.value,
+                        grade: e.target.value,
                       })
                     }
                   />
                 </div>
+              </label>
+              <label className="blood-grp">
+              Blood-Group
+                  <input
+                    type="text"
+                    placeholder="Blood-Group"
+                    name="bloodGroup"
+                    value={personalData.bloodGroup || data?.bloodGroup}
+                    onChange={(e) =>
+                      setPersonalData({
+                        ...personalData,
+                        bloodGroup: e.target.value,
+                      })
+                    }
+                    defaultValue={data?.bloodGroup}
+                  />
               </label>
               <button className="update-profile" onClick={submitPersonalUpdate}>
                 Update Profile
@@ -288,7 +294,7 @@ const FillProfile = () => {
                     type="text"
                     placeholder="School Name"
                     name="schoolName"
-                    value={educational.schoolName}
+                    value={data?.educational.educational.schoolName}
                     onChange={(e) =>
                       setEducationalData({
                         ...educational,

@@ -33,7 +33,6 @@ import ClassAnalysis from "./components/ClassAnalysis/ClassAnalysis.js";
 import DailyReport from "./Pages/2.4.Reports/DailyReport/DailyReport.js";
 import NewsUpdatesPost from "./components/NewsUpdates/NewsUpdate.js";
 import Contactform from "./Pages/5.0Contact/Contactform.js";
-import Header from "./components/Header/Header.js";
 
 function App() {
   

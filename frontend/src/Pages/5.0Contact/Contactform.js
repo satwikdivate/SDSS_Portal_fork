@@ -1,6 +1,5 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
-import { Label } from 'recharts';
 import "./contact.css"
 import { createContactus } from '../../Services/contactus';
 function Contactform() {

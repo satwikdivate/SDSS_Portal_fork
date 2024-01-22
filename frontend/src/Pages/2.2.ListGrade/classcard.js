@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import CreateClass from "../../components/CreateClass/CreateClass";
-import { getAllClass, getById, enrollStudent } from "../../Services/operator";
+import { getAllClass, getById  } from "../../Services/operator";
 import "./classcard.css";
-import { operator } from "../../Services/utilities/API";
 
 const Classcard = () => {
   const [classes, setClasses] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [isAdmin, setAdmin] = useState(false);
-  const[admin,userAdmin]=useState('');
-  const [enrolledClasses, setEnrolledClasses] = useState(new Set());
   const navigate = useNavigate();
   const userID = localStorage.getItem("loggedInId");
   const role = localStorage.getItem("role");
@@ -39,7 +36,6 @@ const Classcard = () => {
             enrolledSet.add(classObj._id);
           }
         });
-        setEnrolledClasses(enrolledSet);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -47,23 +43,7 @@ const Classcard = () => {
 
     fetchUserData();
   },[] );
-
-  const enrollClass = async (classID) => {
-    try {
-      // Check if the user is already enrolled in any class
-      if (enrolledClasses.size > 0) {
-        alert("You are already enrolled in a class. You cannot enroll in multiple classes.");
-        return;
-      }
-
-      console.log("Enrolling in class:", classID);
-      await enrollStudent(userID, classID);
-      setEnrolledClasses((prevEnrolledClasses) => new Set([...prevEnrolledClasses, classID]));
-    } catch (e) {
-      console.error("Failed to enroll:", e.message);
-      alert("Enrollment failed. Please try again.");
-    }
-  };
+  
 
   const redirectToClassInfo = (className) => {
     navigate(`/class/${className}`);
@@ -77,7 +57,6 @@ const Classcard = () => {
       <div className="card-grid">
         {classes.map((classInfo, index) => {
           const teacher = teachers[index];
-          const isEnrolled = enrolledClasses.has(classInfo._id);
 
           return (
             <div key={classInfo._id} className="card-grade">
@@ -85,7 +64,7 @@ const Classcard = () => {
               <p>
                 Class Teacher: {teacher?.firstName} {teacher?.lastName}
               </p>
-              {(role=="Admin" || role=="Operator")? (
+              {(role==="Admin" || role==="Operator")? (
                 <button
                   className="showallStudent"
                   onClick={() => redirectToClassInfo(classInfo._id)}

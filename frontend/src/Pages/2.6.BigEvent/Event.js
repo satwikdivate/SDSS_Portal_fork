@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header';
 import { createEvent } from '../../Services/operator';
 
 
-const Event = ({  }) => {
+const Event = () => {
   const [events, setEvents] = useState([]);
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
@@ -23,7 +23,7 @@ const Event = ({  }) => {
         date: eventDate,
         description: eventDescription,
       };
-      // setEvents([...events, newEvent]);
+      setEvents([...events, newEvent]);
       console.log(eventDate);
       console.log(eventDescription);
       console.log(eventName)

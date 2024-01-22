@@ -6,11 +6,11 @@ const User = require("../db/user");
 
 exports.createPersonalProfile = async (req, res) => {
   try {
-    const { age, dateOfBirth, grade, contact, bloodGroup } = req.body;
+    const { age, dateOfBirth, grade, bloodGroup } = req.body;
 
     //validation
     const id = req.user.id;
-    if (!id || !age || !dateOfBirth || !grade || !contact || !bloodGroup) {
+    if (!id || !age || !dateOfBirth || !grade  || !bloodGroup) {
       return res
         .status(400)
         .json({ message: "Something missing at createPersonalProfile" });
@@ -26,7 +26,6 @@ exports.createPersonalProfile = async (req, res) => {
         age: req.body.age,
         dateOfBirth: req.body.dateOfBirth,
         grade: req.body.grade,
-        contact: req.body.contact,
         bloodGroup: req.body.bloodGroup,
       }, // Update
       { new: true }

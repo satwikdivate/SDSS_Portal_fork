@@ -1,8 +1,7 @@
 import { apiConnector } from "./utilities/apiCOnnector";
 
-import { loading, setLoading, setToken, token, setUser } from "../slices/auth";
 import toast from "react-hot-toast";
-import { user, profile } from "../Services/utilities/API";
+import { profile } from "../Services/utilities/API";
 
 export function updateAcProfile(
   schoolName,
@@ -23,7 +22,7 @@ export function updateAcProfile(
       });
 
       console.log("RESULT AT ACEDEMIC PRODILE", result);
-      if (result.request.status != 200)
+      if (result.request.status !== 200)
         toast.error("Something wrong at the update Acedamic profile");
       else toast.success("Acedamic Profile updated sucessfully");
     } catch (e) {
@@ -34,28 +33,20 @@ export function updateAcProfile(
 }
 
 export function updatePersonalProfile(
-  address,
   age,
   dob,
-  email,
-  firstName,
-  lastName,
-  phone,
-  standard
+  grade,
+  bloodGroup
 ) {
   return async (dispatch) => {
     const result = await apiConnector("POST", profile.PERSONAL_PROFILE, {
-      address,
       age,
       dateOfBirth: dob,
-      email,
-      firstName,
-      lastName,
-      phone,
-      standard,
+      grade,
+      bloodGroup
     });
     console.log("RESULT AT PERSONAL PRODILE", result);
-    if (result.request.status != 200)
+    if (result.request.status !== 200)
       toast.error("Something wrong at the update Personal profile");
     else toast.success("Personal Profile updated sucessfully");
   };
@@ -84,7 +75,7 @@ export function updateFamilyProfile(
             token
         })
 
-        if (result.request.status != 200)
+        if (result.request.status !== 200)
         toast.error("Something wrong at the family  profile");
         else toast.success("Family Profile updated sucessfully");
 

@@ -55,7 +55,7 @@ console.log(role)
             </div>
           )
         }
-          {(role === 'Admin' || role=="Operator" )&& (
+          {(role === 'Admin' || role==="Operator" )&& (
             <div className="report-content">
               <h1>Monthly Report</h1>
               <div className="report-nav">

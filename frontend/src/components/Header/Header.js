@@ -83,9 +83,6 @@ const Header = () => {
     return <Loading />;
   }
 
-  const requets = () => {
-    navigate("/request");
-  };
 
   const renderDropdownItems = () => {
     return (
@@ -154,7 +151,7 @@ const Header = () => {
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
         <div className="profile-container">
           {role === "Admin" && (
-            <a className="requests" onClick={requets}>
+            <a className="requests" href="/request">
               <i class="bx bxs-bell-ring">
                 <p>{requestcount}</p>
               </i>

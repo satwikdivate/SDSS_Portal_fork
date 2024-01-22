@@ -11,7 +11,7 @@ export async function createContactus(firstName,lastName,contact,message){
             firstName,lastName,contact,message
         })
         
-        if(result.status==200)
+        if(result.status===200)
         toast.success("Thank you for  your valuable time we will contact you soon");
     
     }catch(e){
