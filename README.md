@@ -1,13 +1,35 @@
-# Swa-Roopwardhinee 
-## SDSS : Student Portal
+<h1 align="center" id="title">SDSS : Student Portal</h1>
 
 ## Overview
 
-Welcome to the Swa-Roopwardhinee Student Portal project! This readme file provides essential information about setting up the project dependencies.
+Welcome to the Swa-Roopwardhinee Student Portal project! <br>This readme file provides essential information about setting up the project dependencies.
 
-## Backend
+<br/>
+<h2>💻 Built with</h2>
 
-### Setting Up Backend Dependencies
+Technologies used in the project:
+
+<h3>👨‍💻Frontend</h3>
+
+*    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="15" height="15"/> ReactJS
+*   <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg"
+                alt="css3" width="15" height="15" /> CSS
+
+<h3>👨‍💻Backend</h3>
+
+*   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg"
+                alt="nodejs" width="15" height="15" /> NodeJS
+*   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg"
+                alt="express" width="15" height="15" /> ExpressJS
+
+<h3>👨‍💻Database</h3>
+
+*   <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
+                alt="mongodb" width="15" height="15" /> MongoDB
+<br/>
+<h2>🛠️ Setting Up Backend Dependencies</h2>
 
 1. Navigate to the backend directory:
 
@@ -26,10 +48,8 @@ Welcome to the Swa-Roopwardhinee Student Portal project! This readme file provid
     ```bash
     npm start
     ```
-
-## Frontend
-
-### Setting Up Frontend Dependencies
+<br/>
+<h2>🛠️ Setting Up Frontend Dependencies</h2>
 
 1. Navigate to the frontend directory:
 
@@ -48,8 +68,8 @@ Welcome to the Swa-Roopwardhinee Student Portal project! This readme file provid
     ```bash
     npm start
     ```
-
-## Configuration
+<br/>
+## 🧐Configuration
 
 Create a `.env` file in the root of the project and add the following configuration:
 
@@ -71,8 +91,8 @@ API_KEY=your-api-key
 API_SECRET=your-api-secret
 
 ```
-
-## Collaboration
+<br/>
+## 🍰Collaboration
 
 This project is a collaborative effort between the project owner and collaborator.
 
