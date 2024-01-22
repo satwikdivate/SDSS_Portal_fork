@@ -20,7 +20,7 @@ export async function createHighlight(title,description,image,newType){
             toast.error("Error while createing highlight");
         return result.data;
     }catch(e){
-        console.log("ERROR AT THE CREATE HIGHLIGHT",e.message);
+        console.log("ERROR AT THE CREATE HIGHLIGHT",e);
         toast.error("Something went wrong while creating highlight")
     }
 }
