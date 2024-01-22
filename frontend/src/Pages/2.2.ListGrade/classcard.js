@@ -42,7 +42,7 @@ const Classcard = () => {
     };
 
     fetchUserData();
-  },[] );
+  },[CreateClass] );
   
 
   const redirectToClassInfo = (className) => {
@@ -64,7 +64,7 @@ const Classcard = () => {
               <p>
                 Class Teacher: {teacher?.firstName} {teacher?.lastName}
               </p>
-              {(role==="Admin" || role==="Operator")? (
+              {(role==="Admin" || role==="Operator") && (
                 <button
                   className="showallStudent"
                   onClick={() => redirectToClassInfo(classInfo._id)}
@@ -73,14 +73,6 @@ const Classcard = () => {
                 </button>
                
               ) 
-              : (
-                
-              <div>
-                {
-                 
-                }
-              </div>
-              )
               }
             </div>
           );

@@ -6,25 +6,25 @@ const banners = [
     title: 'Discover Your Inner Radiance with Swa-Roopwardhinee',
     subtitle: 'Empowering Your Journey to Self-Discovery and Fulfillment',
     buttonText: 'Explore Now',
-    backgroundColor: '#009D94',
+    backgroundColor: '#7CB9E8',
   },
   {
     title: 'Awaken Your Potential with Swa-Roopwardhinee',
     subtitle: 'Embark on a Journey of Self-Transformation and Empowerment',
     buttonText: 'Discover More',
-    backgroundColor: '#008080',
+    backgroundColor: '#6CB4EE',
   },
   {
     title: 'Empower Your Essence with Swa-Roopwardhinee',
     subtitle: 'Unlock the Infinite Possibilities Within You',
     buttonText: 'Begin Your Journey',
-    backgroundColor: '#309490',
+    backgroundColor: '#318CE7',
   },
   {
     title: 'Harmony of Mind, Body, and Spirit',
     subtitle: 'Experience the Balance with Swa-Roopwardhinee',
     buttonText: 'Discover Harmony',
-    backgroundColor: '#44A9AA',
+    backgroundColor: '#4B9CD3',
   },
 ];
 
