@@ -69,6 +69,7 @@ Technologies used in the project:
     npm start
     ```
 <br/>
+
 ## 🧐Configuration
 
 Create a `.env` file in the root of the project and add the following configuration:
