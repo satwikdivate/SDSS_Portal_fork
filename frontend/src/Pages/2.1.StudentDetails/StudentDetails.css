@@ -30,6 +30,7 @@
   text-align: center;
 }
 
+
 .bio-data h2 {
   color: #333;
   font-size: 1.2em;
@@ -38,7 +39,14 @@
 
 .bio-data p {
   margin: 5px 0;
+  font-size: 1.2em;
+  font-weight: bold;
 }
+
+.bold-text {
+  font-weight: normal;
+}
+
 
 .personal-info,
 .family-info,

@@ -85,6 +85,7 @@ const MonthlyAnalysisChart = () => {
 
   return (
     <>
+    <Header />
       <div className={styles.monthlyAnalysisChart}>
         <div className={styles.dropdowns}>
           <div className={styles.dropdownContainer}>

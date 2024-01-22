@@ -44,7 +44,7 @@ const DailyReport = () => {
 
   return (
     <>
-      
+      <Header />
       <div className={styles.dailyReportContainer}>
         <h2>Daily Report</h2>
         <form className={styles.dailyReportForm} onSubmit={handleSubmit}>

@@ -30,7 +30,7 @@ const CreateClass = () => {
   };
 
   const handleclose = () => {
-    closeModals();
+    closeModals(false);
   };
 
   const closeModals = () => {

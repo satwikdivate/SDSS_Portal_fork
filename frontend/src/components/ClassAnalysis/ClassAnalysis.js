@@ -34,6 +34,7 @@ const ClassAnalysis = () => {
 
   return (
     <>
+    <Header />
       <div className="class-analysis-container">
         <h2>Class Analysis: {classsName}</h2>
         <h3>Weekly Analysis</h3>

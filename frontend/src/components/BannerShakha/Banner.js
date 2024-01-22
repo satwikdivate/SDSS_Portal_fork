@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Banner.css';
-import { useNavigate } from 'react-router-dom';
 
 const banners = [
   {
@@ -55,6 +54,16 @@ const Slider = () => {
         alert("Redirecting to explore page!");
     
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextBanner();
+    }, 5000); // Change 5000 to the desired interval in milliseconds (e.g., 5000 for 5 seconds)
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div className="banner-slider-container">

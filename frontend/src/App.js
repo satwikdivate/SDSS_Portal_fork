@@ -36,20 +36,16 @@ import Contactform from "./Pages/5.0Contact/Contactform.js";
 import Header from "./components/Header/Header.js";
 
 function App() {
+  
   return (
     <>
       <Router>
+        
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-        </Routes>
-      </Router>
-
-      <Router>
         
-        <Header />
-        <Routes>
           {/* All User Routes */}
 
           {/* Inside Header */}

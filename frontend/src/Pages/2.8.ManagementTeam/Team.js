@@ -202,6 +202,7 @@ const Team = () => {
 
   return (
     <>
+    <Header />
       <div className="team">
         <h1>Organizational Tree</h1>
         <div className="tree-container">

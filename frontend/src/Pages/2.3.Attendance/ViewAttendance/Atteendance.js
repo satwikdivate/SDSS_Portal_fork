@@ -94,6 +94,7 @@ const Attendance = () => {
 
   return (
     <>
+    <Header />
       <div className="all-attend">
         <div className="attendance">
           <h1>Attendance</h1>

@@ -16,10 +16,10 @@ function StudentBio() {
     } catch (e) {
       console.log("ERROR AT FRONTEND:", e);
     }
-  }, [dispatch]); // Add dispatch to the dependency array
+  }, [dispatch]);
 
   useEffect(() => {
-    getData(); // Call getData inside the useEffect
+    getData();
   }, [getData]);
 
   if (!data || data.length === 0) {
@@ -33,36 +33,37 @@ function StudentBio() {
 
   return (
     <>
+      <Header />
       <div className="details">
         <div className="bio-data">
           <h1>Student Bio Data</h1>
           <h2>Personal Information</h2>
 
           <div className="personal-info">
-            <p>Username: {data?.id}</p>
-            <p>Name: {data?.firstName + " " + data?.lastName}</p>
-            <p>Standard: {"hello"}</p>
-            <p>Email: {data?.email}</p>
-            <p>Age: {personalProfile?.age}</p>
-            <p>Date of Birth: {personalProfile?.dateOfBirth}</p>
-            <p>Contact: {personalProfile?.contact}</p>
-            <p>Blood Group: {personalProfile?.bloodGroup}</p>
+            <p><span className="bold-text">Username:</span> {data?.id}</p>
+            <p><span className="bold-text">Name:</span> {data?.firstName + " " + data?.lastName}</p>
+            <p><span className="bold-text">Standard:</span> {"hello"}</p>
+            <p><span className="bold-text">Email:</span> {data?.email}</p>
+            <p><span className="bold-text">Age:</span> {personalProfile?.age}</p>
+            <p><span className="bold-text">Date of Birth:</span> {personalProfile?.dateOfBirth}</p>
+            <p><span className="bold-text">Contact:</span> {personalProfile?.contact}</p>
+            <p><span className="bold-text">Blood Group:</span> {personalProfile?.bloodGroup}</p>
           </div>
           <h2>Family Information</h2>
           <div className="family-info">
-            <p>Mother's Name: {}</p>
-            <p>Father's Name: {familyProfile?.fatherName}</p>
-            <p>Contact: {familyProfile?.contact}</p>
-            <p>Occupation: {familyProfile?.occupation}</p>
-            <p>Income: {familyProfile?.income}</p>
-            <p>Sibling Count: {familyProfile?.siblingCount}</p>
+            <p><span className="bold-text">Father's Name:</span> {familyProfile?.fatherName}</p>
+            <p><span className="bold-text">Mother's Name:</span> {familyProfile?.motherName}</p>
+            <p><span className="bold-text">Contact:</span> {familyProfile?.contact}</p>
+            <p><span className="bold-text">Occupation:</span> {familyProfile?.occupation}</p>
+            <p><span className="bold-text">Income:</span> {familyProfile?.income}</p>
+            <p><span className="bold-text">Sibling Count:</span> {familyProfile?.siblingCount}</p>
           </div>
           <h2>Academic Information</h2>
           <div className="academic-info">
-            <p>School Name: {academicProfile?.schoolName}</p>
-            <p>School Address: {academicProfile?.schoolAddress}</p>
-            <p>Class Teacher: {academicProfile?.classTeacher}</p>
-            <p>Medium: {academicProfile?.medium}</p>
+            <p><span className="bold-text">School Name:</span> {academicProfile?.schoolName}</p>
+            <p><span className="bold-text">School Address:</span> {academicProfile?.schoolAddress}</p>
+            <p><span className="bold-text">Class Teacher:</span> {academicProfile?.classTeacher}</p>
+            <p><span className="bold-text">Medium:</span> {academicProfile?.medium}</p>
           </div>
         </div>
       </div>

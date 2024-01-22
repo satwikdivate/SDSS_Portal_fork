@@ -131,6 +131,7 @@ const RequestApproval = () => {
 
   return (
     <>
+    <Header />
       <div className="request-approval-container">
         <h2>Pending Requests</h2>
         {renderRequestSection(pendingRequests)}

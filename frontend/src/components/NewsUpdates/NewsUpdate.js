@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./NewsUpdates.css"; 
 import { createHighlight } from "../../Services/highlights";
+import Header from "../Header/Header";
 
 const NewsUpdatesPost = () => {
   const [headline, setHeadline] = useState("");
@@ -48,6 +49,7 @@ const NewsUpdatesPost = () => {
 
   return (
     <>
+    <Header />
       <div className="news-container">
         <h2 className="news-heading">Post News</h2>
         <div className="news-details">

@@ -62,10 +62,9 @@ export function updatePersonalProfile(
 }
 
 export function updateFamilyProfile(
-  fatherContact,
   fatherName,
   income,
-  motherContact,
+  contact,
   motherName,
   occupation,
   siblingCount
@@ -76,10 +75,9 @@ export function updateFamilyProfile(
         const token = localStorage.getItem("token");
 
         const result=await apiConnector("POST",profile.FAMILY_PROFILE,{
-            contact: fatherContact,
+            contact: contact,
             fatherName,
             income,
-            motherContact,
             motherName,
             occupation,
             siblingCount,

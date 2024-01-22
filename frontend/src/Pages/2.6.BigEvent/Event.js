@@ -40,6 +40,7 @@ const Event = ({  }) => {
 
   return (
     <>
+    <Header />
     <div className="Event">
       <h1 className="app-heading">Event Management App</h1>
 

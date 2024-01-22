@@ -43,6 +43,7 @@ const MonthlyReport = () => {
 console.log(role)
   return (
     <>
+    <Header />
       <div className="report-container">
         <div className="main-content">
         {

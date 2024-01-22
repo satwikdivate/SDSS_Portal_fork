@@ -80,6 +80,7 @@ const AttendiesList = () => {
 
   return (
     <>
+    <Header />
       <div className="class-info-container">
         <h2>Class: {classsName}</h2>
         <h2>Class Teacher: {ClassTeacher}</h2>

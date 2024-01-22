@@ -72,7 +72,7 @@ const Classcard = () => {
   console.log(isAdmin);
   return (
     <>
-      
+      <Header />
       <h3 className="heading-class">Classes</h3>
       <div className="card-grid">
         {classes.map((classInfo, index) => {

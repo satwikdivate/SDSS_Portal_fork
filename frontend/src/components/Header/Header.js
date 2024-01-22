@@ -63,7 +63,7 @@ const Header = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  },[]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -77,7 +77,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  });
 
   if (!data) {
     return <Loading />;
@@ -141,10 +141,10 @@ const Header = () => {
       </div>
 
       <nav className={`navbar ${isMenuOpen ? "menu-open" : ""}`}>
-        <a href="/" onClick={headerHandle}>
+        <a href="/landing" onClick={headerHandle}>
           <i class="bx bxs-home"></i>Latest Updates
         </a>
-        <a href="#about" onClick={handle}>
+        <a href="/home" onClick={handle}>
           <i class="bx bxs-notepad"></i>Portal
         </a>
         <a href="/contact" onClick={handle}>

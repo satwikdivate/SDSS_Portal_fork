@@ -23,7 +23,7 @@ const HomePage = () => {
 
   return (
     <>
-     
+     <Header />
       <div className="home-page">
         <main>
           <div className="search-module">
