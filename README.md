@@ -28,6 +28,13 @@ Technologies used in the project:
 *   <img
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg"
                 alt="mongodb" width="15" height="15" /> MongoDB
+
+<h3>👨‍💻Other</h3>
+
+*   <img
+                src="https://static-00.iconduck.com/assets.00/cloudinary-icon-2048x1339-clpwr027.png"
+                alt="cloud" width="15" height="15" /> Cloudinary
+
 <br/>
 <h2>🛠️ Setting Up Backend Dependencies</h2>
 
@@ -78,10 +85,6 @@ Create a `.env` file in the root of the project and add the following configurat
 # MongoDB connection URL
 MONGO_URL="mongodb+srv://username:password@your-mongodb-cluster-url/database-name"
 
-# Email Configuration
-MAIL_HOST=smtp.your-email-provider.com
-MAIL_USER=your-email@example.com
-MAIL_PASS=your-email-password
 
 # Server Port
 PORT=4000
