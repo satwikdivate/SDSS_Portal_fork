@@ -92,6 +92,7 @@ API_SECRET=your-api-secret
 
 ```
 <br/>
+
 ## 🍰Collaboration
 
 This project is a collaborative effort between the project owner and collaborator.
