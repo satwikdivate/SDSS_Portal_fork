@@ -36,7 +36,8 @@ export const operator={
     CLASS_DAILY_UPDATE:BASE_URL+"/user/dailyUpdate",
     GET_CLASS_DAILY_UPDATE:BASE_URL+"/user/classByUpdate",
     MARK_STUDENT_DAILY_COUNT:BASE_URL+"/user/dailyAttendence",
-    GET_STUDENT_DAILY_COUNT:BASE_URL+"/user/getdailyAttendence"
+    GET_STUDENT_DAILY_COUNT:BASE_URL+"/user/getdailyAttendence",
+    GET_ALL_EVENTS:BASE_URL+"/user/getAllReportsRequest"
 }
 
 export const highlight={

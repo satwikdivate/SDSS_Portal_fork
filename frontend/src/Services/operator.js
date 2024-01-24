@@ -417,3 +417,17 @@ export async function markShlhaDilyAttendece(
     toast.error("Unauthorized access");
   }
 }
+
+export async function getAllEvents(){
+
+  try{
+    let token=localStorage.getItem("token");
+    const result=await apiConnector("POST",operator.getAllEvents,{
+      token
+    })
+
+    return result.data;
+  }catch(e){
+    console.log("ERROR AT GET ALL EVENTS ",e)
+  }
+}

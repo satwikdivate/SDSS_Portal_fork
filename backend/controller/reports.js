@@ -76,4 +76,17 @@ exports.deleteEvent = async (req, res) => {
     }
 }
 
+exports.getAllEvents=async(req,res)=>{
+    try{
+        const result= await event.find({});
+        return res.status(200).json({
+            message:"All Events",
+            data:result
+        });
+        
+    }catch(e){
+        console.log("ERROR AT GET ALL EVENTS");
+    }
+}
+
 
