@@ -294,7 +294,7 @@ const FillProfile = () => {
                     type="text"
                     placeholder="School Name"
                     name="schoolName"
-                    value={educational.schoolName}
+                    value={data?.educational?.schoolName}
                     onChange={(e) =>
                       setEducationalData({
                         ...educational,

@@ -39,11 +39,12 @@ export function updatePersonalProfile(
   bloodGroup
 ) {
   return async (dispatch) => {
+    let token=localStorage.getItem("token");
     const result = await apiConnector("POST", profile.PERSONAL_PROFILE, {
       age,
       dateOfBirth: dob,
       grade,
-      bloodGroup
+      bloodGroup,token
     });
     console.log("RESULT AT PERSONAL PRODILE", result);
     if (result.request.status !== 200)

@@ -42,7 +42,7 @@ const Classcard = () => {
     };
 
     fetchUserData();
-  },[CreateClass] );
+  },[] );
   
 
   const redirectToClassInfo = (className) => {

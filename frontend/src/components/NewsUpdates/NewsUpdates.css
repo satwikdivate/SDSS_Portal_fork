@@ -14,16 +14,6 @@
     display: flex;
 }
 
-.news-heading::before,
-.news-heading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 500px;
-    height: 2px;
-    background-color: #ccc;
-}
-
 .news-heading::before {
     left: 0;
 }
@@ -103,8 +93,8 @@
 }
 
 .news-preview img {
-    width: 100%;
-    height: auto;
+    width: 600px;
+    height: 400px;   
     border-radius: 8px;
 }
 

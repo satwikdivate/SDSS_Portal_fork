@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 
 const mongoURI = "mongodb+srv://datasdss:sdss2003@web.kwojvcr.mongodb.net/?retryWrites=true&w=majority";
+require("dotenv").config();
 
-// process.config();
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MOGOURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
