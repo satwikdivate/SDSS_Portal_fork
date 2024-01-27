@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import "./CustomSlider.css";
 import { deleteHighlight } from "./../../Services/highlights";
-import NewsPopup from "../News-POPUP/NewsPopup"; // Import the NewsPopup component
+import NewsPopup from "../News-POPUP/NewsPopup"; 
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 
 const CustomSlider = ({ newsData }) => {
   const role = localStorage.getItem("role");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showFullContent, setShowFullContent] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const [confirmationAction, setConfirmationAction] = useState(null);
+
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -24,17 +27,33 @@ const CustomSlider = ({ newsData }) => {
     setShowFullContent(false); // Reset showFullContent when changing news
   };
 
-  const deleteNews = async (index) => {
-    // Implement your delete logic here
-    console.log("Deleting news at index:", index);
-    await deleteHighlight(index);
+  
+  const confirmDelete = (articleId) => {
+    setConfirmationAction({
+      type: "delete",
+      articleId,
+    });
   };
 
-  const editNews = async (index) => {
-    // Implement your delete logic here
-    console.log("Deleting news at index:", index);
-    await deleteHighlight(index);
+  const confirmEdit = (articleId) => {
+    setConfirmationAction({
+      type: "edit",
+      articleId,
+    });
   };
+
+  const handleDelete = async (articleId) => {
+    console.log("Deleting news with ID:", articleId);
+    await deleteHighlight(articleId);
+    setConfirmationAction(null);
+  };
+
+  const handleEdit = async (articleId) => {
+    // Implement your edit logic here
+    console.log("Editing news with ID:", articleId);
+    setConfirmationAction(null);
+  };
+
 
   const toggleFullContent = (article) => {
     setSelectedArticle(article);
@@ -57,7 +76,7 @@ const CustomSlider = ({ newsData }) => {
               <div className="news-editorials">
                 <button
                   className="news-delete-button"
-                  onClick={() => deleteNews(article._id)}
+                  onClick={() => confirmDelete(article._id)}
                 >
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/5073/5073620.png"
@@ -67,9 +86,9 @@ const CustomSlider = ({ newsData }) => {
                 </button>
                 <button
                   className="news-edit-button"
-                  onClick={() => editNews(article._id)}
+                  onClick={() => confirmEdit(article._id)}
                 >
-                  <i class="bx bxs-edit"></i>
+                  <i className="bx bxs-edit"></i>
                 </button>
               </div>
             )}
@@ -86,8 +105,8 @@ const CustomSlider = ({ newsData }) => {
                 <h3>{article.title}</h3>
                 {showFullContent || (
                   <p className="news-description">
-                    <strong>{article.description.split(":")[0]} :</strong>
-                    <p>{article.description.split(":")[1].slice(0, 217)}</p>
+                    <strong>{article.description.split(":")[0]} :</strong> <br></br>
+                    {article.description.split(":").slice(1)}
                     <div
                       className="read-more-button"
                       onClick={() => toggleFullContent(article)}
@@ -112,6 +131,17 @@ const CustomSlider = ({ newsData }) => {
 
       {showFullContent && selectedArticle && (
         <NewsPopup article={selectedArticle} onClose={closePopup} />
+      )}
+      {confirmationAction && (
+        <ConfirmationModal
+          action={confirmationAction.type}
+          onConfirm={() =>
+            confirmationAction.type === "delete"
+              ? handleDelete(confirmationAction.articleId)
+              : handleEdit(confirmationAction.articleId)
+          }
+          onCancel={() => setConfirmationAction(null)}
+        />
       )}
     </div>
   );

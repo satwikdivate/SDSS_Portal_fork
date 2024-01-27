@@ -16,7 +16,7 @@ const NewsPopup = ({ article, onClose }) => {
           className="popup-img"
         />
         <p><strong>{article.description.split(':')[0]} :</strong></p>
-        <p>{article.description.split(':')[1]}</p>
+        <p>{article.description.split(':').slice(1)}</p>
       </div>
     </div>
   );

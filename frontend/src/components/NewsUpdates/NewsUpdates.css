@@ -93,9 +93,9 @@
 }
 
 .news-preview img {
-    width: 600px;
-    height: 400px;   
+    width: 500px; 
     border-radius: 8px;
+    aspect-ratio: 3/2;
 }
 
 .news-dropdown-options {
