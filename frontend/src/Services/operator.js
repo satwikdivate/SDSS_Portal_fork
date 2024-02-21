@@ -7,8 +7,10 @@ export async function getAllClass() {
     const token = localStorage.getItem("token");
     const result = await apiConnector("POST", operator.GET_ALL_CLASS, {
       token,
+    }, {
+      Authorization: `Bearer ${token}`,
     });
-
+    console.log("HJelo")
     return result.data;
   } catch (e) {
     console.log("ERROR AT THE GETCLASS", e);

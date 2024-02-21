@@ -7,6 +7,29 @@ import  {
 import toast from "react-hot-toast";
 import { user } from "../Services/utilities/API";
 
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 export function login(username, password, navigate) {
   return async (dispatch) => {
     try {
@@ -22,6 +45,15 @@ export function login(username, password, navigate) {
         return;
       }
 
+ 
+    let temptoken= result.data.token;
+
+      // storing all the cokkies
+      setCookie('token',temptoken,3);
+      setCookie("user", JSON.stringify(result.data.user[0]),3);
+      setCookie("loggedInId", result.data.user[0]._id,3);
+      setCookie("role", result.data.user[0].role,3);
+      
       // set token
       dispatch(setToken(result.data.token));
       // set user
@@ -34,6 +66,7 @@ export function login(username, password, navigate) {
       localStorage.setItem("loggedInId", result.data.user[0]._id);
       localStorage.setItem("role", result.data.user[0].role);
 
+      console.log("Stored cookies",getCookie('token'));
       navigate("/landing");
 
       dispatch(setLoading(false));
