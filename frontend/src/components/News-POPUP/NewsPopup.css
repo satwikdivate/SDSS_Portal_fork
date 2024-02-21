@@ -1,0 +1,53 @@
+/* NewsPopup.css */
+.news-popup {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  width: 90%;
+  height: 90%;
+  position: relative;
+  text-align: center;
+  overflow: auto;
+  border: 1px solid;
+  margin: 10px;
+}
+
+.popup-content h3{
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.popup-content p{
+  text-align: justify;
+}
+
+.news-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc0404;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #000000;
+
+}
+
+.popup-img {
+  width: 400px;
+  margin-bottom: 10px;
+}

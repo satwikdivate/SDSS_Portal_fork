@@ -25,7 +25,11 @@
 .social-icons a {
   color: #fff;
   text-decoration: none;
-  margin: 10px 0; /* Add margin on top and bottom for better spacing on small screens */
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
 }
 
 .social-icons i {

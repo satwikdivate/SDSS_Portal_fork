@@ -20,7 +20,7 @@ const NewsSection = () => {
       console.log("Tasika Data:", tasikaData);
       setTasika(tasikaData);
 
-      const karykramData = await getAllHighlight("Karykram");
+      const karykramData = await getAllHighlight("Karyakram");
       console.log("Karykram Data:", karykramData);
       setKarykram(karykramData);
 
@@ -43,7 +43,7 @@ const NewsSection = () => {
         <div className="Maidan-News news">
           <div className="category-dropdown-line">
             <div className="news-dropdown">
-              <h2>Maidan News</h2>
+              <h2>मैदान व्यवस्था</h2>
             </div>
             <NewsCategory category={Maidan} />
           </div>
@@ -53,7 +53,7 @@ const NewsSection = () => {
         <div className="Tasika-News news">
           <div className="category-dropdown-line">
             <div className="news-dropdown">
-              <h2>Tasika News</h2>
+              <h2>तासिका व्यवस्था</h2>
             </div>
           </div>
           <NewsCategory category={Tasika} />
@@ -63,7 +63,7 @@ const NewsSection = () => {
         <div className="Karykram-News news">
           <div className="category-dropdown-line">
             <div className="news-dropdown">
-              <h2>Karykram News</h2>
+              <h2>कार्यक्रम व्यवस्था</h2>
             </div>
           </div>
           <NewsCategory category={Karykram} />
@@ -73,7 +73,7 @@ const NewsSection = () => {
         <div className="Sampark-News news">
           <div className="category-dropdown-line">
             <div className="news-dropdown">
-              <h2>Sampark News</h2>
+              <h2>संपर्क व्यवस्था</h2>
             </div>
           </div>
           <NewsCategory category={Sampark} />

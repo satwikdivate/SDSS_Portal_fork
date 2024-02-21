@@ -2,10 +2,10 @@
   padding: 20px;
 }
 
-.news-container h2{
+.news-container h2 {
   font-size: 2em;
+  
 }
-
 
 .news-section .news-list {
   list-style: none;
@@ -21,6 +21,7 @@
 
 .news-dropdown h2 {
   font-size: 2em;
+  color: #000099;
 }
 .news-section .news-card {
   width: 100%;
