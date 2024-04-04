@@ -7,7 +7,7 @@ exports.auth = (req, res, next) => {
     const result = jwt.verify(token, "token");
     console.log(result);
     console.log("User Role :", result.role);
-    console.log("Cookies",req.cookies)
+    // console.log("Cookies",req.cookies)
     // add token at
     req.user = result;
     // console.log("Cookies at auth ",req)

@@ -14,7 +14,7 @@ const requetsDB = require("../db/requestDB");
 // signup
 exports.signUp = async (req, res) => {
   try {
-    const { firstName, lastName, contact, email, password, role,standard} = req.body;
+    const { id,firstName, lastName, contact, email, password, role,standard} = req.body;
 
     // validation of input
     if (!firstName || !lastName || !contact || !email || !password || !standard) {
@@ -29,14 +29,23 @@ exports.signUp = async (req, res) => {
     // printjson(index)
 
     // check if user already present
-    const findUser = await User.find({ email: email });
-
+    const findUser = await User.find({ email: email }) 
+    
     if (findUser.length > 0) {
       return res.status(400).json({
-        messsage: "User already registerd",
+        message: "User email id already registerd",
         sucess: false,
       });
     }
+
+    const useid= await User.find({id:id});
+    if (useid.length > 0) {
+      return res.status(400).json({
+        message: "User Roll No is already Present",
+        sucess: false,
+      });
+    }
+
     const hashPassword = await bcrypt.hash(password, 10);
 
     // create 4 schma and init with NULL
@@ -77,7 +86,7 @@ exports.signUp = async (req, res) => {
     message:"Class Not present"})
     // creating entry in DB
     const user = await User.create({
-      id: recordCount + 1000,
+      id: id,
       firstName,
       lastName,
       contact,
