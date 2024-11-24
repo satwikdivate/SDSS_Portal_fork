@@ -78,7 +78,7 @@ function App() {
           <Route path="/postupdate" element={<NewsUpdatesPost />} />
 
           {/* contact route */}
-          <Route path="/contact" element={<Contactform />} />
+          {/* <Route path="/contact" element={<Contactform />} /> */}
         </Routes>
       </Router>
     </>
